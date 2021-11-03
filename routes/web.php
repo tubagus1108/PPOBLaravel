@@ -5,6 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Covid19Controller;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Provaider\ServiceController;
+use App\Http\Controllers\WEB\OrderController;
+use App\Http\Controllers\WEB\PriceTopUPController;
 use App\Http\Middleware\DeveloperMiddleware;
 use App\Http\Middleware\UserMiddleware;
 use Illuminate\Support\Facades\Auth;
@@ -23,15 +25,23 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('service')->group(function(){
     Route::get('belance',[ServiceController::class,'getSaldo']);
     Route::get('get-category',[ServiceController::class,'GetCategory']);
+    Route::get('add-layanan',[ServiceController::class,'addLayanan']);
 });
 Route::get('/',[HomeController::class,'LandingPage'])->name('landing');
 Route::get('login',[AuthController::class,'indexLogin'])->name('login-get');
 Route::get('logout',[AuthController::class,'Logout'])->name('logout-get');
 Route::post('login',[AuthController::class,'Login'])->name('login');
-Route::middleware([DeveloperMiddleware::class],['auth'])->group(function(){
-    Route::get('/developer',[HomeController::class,'IndexDev'])->name('home-developers');
+Route::prefix('price')->group(function(){
+    Route::get('price',[PriceTopUPController::class,'index'])->name('price');
+    Route::get('price-datatable',[PriceTopUPController::class,'priceDatatable'])->name('price-datatable');
 });
+// Route::middleware([DeveloperMiddleware::class],['auth'])->group(function(){
+//     Route::get('/developer',[HomeController::class,'IndexDev'])->name('home-developers');
+// });
 Route::middleware([UserMiddleware::class],['auth'])->group(function(){
     Route::get('/user',[HomeController::class,'IndexMember'])->name('home-member');
+    Route::prefix('order')->group(function(){
+        Route::get('pulsa-reguler',[OrderController::class,'pulsa_reguler'])->name('pulsa-reguler');
+    });
 });
 

@@ -10,20 +10,20 @@
     <meta name="keywords" content="{{ env('APP_NAME') }}, smm ppob, ppob termurah, smm terbaik" />
     <meta name="author" content="{{ env('APP_NAME') }}" />
     <!-- favicon -->
-    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('assetslanding/images/favicon.ico') }}">
     <!-- Bootstrap -->
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assetslanding/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- Icons -->
-    <link href="{{ asset('assets/css/materialdesignicons.min.css.kos') }}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('assets/css/unicons.css.kos') }}">
+    <link href="{{ asset('assetslanding/css/materialdesignicons.min.css.kos') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('assetslanding/css/unicons.css.kos') }}">
     <!-- Magnific -->
-    <link href="{{ asset('assets/css/magnific-popup.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assetslanding/css/magnific-popup.css') }}" rel="stylesheet" type="text/css" />
     <!-- Slider -->
-    <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/owl.theme.default.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetslanding/css/owl.carousel.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assetslanding/css/owl.theme.default.min.css') }}" />
     <!-- Main Css -->
-    <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet" type="text/css" id="theme-opt" />
-    <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet" id="color-opt">
+    <link href="{{ asset('assetslanding/css/main.css') }}" rel="stylesheet" type="text/css" id="theme-opt" />
+    <link href="{{ asset('assetslanding/css/main.css') }}" rel="stylesheet" id="color-opt">
 </head>
 <body>
     <div id="preloader">
@@ -146,7 +146,7 @@
                 <div class="card work-process border-0 rounded shadow">
                     <div class="card-body features text-center">
                         <div class="image position-relative d-inline-block">
-                            <img src="{{ asset('assets/images/icon/account.svg') }}" class="avatar avatar-small" alt="" />
+                            <img src="{{ asset('assetslanding/images/icon/account.svg') }}" class="avatar avatar-small" alt="" />
                         </div>
                         <h4 class="title">Daftar Menjadi Member</h4>
                         <p class="text-muted para">
@@ -167,7 +167,7 @@
                 <div class="card work-process border-0 rounded shadow">
                     <div class="card-body features text-center">
                         <div class="image position-relative d-inline-block">
-                            <img src="{{ asset('assets/images/icon/bank.svg') }}" class="avatar avatar-small" alt="" />
+                            <img src="{{ asset('assetslanding/images/icon/bank.svg') }}" class="avatar avatar-small" alt="" />
                         </div>
                         <h4 class="title">Deposit Saldo</h4>
                         <p class="text-muted para">
@@ -188,7 +188,7 @@
                 <div class="card work-process border-0 rounded shadow">
                     <div class="card-body features text-center">
                         <div class="image position-relative d-inline-block">
-                            <img src="{{ asset('assets/images/icon/shop.svg') }}" class="avatar avatar-small" alt="" />
+                            <img src="{{ asset('assetslanding/images/icon/shop.svg') }}" class="avatar avatar-small" alt="" />
                         </div>
                         <h4 class="title">Transaksi</h4>
                         <p class="text-muted para">
@@ -388,7 +388,7 @@
                 <a href="page-job-detail.html">
                     <div class="media key-feature align-items-center p-3 rounded shadow">
                         <div class="media-body text-center">
-                            <img src="{{ asset('assets/images/operator/grapari.png') }}" class="avatar avatar-ex-medium-mx" alt="" />
+                            <img src="{{ asset('assetslanding/images/operator/grapari.png') }}" class="avatar avatar-ex-medium-mx" alt="" />
                         </div>
                     </div>
                 </a>
@@ -399,7 +399,7 @@
                 <a href="page-job-detail.html">
                     <div class="media key-feature align-items-center p-3 rounded shadow">
                         <div class="media-body text-center">
-                            <img src="{{ asset('assets/images/operator/axiata.png') }}" class="avatar avatar-ex-medium-mx" alt="" />
+                            <img src="{{ asset('assetslanding/images/operator/axiata.png') }}" class="avatar avatar-ex-medium-mx" alt="" />
                         </div>
                     </div>
                 </a>
@@ -410,7 +410,7 @@
                 <a href="page-job-detail.html">
                     <div class="media key-feature align-items-center p-3 rounded shadow">
                         <div class="media-body text-center">
-                            <img src="{{ asset('assets/images/operator/indosat.png') }}" class="avatar avatar-ex-medium-mx" alt="" />
+                            <img src="{{ asset('assetslanding/images/operator/indosat.png') }}" class="avatar avatar-ex-medium-mx" alt="" />
                         </div>
                     </div>
                 </a>
@@ -421,7 +421,7 @@
                 <a href="page-job-detail.html">
                     <div class="media key-feature align-items-center p-3 rounded shadow">
                         <div class="media-body text-center">
-                            <img src="{{ asset('assets/images/operator/smartfren.png') }}" class="avatar avatar-ex-medium-mx" alt="" />
+                            <img src="{{ asset('assetslanding/images/operator/smartfren.png') }}" class="avatar avatar-ex-medium-mx" alt="" />
                         </div>
                     </div>
                 </a>
@@ -432,7 +432,7 @@
                 <a href="page-job-detail.html">
                     <div class="media key-feature align-items-center p-3 rounded shadow">
                         <div class="media-body text-center">
-                            <img src="{{ asset('assets/images/operator/tri.png') }}" class="avatar avatar-ex-medium-mx" alt="" />
+                            <img src="{{ asset('assetslanding/images/operator/tri.png') }}" class="avatar avatar-ex-medium-mx" alt="" />
                         </div>
                     </div>
                 </a>
@@ -443,7 +443,7 @@
                 <a href="page-job-detail.html">
                     <div class="media key-feature align-items-center p-3 rounded shadow">
                         <div class="media-body text-center">
-                            <img src="{{ asset('assets/images/operator/Wifi.id.png') }}" class="avatar avatar-ex-medium-mx" alt="" />
+                            <img src="{{ asset('assetslanding/images/operator/Wifi.id.png') }}" class="avatar avatar-ex-medium-mx" alt="" />
                         </div>
                     </div>
                 </a>
@@ -454,7 +454,7 @@
                 <a href="page-job-detail.html">
                     <div class="media key-feature align-items-center p-3 rounded shadow">
                         <div class="media-body text-center">
-                            <img src="{{ asset('assets/images/operator/gplay.png') }}" class="avatar avatar-ex-medium-mx" alt="" />
+                            <img src="{{ asset('assetslanding/images/operator/gplay.png') }}" class="avatar avatar-ex-medium-mx" alt="" />
                         </div>
                     </div>
                 </a>
@@ -465,7 +465,7 @@
                 <a href="page-job-detail.html">
                     <div class="media key-feature align-items-center p-3 rounded shadow">
                         <div class="media-body text-center">
-                            <img src="{{ asset('assets/images/operator/token.png') }}" class="avatar avatar-ex-medium-mx" alt="" />
+                            <img src="{{ asset('assetslanding/images/operator/token.png') }}" class="avatar avatar-ex-medium-mx" alt="" />
                         </div>
                     </div>
                 </a>
@@ -476,7 +476,7 @@
                 <a href="page-job-detail.html">
                     <div class="media key-feature align-items-center p-3 rounded shadow">
                         <div class="media-body text-center">
-                            <img src="{{ asset('assets/images/operator/gopay.png') }}" class="avatar avatar-ex-medium-mx" alt="" />
+                            <img src="{{ asset('assetslanding/images/operator/gopay.png') }}" class="avatar avatar-ex-medium-mx" alt="" />
                         </div>
                     </div>
                 </a>
@@ -487,7 +487,7 @@
                 <a href="page-job-detail.html">
                     <div class="media key-feature align-items-center p-3 rounded shadow">
                         <div class="media-body text-center">
-                            <img src="{{ asset('assets/images/operator/dana.png') }}" class="avatar avatar-ex-medium-mx" alt="" />
+                            <img src="{{ asset('assetslanding/images/operator/dana.png') }}" class="avatar avatar-ex-medium-mx" alt="" />
                         </div>
                     </div>
                 </a>
@@ -498,7 +498,7 @@
                 <a href="page-job-detail.html">
                     <div class="media key-feature align-items-center p-3 rounded shadow">
                         <div class="media-body text-center">
-                            <img src="{{ asset('assets/images/operator/ovo.png') }}" class="avatar avatar-ex-medium-mx" alt="" />
+                            <img src="{{ asset('assetslanding/images/operator/ovo.png') }}" class="avatar avatar-ex-medium-mx" alt="" />
                         </div>
                     </div>
                 </a>
@@ -695,17 +695,17 @@
             <div class="col-sm-6 mt-4 mt-sm-0 pt-2 pt-sm-0">
                 <ul class="list-unstyled payment-cards text-sm-right mb-0">
                     <li class="list-inline-item"><a href="javascript:void(0)"><img class="avatar avatar-ex-sm"
-                                src="{{ asset('assets/images/payments/indopayment/Logo-BCA.png') }}" title="BCA"></a>
+                                src="{{ asset('assetslanding/images/payments/indopayment/Logo-BCA.png') }}" title="BCA"></a>
                     </li>
                     <li class="list-inline-item"><a href="javascript:void(0)"><img class="avatar avatar-ex-sm"
-                                src="{{ asset('assets/images/payments/indopayment/Logo-BNI.png') }}" title="BNI"></a></li>
+                                src="{{ asset('assetslanding/images/payments/indopayment/Logo-BNI.png') }}" title="BNI"></a></li>
                     <li class="list-inline-item"><a href="javascript:void(0)"><img class="avatar avatar-ex-sm"
-                                src="{{ asset('assets/images/payments/indopayment/Logo-GOPAY.png') }}" title="GOPAY"></a>
+                                src="{{ asset('assetslanding/images/payments/indopayment/Logo-GOPAY.png') }}" title="GOPAY"></a>
                     </li>
                     <li class="list-inline-item"><a href="javascript:void(0)"><img class="avatar avatar-ex-sm"
-                                src="{{ asset('assets/images/payments/indopayment/Logo-OVO.png') }}" title="OVO"></a></li>
+                                src="{{ asset('assetslanding/images/payments/indopayment/Logo-OVO.png') }}" title="OVO"></a></li>
                     <li class="list-inline-item"><a href="javascript:void(0)"><img class="avatar avatar-ex-sm"
-                                src="{{ asset('assets/images/payments/indopayment/Logo-Shopee-Pay.png') }}" title="Shoope Pay"></a>
+                                src="{{ asset('assetslanding/images/payments/indopayment/Logo-Shopee-Pay.png') }}" title="Shoope Pay"></a>
                     </li>
                 </ul>
             </div>
@@ -725,23 +725,23 @@
 <!-- Back to top -->
 
 <!-- javascript -->
-<script src="{{ asset('assets/js/jquery-3.4.1.min.js') }}"></script>
-<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('assets/js/jquery.easing.min.js') }}"></script>
-<script src="{{ asset('assets/js/scrollspy.min.js') }}"></script>
+<script src="{{ asset('assetslanding/js/jquery-3.4.1.min.js') }}"></script>
+<script src="{{ asset('assetslanding/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('assetslanding/js/jquery.easing.min.js') }}"></script>
+<script src="{{ asset('assetslanding/js/scrollspy.min.js') }}"></script>
 <!-- Magnific Popup -->
-<script src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
-<script src="{{ asset('assets/js/magnific.init.js') }}"></script>
+<script src="{{ asset('assetslanding/js/jquery.magnific-popup.min.js') }}"></script>
+<script src="{{ asset('assetslanding/js/magnific.init.js') }}"></script>
 <!-- SLIDER -->
-<script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
-<script src="{{ asset('assets/js/owl.init.js') }}"></script>
+<script src="{{ asset('assetslanding/js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('assetslanding/js/owl.init.js') }}"></script>
 <!-- Icons -->
-<script src="{{ asset('assets/js/feather.min.js') }}"></script>
-<script src="{{ asset('assets/js/unicons-monochrome.js') }}"></script>
-<script src="{{ asset('assets/js/bundle.js') }}"></script>
+<script src="{{ asset('assetslanding/js/feather.min.js') }}"></script>
+<script src="{{ asset('assetslanding/js/unicons-monochrome.js') }}"></script>
+<script src="{{ asset('assetslanding/js/bundle.js') }}"></script>
 <!-- Switcher -->
-<script src="{{ asset('assets/js/switcher.js') }}"></script>
+<script src="{{ asset('assetslanding/js/switcher.js') }}"></script>
 <!-- Main Js -->
-<script src="{{ asset('assets/js/app.js') }}"></script>
+<script src="{{ asset('assetslanding/js/app.js') }}"></script>
 </body>
 </html>

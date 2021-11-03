@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.masterlogin')
 @section('customizecss')
 <style>
 .divider:after,
