@@ -2,47 +2,69 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ env('APP_NAME') }}</title>
-    {{-- CSS --}}
-    <link rel="stylesheet" href="{{ asset('assets/plugins/@mdi/font/css/materialdesignicons.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    {{-- <link rel="stylesheet" href="{{ asset('assetslanding/css/style-2.bundle.css') }}"> --}}
-    {{-- <link rel="stylesheet" href="{{ asset('assetslanding/css/style.bundle.css') }}"> --}}
+    <title>{{env('APP_NAME')}}</title>
+    <!-- App css -->
+    <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('assets/css/icons.min.cs')}}s" rel="stylesheet" type="text/css" />
+    <link href="{{asset('assets/css/app.min.css')}}" rel="stylesheet" type="text/css" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <style type="text/css">
+    .preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background-color: #fff;
+    }
+    .preloader .loading {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        font: 14px arial;
+    }
+    </style>
 </head>
-<body>
-    {{-- <script src="{{ asset('assets/js/preloader.js') }}"></script> --}}
-    <div class="container-scroller" id="app">
-        @include('layouts.header')
-        <div class="container-fluid page-body-wrapper">
-          @include('layouts.sidebar')
-          <div class="main-panel">
-            <div class="content-wrapper">
-              @yield('content')
-            </div>
-            @include('layouts.footer')
-          </div>
+<body class="menubar-light">
+    <div class="preloader">
+        <div class="loading">
+            <img src="{{asset('assets/images/diamond.gif')}}" width="150">
+            <center><p>Tunggu Sebentar...</p></center>
         </div>
     </div>
-    @yield('script')
-    {{-- BASE JS --}}
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
-    {{-- PLUGIN JS --}}
-    <script src="{{ asset('assets/js/off-canvas.js') }}"></script>
-    <script src="{{ asset('assets/js/hoverable-collapse.js  ') }}"></script>
-    <script src="{{ asset('assets/js/misc.js') }}"></script>
-    <script src="{{ asset('assets/js/settings.js') }}"></script>
-    {{-- <script src="{{ asset('assets/js/todolist.jss  ') }}"></script> --}}
-    <script src="https://kit.fontawesome.com/2c7ad1242e.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"> </script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/dataTables.semanticui.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
+    @include('layouts.header')
+    <div class="wrapper"> 
+        @yield('content')
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <font color="black">EvolutionPedia</font> | &copy; Copyright 2020 <strong></strong> Di Buat Dengan <i class="mdi mdi-heart text-danger"></i> Oleh <a href="" target="_blank">ODEVS</a>.
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+    <!-- App js -->
+    <script src="{{asset('assets/js/vendor.min.js')}}"></script>
+    <script src="{{asset('assets/js/app.min.js')}}"></script>
+    <script>
+        $(document).ready(function(){
+            $(".preloader").fadeOut();
+        })
+    </script>
 </body>
 </html>

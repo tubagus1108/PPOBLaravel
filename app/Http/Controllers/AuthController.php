@@ -8,24 +8,29 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 class AuthController extends Controller
 {
-    // use AuthenticatesUsers;
-    // protected $redirectTo = '/login';
-    // protected $redirectTo = '/home';
+    public function forgotpassword()
+    {
+        return view('auth.forgot-password');
+    }
+    public function register()
+    {
+        return view('auth.register');
+    }
     public function indexLogin()
     {
-        if(Auth::check())
-        {
-            if(Auth()->user()->level == 'Developers')
-            {
-                return redirect()->route('home-developers');
-            }
-            else{
-                return redirect()->route(
-                    'home-member'
-                );
-            }
-        }
-        return view('login');
+        // if(Auth::check())
+        // {
+        //     if(Auth()->user()->level == 'Developers')
+        //     {
+        //         return redirect()->route('home-developers');
+        //     }
+        //     else{
+        //         return redirect()->route(
+        //             'home-member'
+        //         );
+        //     }
+        // }
+        return view('auth.login');
     }
     public function Login(Request $request)
     {

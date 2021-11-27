@@ -11,23 +11,23 @@ class HomeController extends Controller
 {
     public function LandingPage()
     {
-        $data = Http::get('https://api.kawalcorona.com/indonesia');
-        $json = $data->json();
-        $realtime_date = Carbon::now('Asia/Jakarta');
+        // $data = Http::get('https://api.kawalcorona.com/indonesia');
+        // $json = $data->json();
+        // $realtime_date = Carbon::now('Asia/Jakarta');
         // return $json[0]['name'];);
-        if(Auth::check())
-        {
-            if(Auth()->user()->level == 'Developers')
-            {
-                return redirect()->route('home-developers');
-            }
-            else{
-                return redirect()->route(
-                    'home-member'
-                );
-            }
-        }
-        return view('landing.index',compact('json','realtime_date'));
+        // if(Auth::check())
+        // {
+        //     if(Auth()->user()->level == 'Developers')
+        //     {
+        //         return redirect()->route('home-developers');
+        //     }
+        //     else{
+        //         return redirect()->route(
+        //             'home-member'
+        //         );
+        //     }
+        // }
+        return view('landing.index');
     }
     public function IndexDev()
     {

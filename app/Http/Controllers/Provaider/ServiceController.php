@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\CategoryLayanan;
 use App\Models\LayananPulsa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class ServiceController extends Controller
 {
@@ -40,8 +43,52 @@ class ServiceController extends Controller
         return response()->json(['error' => true,'data' => $view_data]);
 
     }
-    public function GetCategory()
+    public function getSearchNumber(Request $request,$number,$kode = 0)
     {
+        if($kode == 0){$request->kode = 'Operator';}
+		elseif($kode != 0){$request->kode = $kode;}
+		$number = $this->getOperator($request->number);
+		$data = $this->getJson();
+	 	$values = '';
+		foreach ($data[$request->kode] as $key => $value) {
+		    $items = (string)array_search($number , $data[$request->kode][$key]);
+			if($items != null){
+				$values = $key;
+				break;
+			}
+		}
+
+		return $values;
+    }
+    protected function getOperator($number)
+    {
+        $pecah = str_split($number);
+        if($pecah[0] == '6' && $pecah[1] == '2'){
+            $number = '08'.$pecah[3].$pecah[4];
+        }else if($pecah[0] == '+' && $pecah[1] == '6' && $pecah[2]== '2'){
+            $number = '08'.$pecah[4].$pecah[5];
+        }else if($pecah[0] == '0' && $pecah[1] == '8'){
+            $number = substr($number,0,4);
+        }else{
+            return false;
+        }
+        return $number;
+    }
+    public function getJson()
+    {
+        $urljsn = Storage::disk('local')->get('jsn.json');
+        $data = json_decode($urljsn);
+        return $data;
+    }
+    public function getLayanan(Request $request)
+    {
+        $validated = Validator::make($request->all(),[
+            'nomor_hp' => 'required',
+        ]);    
+        if($validated->fails())
+        {
+            return response()->json(['error' => true,'message' => $validated->errors()],400);
+        }
         $signature  = md5($this->username.$this->apiKey.'pricelist');
         $json = array(
             'cmd' => 'prepaid',
@@ -58,28 +105,35 @@ class ServiceController extends Controller
 
         $data = curl_exec($ch);
         curl_close($ch);
+        // return $data;
         $result = json_decode($data);
-        // return $result;
         $categoryArray = [];
         foreach($result->data as $item)
         {
-            $categoryArray[] = $item->category;
-            $categoryArray[] = $item->brand;
-            $check_category = CategoryLayanan::where('name',$item->brand)->where('server',$item->category)->first();
-            if($check_category)
+            if($item->brand == "TELKOMSEL")
             {
-                return response()->json(['message' => 'Berhasil Masukkan Data']);
-            }
-            else{
-                CategoryLayanan::create([
-                    'name' => $item->brand,
-                    'code' => $item->brand,
-                    'type' => 'Top Up',
-                    'server' => $item->category,
+                $categoryArray[] = response()->json([
+                    'product_name' => $item->product_name,
+                    'brand' => $item->brand,
+                    'category' => $item->category,
+                    'price' => $item->price + 500,
+                    'code' => $item->buyer_sku_code,
+                    'description' => $item->desc,
                 ]);
             }
         }
         return $categoryArray;
+        
+    }
+    public function custom_response_product(Request $request)
+    {
+        $custome = $this->getLayanan($request);
+        $customearray = [];
+        foreach($custome as $item)
+        {
+            $customearray[] = $item->original;
+        }
+        return response()->json(['success' => true,'data' => $customearray],200);
     }
     public function addLayanan()
     {

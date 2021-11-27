@@ -1,144 +1,278 @@
-<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-    <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-      <a class="navbar-brand brand-logo" href="">
-        <img src="{{ asset('assets/images/logo.svg') }}" alt="logo" /> </a>
-      <a class="navbar-brand brand-logo-mini" href="">
-        <img src="{{ asset('assets/images/logo-mini.svg') }}" alt="logo" /> </a>
-    </div>
-    <div class="navbar-menu-wrapper d-flex align-items-center">
-        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-          <span class="mdi mdi-menu"></span>
-        </button>
-        <ul class="navbar-nav navbar-nav-left header-links">
-          <li class="nav-item d-none d-md-flex">
-            <a href="#" class="nav-link"><i class="mdi mdi-cash"></i>Cara Isi Saldo
-            </a>
-          </li>
-          <li class="nav-item active d-none d-md-flex">
-            <a href="#" class="nav-link">
-                <i class="fa fa-exchange-alt"></i>Cara Transaksi</a>
-          </li>
-          <li class="nav-item d-none d-md-flex">
-            <a href="#" class="nav-link">
-              <i class="fas fa-arrow-alt-circle-right"></i>Berita dan Informasi</a>
-          </li>
-          <li class="nav-item dropdown d-md-none">
-            <a class="nav-link dropdown-toggle px-0" id="quickDropdown" href="#" data-toggle="dropdown" aria-expanded="false"> Quick Links </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown pt-3" aria-labelledby="quickDropdown">
-              <a href="#" class="dropdown-item">Schedule <span class="badge badge-primary ml-1">New</span></a>
-              <a href="#" class="dropdown-item"><i class="mdi mdi-elevation-rise"></i>Reports</a>
-              <a href="#" class="dropdown-item"><i class="mdi mdi-bookmark-plus-outline"></i>Score</a>
-            </div>
-          </li>
-        </ul>
-        <ul class="navbar-nav navbar-nav-right">
-          <li class="nav-item dropdown">
-            <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-              <i class="mdi mdi-file-outline"></i>
-              <span class="count">7</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="messageDropdown">
-              <a class="dropdown-item py-3">
-                <p class="mb-0 font-weight-medium float-left">You have 7 unread mails </p>
-                <span class="badge badge-pill badge-primary float-right">View all</span>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <img src="{{ url('assets/images/faces/face10.jpg') }}" alt="image" class="img-sm profile-pic"> </div>
-                <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">Marian Garner </p>
-                  <p class="font-weight-light small-text"> The meeting is cancelled </p>
-                </div>
-              </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <img src="{{ url('assets/images/faces/face12.jpg') }}" alt="image" class="img-sm profile-pic"> </div>
-                <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">David Grey </p>
-                  <p class="font-weight-light small-text"> The meeting is cancelled </p>
-                </div>
-              </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <img src="{{ url('assets/images/faces/face3.jpg') }}" alt="image" class="img-sm profile-pic"> </div>
-                <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">Travis Jenkins </p>
-                  <p class="font-weight-light small-text"> The meeting is cancelled </p>
-                </div>
-              </a>
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
-              <i class="mdi mdi-bell-outline"></i>
-              <span class="count bg-success">4</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="notificationDropdown">
-              <a class="dropdown-item py-3 border-bottom">
-                <p class="mb-0 font-weight-medium float-left">You have 4 new notifications </p>
-                <span class="badge badge-pill badge-primary float-right">View all</span>
-              </a>
-              <a class="dropdown-item preview-item py-3">
-                <div class="preview-thumbnail">
-                  <i class="mdi mdi-alert m-auto text-primary"></i>
-                </div>
-                <div class="preview-item-content">
-                  <h6 class="preview-subject font-weight-normal text-dark mb-1">Application Error</h6>
-                  <p class="font-weight-light small-text mb-0"> Just now </p>
-                </div>
-              </a>
-              <a class="dropdown-item preview-item py-3">
-                <div class="preview-thumbnail">
-                  <i class="mdi mdi-settings m-auto text-primary"></i>
-                </div>
-                <div class="preview-item-content">
-                  <h6 class="preview-subject font-weight-normal text-dark mb-1">Settings</h6>
-                  <p class="font-weight-light small-text mb-0"> Private message </p>
-                </div>
-              </a>
-              <a class="dropdown-item preview-item py-3">
-                <div class="preview-thumbnail">
-                  <i class="mdi mdi-airballoon m-auto text-primary"></i>
-                </div>
-                <div class="preview-item-content">
-                  <h6 class="preview-subject font-weight-normal text-dark mb-1">New user registration</h6>
-                  <p class="font-weight-light small-text mb-0"> 2 days ago </p>
-                </div>
-              </a>
-            </div>
-          </li>
-          <li class="nav-item d-none d-lg-block" id="color-setting">
-            <a class="nav-link" href="#">
-              <i class="mdi mdi-tune"></i>
-            </a>
-          </li>
-          <li class="nav-item dropdown d-none d-xl-inline-block">
-            <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-              <span class="profile-text">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</span>
-              <img class="img-xs rounded-circle" src="{{ url('assets/images/faces/face8.jpg') }}" alt="Profile image"> </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-              {{-- <a class="dropdown-item p-0">
-                <div class="d-flex border-bottom">
-                  <div class="py-3 px-4 d-flex align-items-center justify-content-center">
-                    <i class="mdi mdi-bookmark-plus-outline mr-0 text-gray"></i>
+<header id="topnav">
+  <!-- Topbar Start -->
+  <div class="navbar-custom">
+      <div class="container-fluid">
+          <ul class="list-unstyled topnav-menu float-right mb-0">
+
+              <li class="dropdown notification-list">
+                  <!-- Mobile menu toggle-->
+                  <a class="navbar-toggle nav-link">
+                      <div class="lines">
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                      </div>
+                  </a>
+                  <!-- End mobile menu toggle-->
+              </li>
+              <li class="dropdown notification-list">
+                  <!-- <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                      <img src="meki.jpg" alt="user-image" class="rounded-circle">
+                      <span class="pro-user-name ml-1">
+                          Developer <i class="mdi mdi-chevron-down"></i> 
+                      </span>
+                  </a> -->
+                  <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                      
+                      <!-- item-->
+                      <a href="user/pengaturan-akun" class="dropdown-item notify-item">
+                          <i class="ti-settings m-r-5 text-primary"></i>
+                          <span>Pengaturan Akun</span>
+                      </a>
+
+                      <!-- item-->
+                      <a href="" class="dropdown-item notify-item">
+                          <i class="fa fa-wallet text-primary"></i>
+                          <span>Penggunaan Saldo</span>
+                      </a>
+
+                      <!-- item-->
+                      <a href="" class="dropdown-item notify-item">
+                          <i class="fa fa-history text-primary"></i>
+                          <span>Aktifitas Akun</span>
+                      </a>
+
+                      <div class="dropdown-divider"></div>
+
+                      <!-- item-->
+                      <a href="" class="dropdown-item notify-item">
+                          <i class="mdi mdi-logout text-primary"></i>
+                          <span>Keluar</span>
+                      </a>
                   </div>
-                  <div class="py-3 px-4 d-flex align-items-center justify-content-center border-left border-right">
-                    <i class="mdi mdi-account-outline mr-0 text-gray"></i>
-                  </div>
-                  <div class="py-3 px-4 d-flex align-items-center justify-content-center">
-                    <i class="mdi mdi-alarm-check mr-0 text-gray"></i>
-                  </div>
-                </div>
-              </a> --}}
-              <a class="dropdown-item mt-2"> Manage Accounts </a>
-              <a class="dropdown-item"> Change Password </a>
-              <a href="{{ route('logout-get') }}" class="dropdown-item"> Sign Out </a>
-            </div>
-          </li>
-        </ul>
-        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-            <span class="mdi mdi-menu"></span>
-          </button>
+              </li> 
+          </ul>
+
+          <!-- LOGO -->
+          <div class="logo-box">
+              <a href="" class="logo">
+                  <span class="logo-large"><i class="mdi mdi-cart"></i> EvolutionPedia</span>
+              </a>
+          </div>
+
+          <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
+              
+          </ul>
+      </div> <!-- end container-fluid-->
+  </div>
+  <div class="topbar-menu">
+      <div class="container-fluid">
+          <div id="navigation">
+              <!-- Navigation Menu-->
+              <ul class="navigation-menu">
+                  <!-- <li class="has-submenu">
+                      <a class="nav-link dropdown-toggle waves-effect" href="admin"><i class="fa fa-user text-primary"></i> Halaman Admin</a>
+                  </li>   -->
+                  <!-- <li class="has-submenu">
+                      <a class="nav-link dropdown-toggle waves-effect" href="#"><i class="fa fa-users text-primary"></i>Menu Staff<i class="mdi mdi-chevron-down"></i></a>
+                      <ul class="submenu">
+                          <li>
+                              <a href="staff/tambah-pengguna">
+                              <i class="mdi mdi-account-plus"></i>
+                              <span>Tambah Pengguna</span>
+                              </a>
+                          </li>
+                          <li>
+                              <a href="staff/transfer-saldo">
+                              <i class="fa fa-exchange-alt"></i>
+                              <span>Transfer Saldo</span>
+                              </a>
+                          </li>
+                          <li>
+                              <a href="staff/kode-undangan">
+                              <i class="fa fa-key mr-1"></i>
+                              <span>Buat Kode Undangan</span>
+                              </a>
+                          </li>
+                          <li>
+                              <a href="staff/kode-voucher">
+                              <i class="fe-shopping-bag mr-1"></i>
+                              <span>Buat Kode Voucher</span>
+                              </a>
+                          </li>
+                          <li>
+                              <a href="staff/kelola-uplink">
+                              <i class="fa fa-history"></i>
+                              <span>Kelola Uplink</span>
+                              </a>
+                          </li>
+                          <li>
+                              <a href="staff/kelola-transfer-saldo">
+                              <i class="fa fa-history"></i>
+                              <span>Kelola Transfer Saldo</span>
+                              </a>
+                          </li>
+                      </ul>
+                  </li> -->
+                  <li class="has-submenu">
+                      <a class="nav-link dropdown-toggle waves-effect" href="{{route('landing')}}">
+                          <i class="fa fa-home text-primary"></i>Halaman Utama</a>
+                  </li>
+                  <!-- <li class="has-submenu">
+                      <a class="nav-link dropdown-toggle waves-effect" href="user/hall-of-fame">
+                          <i class="fa fa-bullhorn text-primary"></i>Hall Of Fame</a>
+                 
+                        <li class="has-submenu">
+                      <a class="nav-link dropdown-toggle waves-effect" href="#"> <i class="fa fa-cart-plus text-primary"></i>Riwayat Pemesanan<i class="mdi mdi-chevron-down"></i></a>
+                      <ul class="submenu">
+                          <li>
+                              <a href="sosial-media/riwayat">
+                                  <i class="fe-instagram mr-1"></i>
+                                  <span>Sosial Media</span>
+                              </a>
+                          </li>
+                          <li>
+                              <a href="pulsa/riwayat">
+                                  <i class="mdi mdi-cellphone-android mr-1"></i>
+                                  <span>Pulsa & PPOB</span>
+                              </a>
+                          </li>
+                      </ul>
+                  </li>                  -->
+                  <!-- <li class="has-submenu">
+                      <a class="nav-link dropdown-toggle waves-effect" href="#"> <i class="fa fa-credit-card text-primary"></i>Deposit Saldo<i class="mdi mdi-chevron-down"></i></a>
+                      <ul class="submenu">
+                          <li>
+                              <a href="deposit-saldo">
+                                  <i class="fa fa-balance-scale"></i>
+                                  <span> Deposit Baru</span>
+                              </a>
+                          </li>
+                          <li>
+                              <a href="deposit-saldo/redem-voucher">
+                                  <i class="fe-shopping-bag mr-1"></i>
+                                  <span>Kode Voucher</span>
+                              </a>
+                          </li>
+                          <li>
+                              <a href="deposit-saldo/riwayat">
+                                  <i class="fa fa-history"></i>
+                                  <span> Riwayat Deposit</span>
+                              </a>
+                          </li>                                    
+                      </ul>
+                  </li> -->
+                  <!-- <li class="has-submenu">
+                      <a class="nav-link dropdown-toggle waves-effect" href="tiket">
+                          <i class="fa fa-envelope text-primary"></i>Tiket</a>
+                  </li> -->
+                   
+                  <!-- <li class="has-submenu">
+                      <a class="nav-link dropdown-toggle waves-effect" href="#"> <i class="fa fa-file text-primary"></i>Halaman<i class="mdi mdi-chevron-down"></i></a>
+                      <ul class="submenu">
+                          <li>
+                              <a href="halaman/api-dokumentasi">
+                                  <i class="fa fa-code"></i>
+                                  <span>API Dokumentasi</span>
+                              </a>
+                          </li>
+                          <li>
+                              <a href="halaman/kontak">
+                                  <i class="fe-phone-call mr-1"></i>
+                                  <span>Hubungi Kami</span>
+                              </a>
+                          </li>
+                          <li>
+                              <a href="halaman/staff">
+                                  <i class="fa fa-users"></i>
+                                  <span>Staff Kami</span>
+                              </a>
+                          <li>
+                              <a href="halaman/tos">
+                                  <i class="mdi mdi-information-variant"></i>
+                                  <span>Ketentuan Layanan</span>
+                              </a>
+                          </li>
+                          <li>
+                              <a href="halaman/faq">
+                                  <i class="fa fa-edit"></i>
+                                  <span>Pertanyaan Umum</span>
+                              </a>
+                          </li>
+                          <li>
+                              <a href="halaman/tentang-status">
+                                  <i class="mdi mdi-alert-outline"></i>
+                                  <span>Penjelasan Status</span>
+                              </a>
+                          </li>
+                      </ul>
+                  </li> -->
+                  
+                  <!-- <li class="has-submenu">
+                      <a class="nav-link dropdown-toggle waves-effect" href="">
+                          <i class="fa fa-home text-primary"></i>Halaman Utama</a>
+                  </li> -->
+                  <li class="has-submenu">
+                      <a class="nav-link dropdown-toggle waves-effect" href="{{url('auth/login')}}">
+                          <i class="mdi mdi-login text-primary"></i>Masuk</a>
+                  </li>
+                  <li class="has-submenu">
+                      <a class="nav-link dropdown-toggle waves-effect" href="{{url('auth/register')}}">
+                          <i class="fa fa-user-plus text-primary"></i>Daftar</a>
+                  </li>
+                  <li class="has-submenu">
+                      <a class="nav-link dropdown-toggle waves-effect" href="{{url('auth/forgot-password')}}">
+                          <i class="fa fa-key text-primary"></i>Lupa Kata Sandi</a>
+                  </li>
+                  <li class="has-submenu">
+                      <a class="nav-link dropdown-toggle waves-effect" href="#"> <i class="fa fa-list text-primary"></i>Daftar Harga<i class="mdi mdi-chevron-down"></i></a>
+                      <ul class="submenu">
+                          <li>
+                              <a href="lisit-pricesmm.html">
+                                  <i class="fe-instagram mr-1"></i>
+                                  <span>Sosial Media</span>
+                              </a>
+                          </li>
+                          <li>
+                              <a href="list-pricesppob.html">
+                                  <i class="mdi mdi-cellphone-android mr-1"></i>
+                                  <span>Pulsa & PPOB</span>
+                              </a>
+                          </li>
+                          <li>                                                                       
+                      </ul>
+                  </li>
+                  <li class="has-submenu">
+                      <a class="nav-link dropdown-toggle waves-effect" href="#"> <i class="fa fa-file text-primary"></i>Halaman<i class="mdi mdi-chevron-down"></i></a>
+                      <ul class="submenu">
+                        <li>
+                            <a href="kontak.html">
+                                <i class="fe-phone-call mr-1"></i>
+                                <span>Hubungi Kami</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{route('tos')}}">
+                                <i class="mdi mdi-information-variant"></i>
+                                <span>Ketentuan Layanan</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="halaman/faq">
+                                <i class="fa fa-edit"></i>
+                                <span>Pertanyaan Umum</span>
+                            </a>
+                        </li>
+                      </ul>
+                  </li>
+              </ul>
+              <!-- End navigation menu -->
+
+              <div class="clearfix"></div>
+          </div>
+          <!-- end #navigation -->
       </div>
-  </nav>
+      <!-- end container -->
+  </div>
+  <!-- end navbar-custom -->
+</header>
