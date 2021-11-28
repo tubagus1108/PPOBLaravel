@@ -1,42 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        
-        <title>{{env('APP_NAME')}} | HOME</title>
-        <meta name="facebook-domain-verification" content="d01qsy7q8u8ci3bqv6jhoocr9d5rh4" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Evoltion-Pedia Adalah Sebuah Platform Bisnis Yang Menyediakan Berbagai Layanan Multy Media Marketing Yang Bergerak Terutama Di Indonesia. Dengan Bergabung Bersama Kami, Anda Dapat Menjadi Penyedia Jasa Sosial Media Atau Reseller Sosial Media Seperti Jasa Penambah Followers, Likes, Views, Subscribe, Dll.
-Saat Ini Tersedia Berbagai Layanan Untuk Sosial Media Terpopuler Seperti Instagram, Facebook, Twitter, Youtube, Dll. Dan Kamipun Juga Menyediakan Panel Pulsa & PPOB Seperti Pulsa All Operator, Paket Data, Saldo Gojek/Grab, Token PLN, All Voucher Game Online, Dll.">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-        <link rel="shortcut icon" href="">
-
-        <link rel="stylesheet" href="{{asset('landingpage/css/bootstrap.min.css')}}" type="text/css">
-        <link rel="stylesheet" type="text/css" href="{{asset('landingpage/css/materialdesignicons.min.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('landingpage/css/style.css')}}" />
-        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-        <style type="text/css">
-        .preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 9999;
-            background-color: #fff;
-        }
-        .preloader .loading {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%,-50%);
-            font: 14px arial;
-        }
-        </style>
-    </head>
-
-    <body>
-        <div class="preloader">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Evoltion-Pedia Adalah Sebuah Platform Bisnis Yang Menyediakan Berbagai Layanan Multy Media Marketing Yang Bergerak Terutama Di Indonesia. Dengan Bergabung Bersama Kami, Anda Dapat Menjadi Penyedia Jasa Sosial Media Atau Reseller Sosial Media Seperti Jasa Penambah Followers, Likes, Views, Subscribe, Dll. Saat Ini Tersedia Berbagai Layanan Untuk Sosial Media Terpopuler Seperti Instagram, Facebook, Twitter, Youtube, Dll. Dan Kamipun Juga Menyediakan Panel Pulsa & PPOB Seperti Pulsa All Operator, Paket Data, Saldo Gojek/Grab, Token PLN, All Voucher Game Online, Dll.">
+    <title>{{env('APP_NAME')}} | HOME</title>
+    <link rel="stylesheet" href="{{asset('landingpage/css/bootstrap.min.css')}}" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{asset('landingpage/css/materialdesignicons.min.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('landingpage/css/style.css')}}" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <style type="text/css">
+    .preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background-color: #fff;
+    }
+    .preloader .loading {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        font: 14px arial;
+    }
+    </style>
+</head>
+<body>
+    <div class="preloader">
             <div class="loading">
                 <img src="assets/images/diamond.gif" width="150">
                 <center><p>Tunggu Sebentar...</p></center>
@@ -228,7 +222,7 @@ Saat Ini Tersedia Berbagai Layanan Untuk Sosial Media Terpopuler Seperti Instagr
         <!-- pricing start -->
         <section class="section pb-0 bg-gradient" id="pricing">
             <div class="bg-shape">
-                <img src="images/bg-shape.png" alt="" class="img-fluid mx-auto d-block">
+                <img src="" alt="" class="img-fluid mx-auto d-block">
             </div>
             <div class="container-fluid">
                 <div class="row justify-content-center">
@@ -253,18 +247,18 @@ Saat Ini Tersedia Berbagai Layanan Untuk Sosial Media Terpopuler Seperti Instagr
                                     </div>
                                     <ul class="list-unstyled pricing-list mt-4">
                                         <li>
-                                            <p><i class="fas fa-globe-europe"></i> Full Akses Website</p>
+                                            <p>Full Akses Website</p>
                                         </li>
                                         <li>
-                                            <p><i class="fas fa-code"></i> Full Akses API</p>
+                                            <p> Full Akses API</p>
                                         </li>
                                         <li>
-                                            <p><i class="fas fa-info-circle"></i> Bantuan Pemasangan</p>
+                                            <p>Bantuan Pemasangan</p>
                                         </li>
                                         <li>
-                                            <p><i class="fas fa-money-check"></i> Bonus Saldo Rp 5.000</p>
+                                            <p>Bonus Saldo Rp 5.000</p>
                                         </li>
-                                        <li><p><i class="fas fa-times"></i> Tidak Dapat membuat kode undangan</p></li>
+                                        <li><p>Tidak Dapat membuat kode undangan</p></li>
                                     </ul>
                                     <div class="text-center mt-5">
                                         <a href="{{url('auth/register')}}" class="btn btn-primary">Daftar Sekarang</a>
@@ -281,19 +275,19 @@ Saat Ini Tersedia Berbagai Layanan Untuk Sosial Media Terpopuler Seperti Instagr
                                     </div>
                                     <ul class="list-unstyled pricing-list mt-4">
                                         <li>
-                                            <p><i class="fas fa-globe-europe"></i> Full Akses Website</p>
+                                            <p>Full Akses Website</p>
                                         </li>
                                         <li>
-                                            <p><i class="fas fa-code"></i> Full Akses API</p>
+                                            <p>Full Akses API</p>
                                         </li>
                                         <li>
-                                            <p><i class="fas fa-info-circle"></i> Bantuan Pemasangan</p>
+                                            <p>Bantuan Pemasangan</p>
                                         </li>
                                         <li>
-                                            <p><i class="fas fa-money-check"></i> Bonus Saldo Rp 20.000</p>
+                                            <p>Bonus Saldo Rp 20.000</p>
                                         </li>
                                         <li>
-                                            <p><i class="fas fa-star"></i> Hak Khusus membuat kode undangan</p>
+                                            <p>Hak Khusus membuat kode undangan</p>
                                         </li>
                                     </ul>
                                     <div class="text-center mt-5">
@@ -310,19 +304,19 @@ Saat Ini Tersedia Berbagai Layanan Untuk Sosial Media Terpopuler Seperti Instagr
                                     </div>
                                     <ul class="list-unstyled pricing-list mt-4">
                                         <li>
-                                            <p><i class="fas fa-globe-europe"></i> Full Akses Website</p>
+                                            <p>Full Akses Website</p>
                                         </li>
                                         <li>
-                                            <p><i class="fas fa-code"></i> Full Akses API</p>
+                                            <p>Full Akses API</p>
                                         </li>
                                         <li>
-                                            <p><i class="fas fa-info-circle"></i> Bantuan Pemasangan</p>
+                                            <p>Bantuan Pemasangan</p>
                                         </li>
                                         <li>
-                                            <p><i class="fas fa-money-check"></i> Bonus Saldo Rp 40.000</p>
+                                            <p>Bonus Saldo Rp 40.000</p>
                                         </li>
                                         <li>
-                                            <p><i class="fas fa-star"></i> Hak Khusus membuat kode undangan</p>
+                                            <p>Hak Khusus membuat kode undangan</p>
                                         </li>
                                     </ul>
                                     <div class="text-center mt-5">
@@ -344,7 +338,7 @@ Saat Ini Tersedia Berbagai Layanan Untuk Sosial Media Terpopuler Seperti Instagr
         <!-- contact start -->
         <section class="section pb-0 bg-gradient" id="contact">
             <div class="bg-shape">
-                <img src="images/bg-shape-light.png" alt="" class="img-fluid mx-auto d-block">
+                <img src="" alt="" class="img-fluid mx-auto d-block">
             </div>
             <div class="container-fluid">
                 <div class="row">
@@ -479,7 +473,7 @@ Saat Ini Tersedia Berbagai Layanan Untuk Sosial Media Terpopuler Seperti Instagr
         <script src="{{asset('landingpage/js/jquery.min.js')}}"></script>
         <script src="{{asset('landingpage/js/bootstrap.bundle.min.js')}}"></script>
         <script src="{{asset('landingpage/js/jquery.easing.min.js')}}"></script>
-        <script src="{{asset('landingpage/js/scrollspy.min.js')}}"></script>
+        {{-- <script src="{{asset('landingpage/js/scrollspy.min.js')}}"></script> --}}
 
         <!-- custom js -->
         <script src="{{asset('landingpage/js/app.js')}}"></script>
@@ -488,5 +482,5 @@ Saat Ini Tersedia Berbagai Layanan Untuk Sosial Media Terpopuler Seperti Instagr
                 $(".preloader").fadeOut();
             })
         </script>
-    </body>
+</body>
 </html>

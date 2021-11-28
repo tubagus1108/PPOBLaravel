@@ -13,7 +13,7 @@ class UserSeeder extends Seeder
      *
      * @return void
      */
-    public function genereteRandom($length = 10)
+    public function genereteRandom($length = 17)
     {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
@@ -26,8 +26,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::create([
-            'first_name' => 'User',
-            'last_name' => 'User',
+            'name' => 'User',
             'email' => 'user@ppob.com',
             'username' => 'user',
             'password' => Hash::make('user'),

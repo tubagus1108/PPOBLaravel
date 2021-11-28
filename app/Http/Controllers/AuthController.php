@@ -18,18 +18,19 @@ class AuthController extends Controller
     }
     public function indexLogin()
     {
-        // if(Auth::check())
-        // {
-        //     if(Auth()->user()->level == 'Developers')
-        //     {
-        //         return redirect()->route('home-developers');
-        //     }
-        //     else{
-        //         return redirect()->route(
-        //             'home-member'
-        //         );
-        //     }
-        // }
+        if(Auth::check())
+        {
+            // if(Auth()->user()->level == 'Developers')
+            // {
+            //     return redirect()->route('home-developers');
+            // }
+            // else{
+            //     return redirect()->route(
+            //         'home-member'
+            //     );
+            // }
+            return redirect()->route('dashboard');
+        }
         return view('auth.login');
     }
     public function Login(Request $request)
@@ -46,15 +47,7 @@ class AuthController extends Controller
             Auth::attempt($data);
             if(Auth::check())
             {
-                if(Auth()->user()->level == 'Developers')
-                {
-                    return redirect()->route('home-developers');
-                }
-                else{
-                    return redirect()->route(
-                        'home-member'
-                    );
-                }
+                return redirect()->route('dashboard')->withSuccessMessage('login success');
             }else{
                 return redirect(route('login'))->with('failed' , 'Username Dan Password Salah' );
             }
@@ -62,6 +55,6 @@ class AuthController extends Controller
     }
     public function Logout (){
         Session::flush();
-        return redirect(route('landing'));
+        return redirect(url('auth/login'));
     }
 }

@@ -42,7 +42,7 @@
         </div>
     </div>
     @include('layouts.header')
-    <div class="wrapper"> 
+    <div class="wrapper">
         @yield('content')
     </div>
 
@@ -61,10 +61,12 @@
     <!-- App js -->
     <script src="{{asset('assets/js/vendor.min.js')}}"></script>
     <script src="{{asset('assets/js/app.min.js')}}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(document).ready(function(){
             $(".preloader").fadeOut();
         })
     </script>
+    @yield('script')
 </body>
 </html>

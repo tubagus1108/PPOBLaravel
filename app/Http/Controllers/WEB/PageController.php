@@ -15,4 +15,8 @@ class PageController extends Controller
     {
         return view('halaman.faq');
     }
+    public function priceSMM()
+    {
+        return view('listprice.smmprice');
+    }
 }

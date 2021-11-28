@@ -34,11 +34,14 @@ Route::prefix('auth')->group(function(){
     Route::post('login',[AuthController::class,'Login'])->name('login');
     Route::get('register',[AuthController::class,'register']);
     Route::get('forgot-password',[AuthController::class,'forgotpassword']);
-    Route::get('logout',[AuthController::class,'Logout'])->name('logout-get');
+    Route::get('logout',[AuthController::class,'Logout'])->name('logout');
 });
 Route::prefix('page')->group(function(){
     Route::get('tos',[PageController::class,'tos'])->name('tos');
     Route::get('faq',[PageController::class,'faq'])->name('faq');
+});
+Route::prefix('price')->group(function(){
+    Route::get('price-smm',[PageController::class,'priceSMM'])->name('price-smm');
 });
 // Route::prefix('price')->group(function(){
 //     Route::get('price',[PriceTopUPController::class,'index'])->name('price');
@@ -47,10 +50,7 @@ Route::prefix('page')->group(function(){
 // Route::middleware([DeveloperMiddleware::class],['auth'])->group(function(){
 //     Route::get('/developer',[HomeController::class,'IndexDev'])->name('home-developers');
 // });
-// Route::middleware([UserMiddleware::class],['auth'])->group(function(){
-//     Route::get('/user',[HomeController::class,'IndexMember'])->name('home-member');
-//     Route::prefix('order')->group(function(){
-//         Route::get('pulsa-reguler',[OrderController::class,'pulsa_reguler'])->name('pulsa-reguler');
-//     });
-// });
+Route::middleware(['auth'])->group(function(){
+    Route::get('/dashboard',[HomeController::class,'dashboard'])->name('dashboard');
+});
 

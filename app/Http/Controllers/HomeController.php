@@ -15,26 +15,24 @@ class HomeController extends Controller
         // $json = $data->json();
         // $realtime_date = Carbon::now('Asia/Jakarta');
         // return $json[0]['name'];);
-        // if(Auth::check())
-        // {
-        //     if(Auth()->user()->level == 'Developers')
-        //     {
-        //         return redirect()->route('home-developers');
-        //     }
-        //     else{
-        //         return redirect()->route(
-        //             'home-member'
-        //         );
-        //     }
-        // }
+        if(Auth::check())
+        {
+            
+            return redirect()->route('dashboard');
+            // if(Auth()->user()->level == 'Developers')
+            // {
+            //     return redirect()->route('home-developers');
+            // }
+            // else{
+            //     return redirect()->route(
+            //         'home-member'
+            //     );
+            // }
+        }
         return view('landing.index');
     }
-    public function IndexDev()
+    public function dashboard()
     {
-        return view('admin.dashboard.index');
-    }
-    public function IndexMember()
-    {
-        return view('user.dashboard.index');
+        return view('dashboard.index');
     }
 }

@@ -24,8 +24,7 @@
                             <i class="fa fa-times-circle"></i>
                             Gagal Masuk
                         </div> --}}
-                        <form class="form-horizontal" method="POST">
-                        <input type="hidden" name="csrf_token" value="">
+                        <form action="{{route('login')}}" class="form-horizontal" method="POST">@csrf
                             <div class="form-group">
                                 <label>Nama Pengguna</label>
                                 <div class="input-group mb-2">
@@ -34,7 +33,7 @@
                                         <i class="fa fa-user text-primary"></i>
                                     </div>
                                 </div>
-                                    <input type="text" name="username" class="form-control" placeholder="Nama Pengguna" required>
+                                    <input type="text" name="email" class="form-control" placeholder="Email" required>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -53,7 +52,7 @@
                             </form>
                         </div>
                         <div class="card-footer">
-                            Belum Punya Akun? <a class="btn btn-warning waves-effect" href=""><i class="mdi mdi-account-plus"></i> Daftar</a>
+                            Belum Punya Akun? <a class="btn btn-warning waves-effect" href="{{url('auth/register')}}"><i class="mdi mdi-account-plus"></i> Daftar</a>
                         </div>
                     </div>
                 </div>
