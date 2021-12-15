@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Provaider\ServiceController;
 use GrahamCampbell\ResultType\Result;
+use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
 {
@@ -72,24 +73,15 @@ class PageController extends Controller
 
         $data = curl_exec($ch);
         curl_close($ch);
-        $categoryArray = [];
         $result = json_decode($data);
+        $categoryArray = [];
         foreach($result->data as $item)
         {
-            if($item->brand == "TELKOMSEL")
-            {
-                $categoryArray[] = response()->json([
-                    'product_name' => $item->product_name,
-                    'brand' => $item->brand,
-                    'category' => $item->category,
-                    'price' => $item->price + 500,
-                    'code' => $item->buyer_sku_code,
-                    'description' => $item->desc,
-                ]);
-            }
+           
+           $categoryArray[] = $item->brand;
         }
         return $categoryArray;
-        return view('listprice.ppob-price',compact('result'));
+        
     }
     public function contact()
     {

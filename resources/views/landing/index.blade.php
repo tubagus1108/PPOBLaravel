@@ -72,10 +72,10 @@
                         <div class="row align-items-center">
                             <div class="col-lg-6">
                                 <div class="home-title mo-mb-20">
-                                    <h1 class="mb-4 text-white"><i class="mdi mdi-hexagon-multiple"></i>{{env('APP_NAME')}}</h1>
-                                    <p class="text-white-50 home-desc mb-5">{{env('APP_NAME')}}  | Distributor Pulsa & SMM H2H Murah Di Indonesia adalah Pusat Reseller Produk Digital penyedia Layanan Social Media dan Pulsa All Operator seperti Kebutuhan Instagram, Facebook, Youtube, Paket Internet, Voucher Game, dll.</p>
+                                    <h1 class="mb-4 text-black"><i class="mdi mdi-hexagon-multiple"></i>{{env('APP_NAME')}}</h1>
+                                    <p class="text-black-50 home-desc mb-5">{{env('APP_NAME')}}  | Distributor Pulsa & SMM H2H Murah Di Indonesia adalah Pusat Reseller Produk Digital penyedia Layanan Social Media dan Pulsa All Operator seperti Kebutuhan Instagram, Facebook, Youtube, Paket Internet, Voucher Game, dll.</p>
                                     <a href="{{url('auth/login')}}" class="btn btn-primary waves-effect waves-light"><i class="mdi mdi-login"></i> Masuk</a> 
-                                    <a href="{{url('auth/register')}}" class="btn btn-warning"><i class="mdi mdi-account-plus"></i> Daftar</a>
+                                    <a href="{{url('auth/register')}}" class="btn btn-light"><i class="mdi mdi-account-plus"></i> Daftar</a>
                                 </div>
                             </div>
                         </div>
