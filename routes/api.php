@@ -23,7 +23,7 @@ use App\Http\Controllers\Provaider\ServiceController;
 Route::post('wa',[ServiceController::class,'wa']);
 Route::prefix('service')->group(function(){
     Route::get('belance',[ServiceController::class,'getSaldo']);
-    Route::post('get-category',[ServiceController::class,'getLayanan']);
+    Route::get('get-category',[ServiceController::class,'getCategoryTopUp']);
     Route::get('add-layanan',[ServiceController::class,'addLayanan']);
     Route::post('json-search',[ServiceController::class,'getSearchNumber']);
 });

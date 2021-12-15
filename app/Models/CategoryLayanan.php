@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class CategoryLayanan extends Model
 {
     use HasFactory;
-    protected $table = 'category_layanan';
+    protected $table = 'servicepulsa_cat';
     protected $guarded = [];
 }

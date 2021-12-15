@@ -17,7 +17,7 @@ class CreateLayananPulsaTable extends Migration
             $table->id();
             $table->string('sid')->nullable();
             $table->string('service')->nullable();
-            $table->text('oprator')->nullable();
+            $table->integer('id_category')->nullable();
             $table->double('price')->nullable();
             $table->enum('status',['Normal','Gangguan'])->nullable();
             $table->string('provider')->nullable();
