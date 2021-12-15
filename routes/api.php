@@ -20,6 +20,7 @@ use App\Http\Controllers\Provaider\ServiceController;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
+Route::post('wa',[ServiceController::class,'wa']);
 Route::prefix('service')->group(function(){
     Route::get('belance',[ServiceController::class,'getSaldo']);
     Route::post('get-category',[ServiceController::class,'getLayanan']);

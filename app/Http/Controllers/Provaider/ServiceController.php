@@ -82,13 +82,6 @@ class ServiceController extends Controller
     }
     public function getLayanan(Request $request)
     {
-        $validated = Validator::make($request->all(),[
-            'nomor_hp' => 'required',
-        ]);    
-        if($validated->fails())
-        {
-            return response()->json(['error' => true,'message' => $validated->errors()],400);
-        }
         $signature  = md5($this->username.$this->apiKey.'pricelist');
         $json = array(
             'cmd' => 'prepaid',
@@ -181,5 +174,87 @@ class ServiceController extends Controller
             ]);
         }
         return $layanan;
+    }
+    public function wa(Request $request)
+    {
+
+        $data_fields = array(
+            "from" => array(
+                "phone_number" => "+628116028665"
+            ),
+            "provider" => "whatsapp",
+            "to" => [
+                array(
+                    "phone_number" => $request->to
+                ),
+            ],
+            "data" => array(
+                "message_template" => array(
+                    "storage"=> "conversation",
+                    "template_name"=> "refund_id",
+                    "namespace"=> "c11df0f4_aa8b_43db_8e09_e831baab8f83",
+                    "language"=> array(
+                        "policy"=> "deterministic",
+                        "code"=> "id"
+                    ),
+                    "template_data"=> [
+                        array(
+                            "data"=> $request->data1
+                        ),
+                        array(
+                            "data"=> $request->data2
+                        )
+                    ]
+                ),
+            )
+        );
+        return $data_fields;
+        // $token = 'eyJraWQiOiJjdXN0b20tb2F1dGgta2V5aWQiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmcmVzaGNoYXQiLCJzdWIiOiIyZTY2YmYxZC1iNTVlLTRiYmYtYTBiZC0yYzYzMTBkZjlhOTgiLCJjbGllbnRJZCI6ImZjLWYyN2JkM2U5LTA5ZTAtNDZiMC1hOTFlLTFmNzhkODMyYzhjNiIsInNjb3BlIjoiYWdlbnQ6cmVhZCBhZ2VudDpjcmVhdGUgYWdlbnQ6dXBkYXRlIGFnZW50OmRlbGV0ZSBjb252ZXJzYXRpb246Y3JlYXRlIGNvbnZlcnNhdGlvbjpyZWFkIGNvbnZlcnNhdGlvbjp1cGRhdGUgbWVzc2FnZTpjcmVhdGUgbWVzc2FnZTpnZXQgYmlsbGluZzp1cGRhdGUgcmVwb3J0czpmZXRjaCByZXBvcnRzOmV4dHJhY3QgcmVwb3J0czpyZWFkIHJlcG9ydHM6ZXh0cmFjdDpyZWFkIGRhc2hib2FyZDpyZWFkIHVzZXI6cmVhZCB1c2VyOmNyZWF0ZSB1c2VyOnVwZGF0ZSB1c2VyOmRlbGV0ZSBvdXRib3VuZG1lc3NhZ2U6c2VuZCBvdXRib3VuZG1lc3NhZ2U6Z2V0IG1lc3NhZ2luZy1jaGFubmVsczptZXNzYWdlOnNlbmQgbWVzc2FnaW5nLWNoYW5uZWxzOm1lc3NhZ2U6Z2V0IG1lc3NhZ2luZy1jaGFubmVsczp0ZW1wbGF0ZTpjcmVhdGUgbWVzc2FnaW5nLWNoYW5uZWxzOnRlbXBsYXRlOmdldCBmaWx0ZXJpbmJveDpyZWFkIGZpbHRlcmluYm94OmNvdW50OnJlYWQgcm9sZTpyZWFkIGltYWdlOnVwbG9hZCIsImlzcyI6ImZyZXNoY2hhdCIsInR5cCI6IkJlYXJlciIsImV4cCI6MTk1MjIyMDY0NSwiaWF0IjoxNjM2Njg3ODQ1LCJqdGkiOiJiNTAzYWYxYS1iYjNiLTRiYmUtYWIxZi0zZWMwMDViZmFjYjMifQ.XlNCqy7-QyH7s1M5mzLRCX3lrISw8iDVhoxBymgNAF4';
+        // $header =  array(
+        //     "Accept: application/json",
+        //     "Authorization: Bearer $token",
+        //     'Content-Type: application/json',
+        // );
+        // $url = "https://api.freshchat.com/v2/outbound-messages/whatsapp";
+        // // $url = "https://api.freshchat.com/v2/channels";
+        // $curl = curl_init($url);
+        // curl_setopt($curl, CURLOPT_POST,true);
+        // curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
+        // curl_setopt($curl, CURLOPT_HEADER, true);
+        // curl_setopt($curl, CURLOPT_POSTFIELDS, '{
+        //     "from": {
+        //         "phone_number": "+628116028665"
+        //     },
+        //     "provider": "whatsapp",
+        //     "to": [
+        //         {
+        //             "phone_number": "+628887366966"
+        //         },
+        //         {
+        //             "phone_number": "+6285760716816"
+        //         }
+        //     ],
+        //     "data": {
+        //         "message_template": {
+        //             "storage": "conversation",
+        //             "template_name": "refund_id",
+        //             "namespace": "c11df0f4_aa8b_43db_8e09_e831baab8f83",
+        //             "language": {
+        //                 "policy": "deterministic",
+        //                 "code": "id"
+        //             },
+        //             "template_data": [
+        //                 {
+        //                     "data": "Bagus"
+        //                 },
+        //                 {
+        //                     "data": "hello"
+        //                 }
+        //             ]
+        //         }
+        //     }
+        // }');
+        // $output = curl_exec($curl);
+        // return $output;
     }
 }

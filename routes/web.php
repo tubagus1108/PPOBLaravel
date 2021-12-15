@@ -39,9 +39,11 @@ Route::prefix('auth')->group(function(){
 Route::prefix('page')->group(function(){
     Route::get('tos',[PageController::class,'tos'])->name('tos');
     Route::get('faq',[PageController::class,'faq'])->name('faq');
+    Route::get('contact',[PageController::class,'contact'])->name('contact');
 });
 Route::prefix('price')->group(function(){
     Route::get('price-smm',[PageController::class,'priceSMM'])->name('price-smm');
+    Route::get('price-ppob',[PageController::class,'pricePPOB'])->name('price-ppob');
 });
 // Route::prefix('price')->group(function(){
 //     Route::get('price',[PriceTopUPController::class,'index'])->name('price');

@@ -13,7 +13,7 @@ class CreateCategoryLayananTable extends Migration
      */
     public function up()
     {
-        Schema::create('category_layanan', function (Blueprint $table) {
+        Schema::create('servicepulsa_cat', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
             $table->string('code')->nullable();
@@ -31,6 +31,6 @@ class CreateCategoryLayananTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('category_layanan');
+        Schema::dropIfExists('servicepulsa_cat');
     }
 }

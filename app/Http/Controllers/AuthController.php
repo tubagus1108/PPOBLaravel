@@ -20,15 +20,6 @@ class AuthController extends Controller
     {
         if(Auth::check())
         {
-            // if(Auth()->user()->level == 'Developers')
-            // {
-            //     return redirect()->route('home-developers');
-            // }
-            // else{
-            //     return redirect()->route(
-            //         'home-member'
-            //     );
-            // }
             return redirect()->route('dashboard');
         }
         return view('auth.login');

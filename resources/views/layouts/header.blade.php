@@ -185,7 +185,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="halaman/kontak">
+                                <a href="{{route('contact')}}">
                                     <i class="fe-phone-call mr-1"></i>
                                     <span>Hubungi Kami</span>
                                 </a>
@@ -195,14 +195,15 @@
                                     <i class="fa fa-users"></i>
                                     <span>Staff Kami</span>
                                 </a>
+                            </li>
                             <li>
-                                <a href="halaman/tos">
+                                <a href="{{route('tos')}}">
                                     <i class="mdi mdi-information-variant"></i>
                                     <span>Ketentuan Layanan</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="halaman/faq">
+                                <a href="{{route('faq')}}">
                                     <i class="fa fa-edit"></i>
                                     <span>Pertanyaan Umum</span>
                                 </a>
@@ -246,7 +247,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="list-pricesppob.html">
+                                    <a href="{{route('price-ppob')}}">
                                         <i class="mdi mdi-cellphone-android mr-1"></i>
                                         <span>Pulsa & PPOB</span>
                                     </a>
@@ -260,7 +261,7 @@
                             <a class="nav-link dropdown-toggle waves-effect" href="#"> <i class="fa fa-file text-primary"></i>Halaman<i class="mdi mdi-chevron-down"></i></a>
                             <ul class="submenu">
                                 <li>
-                                    <a href="kontak.html">
+                                    <a href="{{route('contact')}}">
                                         <i class="fe-phone-call mr-1"></i>
                                         <span>Hubungi Kami</span>
                                     </a>
@@ -272,7 +273,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="halaman/faq">
+                                    <a href="{{route('faq')}}">
                                         <i class="fa fa-edit"></i>
                                         <span>Pertanyaan Umum</span>
                                     </a>

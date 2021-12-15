@@ -13,18 +13,15 @@ class CreateLayananPulsaTable extends Migration
      */
     public function up()
     {
-        Schema::create('layanan_pulsa', function (Blueprint $table) {
+        Schema::create('services_pulsa', function (Blueprint $table) {
             $table->id();
-            $table->string('service_id')->nullable();
-            $table->string('provider_id')->nullable();
-            $table->string('operator')->nullable();
-            $table->text('layanan')->nullable();
-            $table->text('deskripsi')->nullable();
-            $table->double('harga')->nullable();
-            $table->double('harga_api')->nullable();
+            $table->string('sid')->nullable();
+            $table->string('service')->nullable();
+            $table->text('oprator')->nullable();
+            $table->double('price')->nullable();
             $table->enum('status',['Normal','Gangguan'])->nullable();
+            $table->string('provider')->nullable();
             $table->string('type')->nullable();
-            $table->string('server')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -37,6 +34,6 @@ class CreateLayananPulsaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('layanan_pulsa');
+        Schema::dropIfExists('services_pulsa');
     }
 }
