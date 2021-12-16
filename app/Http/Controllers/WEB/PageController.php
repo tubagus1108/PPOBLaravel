@@ -59,19 +59,21 @@ class PageController extends Controller
         return $brandArray;
     }
     public function pricePPOB(Request $request){
+        // dd($data);
         if($request->ajax()){
-            $data = LayananPulsa::select('*');
+            $data = LayananPulsa::where('deleted_at',null)->latest();
             return DataTables::of($data)
             ->addIndexColumn()
             ->filter(function ($instance) use ($request) {
-                if ($request->get('status') == '0' || $request->get('status') == '1') {
-                    $instance->where('id_category', $request->get('status'));
+                if($request->get('category_id'))
+                {
+                    $instance->where('id_category', $request->get('category_id'));
                 }
             })
             ->make(true);
         }
-        $category = CategoryLayanan::where('deleted_at',null)->get();
         // return $category;
+        $category = CategoryLayanan::where('deleted_at',null)->get();
         
         return view('listprice.ppob-price',compact('category'));
     }

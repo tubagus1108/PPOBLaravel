@@ -101,13 +101,16 @@ class ServiceController extends Controller
         $result = json_decode($data);
         foreach($result->data as $item)
         {
-            if(!CategoryLayanan::where('name',$item->brand)->where('server',$item->category)->first()){
-                CategoryLayanan::create([
-                    'name' => $item->brand,
-                    'code' => $item->brand,
-                    'type' => 'Top Up',
-                    'server' => $item->category,
-                ]);
+            if($item->category !== 'Data')
+            {
+                if(!CategoryLayanan::where('name',$item->brand)->where('server',$item->category)->first()){
+                    CategoryLayanan::create([
+                        'name' => $item->brand,
+                        'code' => $item->brand,
+                        'type' => 'Top Up',
+                        'server' => $item->category,
+                    ]);
+                }
             }
         }
         return "Berhasil";
@@ -146,7 +149,7 @@ class ServiceController extends Controller
         {
             $get_id = CategoryLayanan::where('name',$item->brand)->first();
             // return $get_id->id;
-            $price_web = $item->price + 150;
+            $price_web = $item->price + 200;
             if($item->buyer_product_status == true)
             {
                 $status  = "Normal";
@@ -154,16 +157,19 @@ class ServiceController extends Controller
             {
                 $status = "Ganguan";
             }
-            if(!LayananPulsa::where('service',$item->product_name)->first()){
-                LayananPulsa::create([
-                    'sid' => $item->buyer_sku_code,
-                    'service' => $item->product_name,
-                    'id_category' => $get_id->id,
-                    'price' => $price_web,
-                    'status' => $status,
-                    'provider' => "DG-PULSA",
-                    'type' => $item->category,
-                ]);
+            if($item->category !== 'Data'){
+                if(!LayananPulsa::where('service',$item->product_name)->first()){
+                    LayananPulsa::create([
+                        'sid' => $item->buyer_sku_code,
+                        'service' => $item->product_name,
+                        'id_category' => $get_id->id,
+                        'price' => $price_web,
+                        'status' => $status,
+                        'provider' => "DG-PULSA",
+                        'desc' => $item->desc,
+                        'type' => $item->category,
+                    ]);
+                }
             }
         }
         return "Berhasil";

@@ -16,7 +16,7 @@
                         <div class="form-group">
                             <div class="col-md-3"><b>Select Category</b></div>
                             <div class="col-md-12">
-                                <select class="form-control" name="type" id="type">
+                                <select class="form-control" id="category_id">
                                     <option value="0">Pilih Salah Satu...</option>
                                     @foreach ($category as $item)
                                     <option value="{{ $item['id'] }}">
@@ -28,11 +28,11 @@
                         <table id="layanan" class="table table-striped table-bordered" style="width:100%">
                             <thead>
                                 <tr>
-                                    {{-- <th>#</th> --}}
+                                    <th>#</th>
                                     <th>Kode</th>
                                     <th>Nama Produk</th>
                                     <th>Harga</th>
-                                    {{-- <th>Keterangan</th> --}}
+                                    <th>Keterangan</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
@@ -47,28 +47,28 @@
 @section('script')
 <script type="text/javascript">
     $(function(){
-        $('#layanan').DataTable({
+        var table = $('#layanan').DataTable({
             processing: true,
             serverSide: true,
-            // ajax: '{{route('price-ppob')}}',
             ajax:{
                 url: '{{route('price-ppob')}}',
                 data: function(d)
                 {
-                    d.type = $('#type').val();
+                    d.category_id = $('#category_id').val();
                 }
             },
             columns: [
-                // { data: 'DT_RowIndex', name: 'DT_RowIndex' },
+                {data: 'id', name: 'id'},
                 { data: 'sid', name: 'sid'},
                 { data: 'service', name: 'service'},
                 { data: 'price', name: 'price'},
+                { data: 'desc', name: 'desc'},
                 { data: 'status', name: 'status'},
             ],
-        })
-        $('#type').change(function(){
+        });
+        $('#category_id').change(function(){
             table.draw();
-        })
+        });
     });
 </script>
 @endsection

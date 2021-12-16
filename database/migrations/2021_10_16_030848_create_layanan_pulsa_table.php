@@ -21,6 +21,7 @@ class CreateLayananPulsaTable extends Migration
             $table->double('price')->nullable();
             $table->enum('status',['Normal','Gangguan'])->nullable();
             $table->string('provider')->nullable();
+            $table->text('desc')->nullable();
             $table->string('type')->nullable();
             $table->timestamps();
             $table->softDeletes();
