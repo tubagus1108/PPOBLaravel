@@ -49,7 +49,7 @@ $(document).ready(function() {
         var char = $('#nomor').val();
         $.ajax({
         type: 'GET',
-        url: "http://localhost:8000/ajax/layanan-get",
+        url: '{{route('layanan')}}',
         data:{
             nomor: char,
         },
