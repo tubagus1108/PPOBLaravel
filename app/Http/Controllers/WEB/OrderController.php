@@ -6,8 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\CategoryLayanan;
 use App\Models\LayananPulsa;
 use App\Models\OrderPulsa;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class OrderController extends Controller
 {
@@ -18,15 +21,26 @@ class OrderController extends Controller
     {
         return view('order.pulsa');
     }
+    public function acak_nomor($length){
+        $str = "";
+        $karakter = array_merge(range('0','9'));
+        $max_karakter = count($karakter) - 1;
+        for ($i = 0; $i < $length; $i++) {
+            $rand = mt_rand(0, $max_karakter);
+            $str .= $karakter[$rand];
+        }
+        return $str;
+    }
     public function orderPulsa(Request $request)
     {
-        $oid = rand();
-        $signature  = md5($this->username.$this->apiKey.$oid);
+        $order_id = $this->acak_nomor(3) . $this->acak_nomor(4);
+        // return $order_id;
+        $signature  = md5($this->username.$this->apiKey.$order_id);
         $json = array(
             'username' => $this->username,
             'buyer_sku_code'=> $request->input('service'),
             'customer_no' => $request->input('target'),
-            'ref_id' => $oid,
+            'ref_id' => $order_id,
             "testing"=> true,
             'sign' => $signature,
         );
@@ -42,30 +56,52 @@ class OrderController extends Controller
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-        $data = curl_exec($ch);
+        $chresult = curl_exec($ch);
         curl_close($ch);
-        $result = json_encode($data);
-        // if($result['data']['status'] == "Gagal")
-        // {
-        //     return redirect()->route('pulsa');
-        // }else{
-        //     $insert = OrderPulsa::create([
-        //         'oid' => rand(),
-        //         'provider_oid' => rand(),
-        //         'id_user' => Auth::user()->id,
-        //         'service' => $request->input('service'),
-        //         'price  ' => $result['data']['price'],
-        //         'target  ' =>$result['data']['customer_no'],
-        //         'desc  ' => $result['data']['message'],
-        //         'status  ' => $result['data']['status'],
-        //         'refund  ' => 0,
-        //     ]);
-        //     if($insert)
-        //     {
-        //         return redirect()->route('pulsa');
-        //     }
-        // }
-        return $result;
-        
+        $result = json_decode($chresult,true);
+        // return $result;
+        if($result['data']['status'] == "Gagal")
+        {
+            return redirect()->back()->with('success', [
+                'status' => false,
+                'message' => 'Ups, '.$result['data']['message'],
+            ]);
+        }else{      
+            $user = User::where('id',Auth::user()->id)->first();
+            if (!$user) {
+                return redirect()->back()->with('success', [
+                    'status' => false,
+                    'message' => 'Data User tidak ada'
+                ]);
+            }
+            try {
+                DB::transaction(function () use ($user,$result,$request,$order_id) {
+                        OrderPulsa::create([
+                            'oid' => $order_id,
+                            'provider_oid' => $order_id,
+                            'id_user' => $user->id,
+                            'service' => $request->input('service'),
+                            'price' => $request->input('price'),
+                            'target' =>$result['data']['customer_no'],
+                            'desc' => $result['data']['message'],
+                            'status' => $result['data']['status'],
+                            'refund' => 0,
+                        ]);
+                        $buy_price = $request->input('price');
+                        $user->balance = $user['balance'] - $buy_price;
+                        $user->save();
+                });
+            } catch (\Exception $e) {
+                return redirect()->back()->with('success', [
+                    'status' => false,
+                    'message' => 'Ups, Gagal! Sistem Kami Sedang Mengalami Gangguan.'
+                ]);
+            }
+            return redirect()->back()->with('success', [
+                'status' => true,
+                'message' => 'Sip, Pesanan Kamu Telah Kami Terima.'
+            ]);
+           
+        }
     }
 }

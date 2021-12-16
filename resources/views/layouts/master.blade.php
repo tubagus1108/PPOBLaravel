@@ -38,6 +38,7 @@
     @yield('css')
 </head>
 <body class="menubar-light">
+    @include('sweetalert::alert')
     <div class="preloader">
         <div class="loading">
             <img src="{{asset('assets/images/diamond.gif')}}" width="150">
