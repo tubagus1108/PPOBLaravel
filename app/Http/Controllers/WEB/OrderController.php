@@ -19,7 +19,7 @@ class OrderController extends Controller
     public function orderPulsa(Request $request)
     {
         $order_id = 'test1';
-        $signature  = md5($this->username.$this->apiKey.'pricelist');
+        $signature  = md5($this->username.$this->apiKey.$order_id);
         $json = array(
             'username' => $this->username,
             'buyer_sku_code'=> $request->input('service'),
