@@ -53,7 +53,7 @@ Route::prefix('price')->group(function(){
 //     Route::get('/developer',[HomeController::class,'IndexDev'])->name('home-developers');
 // });
 Route::prefix('ajax')->group(function(){
-    Route::get('layanan-get',[ServiceController::class,'getJson'])->name('layanan');
+    Route::get('layanan-get',[ServiceController::class,'getLayananOp'])->name('layanan');
 });
 
 Route::middleware(['auth'])->group(function(){
