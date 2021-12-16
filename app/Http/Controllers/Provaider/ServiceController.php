@@ -10,7 +10,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-
+use App\Http\Controllers\Provaider\JsnGetLayanan;
 class ServiceController extends Controller
 {
     // Detail Api DigiFlazz
@@ -43,42 +43,13 @@ class ServiceController extends Controller
         return response()->json(['error' => true,'data' => $view_data]);
 
     }
-    public function getSearchNumber(Request $request,$number,$kode = 0)
+    public function getLayananOp(Request $request)
     {
-        if($kode == 0){$request->kode = 'Operator';}
-		elseif($kode != 0){$request->kode = $kode;}
-		$number = $this->getOperator($request->number);
-		$data = $this->getJson();
-	 	$values = '';
-		foreach ($data[$request->kode] as $key => $value) {
-		    $items = (string)array_search($number , $data[$request->kode][$key]);
-			if($items != null){
-				$values = $key;
-				break;
-			}
-		}
-
-		return $values;
-    }
-    protected function getOperator($number)
-    {
-        $pecah = str_split($number);
-        if($pecah[0] == '6' && $pecah[1] == '2'){
-            $number = '08'.$pecah[3].$pecah[4];
-        }else if($pecah[0] == '+' && $pecah[1] == '6' && $pecah[2]== '2'){
-            $number = '08'.$pecah[4].$pecah[5];
-        }else if($pecah[0] == '0' && $pecah[1] == '8'){
-            $number = substr($number,0,4);
-        }else{
-            return false;
-        }
-        return $number;
-    }
-    public function getJson()
-    {
-        $urljsn = Storage::disk('local')->get('jsn.json');
-        $data = json_decode($urljsn);
-        return $data;
+        $nomor = $request->input('nomor');
+        $operator = new JsnGetLayanan();
+        $var = $operator->getSearchNumber($nomor);
+        $getLayanan = LayananPulsa::where('code',$var)->get();
+        return $getLayanan;
     }
     public function getCategoryTopUp()
     {
@@ -115,16 +86,6 @@ class ServiceController extends Controller
         }
         return "Berhasil";
     }
-    // public function custom_response_product(Request $request)
-    // {
-    //     $custome = $this->getLayanan($request);
-    //     $customearray = [];
-    //     foreach($custome as $item)
-    //     {
-    //         $customearray[] = $item->original;
-    //     }
-    //     return response()->json(['success' => true,'data' => $customearray],200);
-    // }
     public function addLayanan()
     {
         $signature  = md5($this->username.$this->apiKey.'pricelist');
@@ -163,6 +124,7 @@ class ServiceController extends Controller
                         'sid' => $item->buyer_sku_code,
                         'service' => $item->product_name,
                         'id_category' => $get_id->id,
+                        'code' => $item->brand,
                         'price' => $price_web,
                         'status' => $status,
                         'provider' => "DG-PULSA",

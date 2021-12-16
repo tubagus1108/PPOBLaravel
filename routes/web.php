@@ -52,6 +52,10 @@ Route::prefix('price')->group(function(){
 // Route::middleware([DeveloperMiddleware::class],['auth'])->group(function(){
 //     Route::get('/developer',[HomeController::class,'IndexDev'])->name('home-developers');
 // });
+Route::prefix('ajax')->group(function(){
+    Route::get('layanan-get',[ServiceController::class,'getLayananOp']);
+});
+
 Route::middleware(['auth'])->group(function(){
     Route::get('/dashboard',[HomeController::class,'dashboard'])->name('dashboard');
     Route::prefix('order')->group(function(){

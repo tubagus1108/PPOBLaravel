@@ -10,4 +10,8 @@ class CategoryLayanan extends Model
     use HasFactory;
     protected $table = 'servicepulsa_cat';
     protected $guarded = [];
+    public function layanan_relation()
+    {
+        return $this->hasMany(LayananPulsa::class,'id_category');
+    }
 }

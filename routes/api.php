@@ -25,7 +25,7 @@ Route::prefix('service')->group(function(){
     Route::get('belance',[ServiceController::class,'getSaldo']);
     Route::get('get-category',[ServiceController::class,'getCategoryTopUp']);
     Route::get('add-layanan',[ServiceController::class,'addLayanan']);
-    Route::post('json-search',[ServiceController::class,'getSearchNumber']);
 });
+
 Route::post('gopay',[GopayController::class,'konfirmasiCode']);
 Route::post('ovo',[OvoController::class,'sendRequest2FA']);

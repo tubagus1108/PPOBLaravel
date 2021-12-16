@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\WEB;
 
 use App\Http\Controllers\Controller;
+use App\Models\CategoryLayanan;
 use App\Models\LayananPulsa;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,11 @@ class OrderController extends Controller
 {
     public function pulsa(Request $request)
     {
-        return view('order.pulsa');
+        if($request->ajax()){
+            return "dd";
+        }
+        $category = CategoryLayanan::where('deleted_at',null)->get();
+        return view('order.pulsa',compact('category'));
     }
     public function requestOperator(Request $request)
     {

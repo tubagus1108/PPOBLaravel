@@ -10,4 +10,7 @@ class LayananPulsa extends Model
     use HasFactory;
     protected $table = 'services_pulsa';
     protected $guarded = [];
+    protected $hidden = [
+        'provider',
+    ];
 }
