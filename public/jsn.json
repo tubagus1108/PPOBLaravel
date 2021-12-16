@@ -1,0 +1,48 @@
+{
+	 "Operator":{
+		  "TELKOMSEL":["0822","0853","0811","0812","0813","0821","0852","0823","0851"],
+		  "INDOSAT"  :["0814","0815","0816","0855","0856","0857","0858"],
+		  "XL"       :["0817","0818","0819","0859","0877","0878"],
+		  "AXIS"     :["0838","0831","0832","0833"],
+		  "TRI"      :["0895","0896","0897","0898","0899"],
+		  "SMART"    :["0881","0882","0883","0884","0885","0886","0887","0888","0889"],
+		  "byU"     : ["0851"]
+	 },
+
+	 "Games"  :{
+				 "HAGO"	 : ["https://vignette.wikia.nocookie.net/logopedia/images/5/5d/Hago_logo.png"],
+				 "FREE FIRE"	 : ["https://s3-ap-southeast-1.amazonaws.com/ies-public-storage/images/bocoran-4-attachment-baru-yang-segera-hadir-free-fire.jpg"],
+				 "Call of Duty MOBILE"	 : ["https://www.citypng.com/public/uploads/preview/-41606474771zd4otddnvt.png"],
+				 "Lords Mobile"	 : ["https://www.nicepng.com/png/detail/355-3555436_lo-logo-lords-mobile-logo.png"],
+    			 "MOBILE LEGEND"	 : ["https://gadgetren.com/wp-content/uploads/2018/04/Mobile-Legends-Logo-Headerz.jpg"],
+    			 "Ragnarok M: Eternal Love"	 : ["https://gwi2.b-cdn.net/wp-content/uploads/2018/09/gwigwi.com-ragnarok-m-eternal-love-siap-masuk-tanah-air-pre-registrasi-dibuka-ragnarok-m-eternal-love.jpg"],
+    			 "ARENA OF VALOR"	 : ["https://jurnalapps.co.id/assets/img/content/1501691215_aov-1.jpg"],
+    			 "PUBG MOBILE"	 : ["https://www.pikpng.com/pngl/m/28-287291_pubg-mobile-player-account-logo-pubg-mobile-png.png"],
+    			 "BOYAA DOMINO QIUQIU"	 : ["https://cdn1.codashop.com/S/content/common/images/mno/boyaa_dominoqq_640x241.png"],
+    			 "Speed Drifters"	 : ["https://onelagame.com/wp-content/uploads/2019/11/speed-drifters-garena-android1.jpg"],
+    			 "Valorant"	 : ["https://cdn.earlygame.com/uploads/images/_2000xAUTO_fit_center-center_none/1256914/VALORANT-logo-wide.webp"], 
+    			 "Tom and Jerry : Chase"	 : ["https://res09.bignox.com/appcenter/id/2020/06/fea-img01_ead592e.jpg"],
+    			 "PLAYSTATION"	 : ["https://i.insider.com/5ee8e51ff0f41907da3fdca0?width=700&format=jpeg&auto=webp"],
+    			 "Steam Wallet (IDR)"	 : ["https://3.bp.blogspot.com/-0ysP81mnGEM/Vt7tRJuONuI/AAAAAAAAFLs/XyVr_UU08Hs/s640/steam.png"], 
+    			 "Steam Wallet (USD)"	 : ["https://s3.amazonaws.com/ecwid-product-descr/images/wysiwyg/category/6199301/21727261/3CA3858B-22EA-45D8-BBFB-B56A54CFFEEA.png?versionId=jvub7G5t0gfnPLQSq35t11yKc_n4zHJl"],
+    			 "GARENA"	 : ["https://www.citypng.com/public/uploads/preview/-11597102263edjufyzx7b.png"],
+    			 "Marvel Super War"	 : ["https://cdnx2.kincir.com/production/2019-08/original_1366/f04d661a0817bcb48617ba7ad92bd5e62699829e.jpg"],
+    			 "POINT BLANK"	 : ["https://i0.wp.com/www.kabargames.id/wp-content/uploads/2019/01/Point-Blank-Beyond-Limit.jpg"],
+    			 "Higgs Domino"	 : ["https://cdn1.codashop.com/S/content/common/images/mno/dominoqiuqiu_640x241.png"],
+    			 "GOOGLE PLAY INDONESIA"	 : ["https://www.myce.com/wp-content/images_posts/2020/07/ocd5fypfqcdltvksdycz.jpg"],
+    			 "GOOGLE PLAY US REGION"	 : ["https://www.myce.com/wp-content/images_posts/2020/07/ocd5fypfqcdltvksdycz.jpg"]
+    			 
+			},
+
+	 "E-Money"  :{
+						 "GO PAY" : ["https://lelogama.go-jek.com/service_icon_text/gojek-logo_normal.svg"],
+						 "DANA" : ["https://image.cermati.com/q_70/umj4kaaik6y5g8sffcio"],
+						 "LinkAja" : ["https://www.linkaja.id/assets/linkaja/img/brand/logo_header.svg"],
+						 "SHOPEE PAY" : ["https://mmc.tirto.id/image/otf/1024x535/2020/01/14/shopeepay-shopee.co.id_ratio-16x9.jpg"],
+						 "OVO"	 : ["https://4.bp.blogspot.com/-1PhM6cGSJYo/XKrgTC4PtiI/AAAAAAAAAqo/p-WejJNIdN8VkA1OrERp0lDCxJmPb6euwCLcBGAs/s640/%255BDesainfree.com%255D%2BDownload%2BLogo%2BOVO%2BFormat%2BCDR.png"],
+						 "GRAB"	 : ["https://upload.wikimedia.org/wikipedia/en/thumb/1/12/Grab_%28application%29_logo.svg/1280px-Grab_%28application%29_logo.svg.png"],
+						 "BRI BRIZZI"	 : ["https://ecs7.tokopedia.net/img/recharge/operator/brizzi.png"],
+						 "MANDIRI E-TOLL"	 : ["https://www.cysend.com/images/products/etoll-card.svg"],
+						 "I.Saku"	 : ["https://2.bp.blogspot.com/-lCwIn_3AJBY/W3z0dtEMPTI/AAAAAAAAE98/fJW3bpPnXMs3ufHHdz1cOtXHq28HBQ5NgCLcBGAs/s1600/isaku.jpg"]
+	 			}
+}

@@ -1,5 +1,7 @@
 <?php
 namespace App\Http\Controllers\Provaider;
+
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class JsnGetLayanan{
@@ -38,8 +40,9 @@ class JsnGetLayanan{
     }
     public function getJson()
     {
-        $urljsn = Storage::disk('local')->get('jsn.json');
-        $data = json_decode($urljsn);
+        $url = public_path('jsn.json');
+        $file = File::get($url);
+        $data = json_decode($file);
         return $data;
     }
 }

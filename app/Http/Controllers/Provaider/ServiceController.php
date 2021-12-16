@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Provaider\JsnGetLayanan;
+use Illuminate\Support\Facades\File;
+
 class ServiceController extends Controller
 {
     // Detail Api DigiFlazz
