@@ -35,6 +35,7 @@
         font: 14px arial;
     }
     </style>
+    @yield('css')
 </head>
 <body class="menubar-light">
     <div class="preloader">
