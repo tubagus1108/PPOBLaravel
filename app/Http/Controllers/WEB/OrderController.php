@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function pulsa_reguler(Request $request)
+    public function pulsa(Request $request)
     {
-        return view('user.pemesanan.pulsa');
+        return view('order.pulsa');
     }
     public function requestOperator(Request $request)
     {

@@ -93,8 +93,8 @@
                                 </th>
                                 <th>
                                     <a href="" class="text-primary">
-                                        <a href="pemesanan-baru/pulsa-reguler" class="btn-loading"><i class="mdi mdi-cellphone-android fa-3x text-primary"></i>
-                                        <a href="pemesanan-baru/pulsa-reguler" class="btn-loading"><h5 class="text-primary">Pulsa Reguler</h5>
+                                        <a href="{{route('pulsa')}}" class="btn-loading"><i class="mdi mdi-cellphone-android fa-3x text-primary"></i>
+                                        <a href="{{route('pulsa')}}" class="btn-loading"><h5 class="text-primary">Pulsa</h5>
                                     </a>
                                 </th>
                             </tr>

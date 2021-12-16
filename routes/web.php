@@ -54,5 +54,8 @@ Route::prefix('price')->group(function(){
 // });
 Route::middleware(['auth'])->group(function(){
     Route::get('/dashboard',[HomeController::class,'dashboard'])->name('dashboard');
+    Route::prefix('order')->group(function(){
+        Route::get('pulsa',[OrderController::class,'pulsa'])->name('pulsa');
+    });
 });
 
