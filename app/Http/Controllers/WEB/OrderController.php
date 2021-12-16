@@ -44,27 +44,28 @@ class OrderController extends Controller
 
         $data = curl_exec($ch);
         curl_close($ch);
-        $result = json_encode(json_decode($data));
-        if($result['data']['status'] == "Gagal")
-        {
-            return redirect()->route('pulsa');
-        }else{
-            $insert = OrderPulsa::create([
-                'oid' => rand(),
-                'provider_oid' => rand(),
-                'id_user' => Auth::user()->id,
-                'service' => $request->input('service'),
-                'price  ' => $result['data']['price'],
-                'target  ' =>$result['data']['customer_no'],
-                'desc  ' => $result['data']['message'],
-                'status  ' => $result['data']['status'],
-                'refund  ' => 0,
-            ]);
-            if($insert)
-            {
-                return redirect()->route('pulsa');
-            }
-        }
+        $result = json_decode($data);
+        // if($result['data']['status'] == "Gagal")
+        // {
+        //     return redirect()->route('pulsa');
+        // }else{
+        //     $insert = OrderPulsa::create([
+        //         'oid' => rand(),
+        //         'provider_oid' => rand(),
+        //         'id_user' => Auth::user()->id,
+        //         'service' => $request->input('service'),
+        //         'price  ' => $result['data']['price'],
+        //         'target  ' =>$result['data']['customer_no'],
+        //         'desc  ' => $result['data']['message'],
+        //         'status  ' => $result['data']['status'],
+        //         'refund  ' => 0,
+        //     ]);
+        //     if($insert)
+        //     {
+        //         return redirect()->route('pulsa');
+        //     }
+        // }
+        return $result;
         
     }
 }
