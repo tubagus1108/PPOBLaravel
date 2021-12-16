@@ -55,6 +55,7 @@
                 data: function(d)
                 {
                     d.category_id = $('#category_id').val();
+                    d.search = $('input[type="search"]').val()
                 }
             },
             columns: [
@@ -64,6 +65,26 @@
                 { data: 'price', name: 'price'},
                 { data: 'desc', name: 'desc'},
                 { data: 'status', name: 'status'},
+            ],
+            language: {
+            searchPlaceholder: 'Search..',
+            sSearch: '',
+            lengthMenu: '_MENU_ items/page',
+            destroy: true
+            },  
+            columnDefs:[
+                {
+                    "targets" : [5],
+                    "className": "text-center"
+                },
+            ],              
+            
+            dom: 'Bfrtip',  
+            buttons: [
+                {extend:'copy', className: 'bg-info text-white rounded-pill ml-2 border border-white'},
+                {extend:'excel', className: 'bg-success text-white rounded-pill border border-white'},
+                {extend:'pdf', className: 'bg-danger text-white rounded-pill border border-white'},
+                {extend:'print', className: 'bg-warning text-white rounded-pill border border-white'},
             ],
         });
         $('#category_id').change(function(){

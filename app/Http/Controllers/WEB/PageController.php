@@ -64,12 +64,27 @@ class PageController extends Controller
             $data = LayananPulsa::where('deleted_at',null)->latest();
             return DataTables::of($data)
             ->addIndexColumn()
+            ->addColumn('status', function($data){
+                if($data->status == 'Normal'){
+                   return '<button  class="btn btn-success">Normal</button>';
+                }else{
+                   return '<button  class="btn btn-danger">Ganguan</button>';
+                }
+           })
             ->filter(function ($instance) use ($request) {
                 if($request->get('category_id'))
                 {
                     $instance->where('id_category', $request->get('category_id'));
                 }
+                if (!empty($request->get('search'))) {
+                    $instance->where(function($w) use($request){
+                       $search = $request->get('search');
+                       $w->orWhere('service', 'LIKE', "%$search%")
+                       ->orWhere('status', 'LIKE', "%$search%");
+                   });
+               }
             })
+            ->rawColumns(['status'])
             ->make(true);
         }
         // return $category;
