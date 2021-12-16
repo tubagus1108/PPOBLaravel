@@ -44,7 +44,7 @@ class OrderController extends Controller
 
         $data = curl_exec($ch);
         curl_close($ch);
-        $result = json_decode($data);
+        $result = json_encode(json_decode($data));
         if($result['data']['status'] == "Gagal")
         {
             return redirect()->route('pulsa');
