@@ -20,13 +20,13 @@ class OrderController extends Controller
     }
     public function orderPulsa(Request $request)
     {
-        $order_id = '13';
-        $signature  = md5($this->username.$this->apiKey.$order_id);
+        $oid = rand();
+        $signature  = md5($this->username.$this->apiKey.$oid);
         $json = array(
             'username' => $this->username,
             'buyer_sku_code'=> $request->input('service'),
             'customer_no' => $request->input('target'),
-            'ref_id' => $order_id,
+            'ref_id' => $oid,
             "testing"=> true,
             'sign' => $signature,
         );
@@ -44,7 +44,7 @@ class OrderController extends Controller
 
         $data = curl_exec($ch);
         curl_close($ch);
-        $result = json_decode($data);
+        $result = json_encode($data);
         // if($result['data']['status'] == "Gagal")
         // {
         //     return redirect()->route('pulsa');
