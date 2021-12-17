@@ -58,7 +58,6 @@ class DepositController extends Controller
             'expired_time' => (time() + (24 * 60 * 60)), // 24 jam
             'signature'    => hash_hmac('sha256', $merchantCode.$merchantRef.$amount,$privateKey)
         ];
-        return $data;
         $curl = curl_init();
         curl_setopt_array($curl, [
             CURLOPT_FRESH_CONNECT  => true,
