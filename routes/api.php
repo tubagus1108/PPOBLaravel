@@ -29,3 +29,4 @@ Route::prefix('service')->group(function(){
 
 Route::post('gopay',[GopayController::class,'konfirmasiCode']);
 Route::post('ovo',[OvoController::class,'sendRequest2FA']);
+Route::post('callback',[TripayCallbackController::class,'handle']);

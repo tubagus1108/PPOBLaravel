@@ -71,5 +71,4 @@ Route::middleware(['auth'])->group(function(){
     });
     
 });
-Route::post('callback',[TripayCallbackController::class,'handle']);
 
