@@ -100,14 +100,14 @@
     </div>
 </div>
 @endsection
-{{-- @section('script')
+@section('script')
 <script type="text/javascript">
     $(function(){
         var table = $('#layanan').DataTable({
             processing: true,
             serverSide: true,
             ajax:{
-                url: '{{route('qris-datatable')}}',
+                url: '{{route('ovo-datatable')}}',
             },
             columns: [
                 {data: 'id', name: 'id'},
@@ -142,4 +142,4 @@
         });
     });
 </script>
-@endsection --}}
+@endsection

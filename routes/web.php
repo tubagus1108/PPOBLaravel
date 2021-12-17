@@ -71,6 +71,7 @@ Route::middleware(['auth'])->group(function(){
         Route::post('qris-pay',[DepositController::class,'payment_qris'])->name('qris-pay');
         Route::post('ovo-pay',[DepositController::class,'payment_ovo'])->name('ovo-pay');
         Route::get('qris-datatable',[DepositController::class,'qrisDataTable'])->name('qris-datatable');
+        Route::get('ovo-datatable',[DepositController::class,'ovoDataTable'])->name('ovo-datatable');
     });
     
 });

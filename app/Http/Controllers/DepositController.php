@@ -71,6 +71,43 @@ class DepositController extends Controller
         ->rawColumns(['payment_gateway','status'])
         ->make(true);
     }
+    public function ovoDataTable()
+    {
+        $data = Deposit::where('user_id',Auth::user()->id)->where('payment_method','OVO')->get();
+        return DataTables::of($data)
+        ->addIndexColumn()
+        ->addColumn('date', function($data){
+            return Carbon::parse($data['created_at'])->format('F d, y');
+        })
+        ->addColumn('payment_gateway', function($data){
+            $url = 'https://tripay.co.id/checkout/'.$data['reference'];
+            if($data['status'] == 'PAID')
+                return  '<a class="btn btn-primary" style="pointer-events: none" href="'.$url.'">PAYMENT GATEWAY</a>';
+            return  '<a class="btn btn-danger" href="'.$url.'">PAYMENT GATEWAY</a>';
+            // return Carbon::parse($data['created_at'])->format('F d, y');
+        })
+        ->addColumn('status', function($data){
+            $status = $data['status'];
+            if($status == 'PAID')
+                return '<button class="btn btn-success p-1 text-white">'.$status.'</button>';
+            return '<button class="btn btn-danger p-1 text-white">'.$status.'</button>';
+
+        })
+        ->addColumn('amount', function($data){
+            $amount = number_format($data['amount']);
+            return 'Rp.'.$amount;
+        })
+        ->addColumn('amount_received', function($data){
+            $amount_received = number_format($data['amount_received']);
+            return 'Rp.'.$amount_received;
+        })
+        ->addColumn('payment_name', function($data){
+            $payment_name = $data['payment_name'];
+            return $payment_name.' ( fee Rp 750 + 0,70% )';
+        })
+        ->rawColumns(['payment_gateway','status'])
+        ->make(true);
+    }
     public function payment_qris(Request $request)
     {
         $url = config('tripay.tripay_url_trx');
