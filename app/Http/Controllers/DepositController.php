@@ -53,6 +53,7 @@ class DepositController extends Controller
                     'quantity'    => 1,
                 ],
             ],
+            'callback_url' => 'https://tubagusofficial.my.id/api/callback',
             'return_url'   => 'http://localhost:8000/payment/qris',
             'expired_time' => (time() + (24 * 60 * 60)), // 24 jam
             'signature'    => hash_hmac('sha256', $merchantCode.$merchantRef.$amount,$privateKey)
