@@ -17,7 +17,20 @@
                     <h4 class="header-title"><i class="fa fa-credit-card text-primary"></i> Deposit Saldo QRIS</h4>
                 </div>
                 <div class="card-body">
-                    <form action="{{route('qris-pay')}}" method="POST">@csrf
+                    <form action="{{route('ovo-pay')}}" method="POST">@csrf
+                        <div class="form-group">
+                            <label class="col-md-12 control-label">Nomor Pengirim</label>
+                                <div class="col-md-10">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text text-primary">
+                                            <i class="mdi mdi-cellphone-android mr-1 text-primary"></i>
+                                    </div>
+                                </div>
+                                    <input type="number" class="form-control" name="pengirim" placeholder="Masukkan nomor perngirim" id="pengirim">
+                                    </div>
+                                </div>
+                        </div>
                         <div class="form-group">
                             <label class="col-md-12 control-label">Jumlah Deposit</label>
                                 <div class="col-md-10">
@@ -30,7 +43,7 @@
                                     <input type="number" class="form-control" name="jumlah" placeholder="Jumlah Deposit" id="jumlah">
                                     </div>
                                 </div>
-                            </div>
+                        </div>
                             <div class="form-group">
                             <div class="col-md-10">
                             <button type="reset" class="btn btn-danger waves-effect w-md waves-light">Ulangi</button>
@@ -47,7 +60,7 @@
                     <h4 class="m-0">
                         <a class="text-dark collapsed" data-toggle="collapse" href="#collapseOne" aria-expanded="true">
                         <i class="mdi mdi-help-circle mr-1 text-primary"></i>
-                        Pembayaran via QRIS
+                        Pembayaran via OVO
                         </a>
                     </h4>
                 </div>
@@ -87,7 +100,7 @@
     </div>
 </div>
 @endsection
-@section('script')
+{{-- @section('script')
 <script type="text/javascript">
     $(function(){
         var table = $('#layanan').DataTable({
@@ -129,4 +142,4 @@
         });
     });
 </script>
-@endsection
+@endsection --}}

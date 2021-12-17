@@ -29,6 +29,12 @@ class DepositController extends Controller
         $channelsQris = $tripay->getPaymentChanelsQris();
         return view('deposit.qris',compact('channelsQris'));
     }
+    public function ovo()
+    {
+        $tripay = new TripayController();
+        $channelsOvo = $tripay->getPaymentChanelsOvo();
+        return view('deposit.ovo',compact('channelsOvo'));
+    }
     public function qrisDataTable()
     {
         $data = Deposit::where('user_id',Auth::user()->id)->where('payment_method','QRIS')->get();
@@ -51,19 +57,31 @@ class DepositController extends Controller
             return '<button class="btn btn-danger p-1 text-white">'.$status.'</button>';
 
         })
+        ->addColumn('amount', function($data){
+            $amount = number_format($data['amount']);
+            return 'Rp.'.$amount;
+        })
+        ->addColumn('amount_received', function($data){
+            $amount_received = number_format($data['amount_received']);
+            return 'Rp.'.$amount_received;
+        })
+        ->addColumn('payment_name', function($data){
+            $payment_name = $data['payment_name'];
+            return $payment_name.' ( fee Rp 750 + 0,70% )';
+        })
         ->rawColumns(['payment_gateway','status'])
         ->make(true);
     }
     public function payment_qris(Request $request)
     {
-        $message =[
-            'required' => 'sorry you havent entered the amount',
-            'min' => 'Minimal Rp. 10,000',
-            'max' => 'Opss, sory anda memasukan no hp terlalu panjang',
-        ];
+        // $message =[
+        //     'required' => 'sorry you havent entered the amount',
+        //     'min' => 'Minimal Rp. 10,000',
+        //     'max' => 'Opss, sory anda memasukan no hp terlalu panjang',
+        // ];
         $data = $request->validate([
-            'jumlah' => 'required|min:10000',
-        ],$message);
+            'jumlah' => 'required',
+        ]);
         $invoice = new OrderController();
         $varrandom = $invoice->acak_nomor(3).$invoice->acak_nomor(4);
         $apiKey       = config('tripay.tripay_api_key');
@@ -82,7 +100,7 @@ class DepositController extends Controller
                 [
                     'sku'         => 'QRIS-06',
                     'name'        => 'Deposit Qris',
-                    'price'       => $request->input('jumlah'),
+                    'price'       => $amount,
                     'quantity'    => 1,
                 ],
             ],
@@ -109,6 +127,80 @@ class DepositController extends Controller
         curl_close($curl);
         $data = json_decode($response)->data;
         // return $data;
+        if(empty($error))
+        {
+            Deposit::create([
+                'user_id' => Auth::user()->id,
+                'reference' => $data->reference,
+                'merchant_ref' => $data->merchant_ref,
+                'payment_method' => $data->payment_method,
+                'payment_name' => $data->payment_name,
+                'amount' => $data->amount,
+                'customer_phone' => $data->customer_phone,
+                'amount_received' => $data->amount_received,
+                'status' => $data->status,
+            ]);
+            return redirect($data->checkout_url);
+        }else{
+            $error;
+        }
+    }
+    public function payment_ovo(Request $request)
+    {
+        $message =[
+            'min' => 'Minimal Rp. 10,000',
+            'max' => 'Opss, sory yang anda input tidak valid',
+        ];
+        $data = $request->validate([
+            'pengirim' => 'required',
+            'jumlah' => 'required',
+        ]);
+        $invoice = new OrderController();
+        $varrandom = $invoice->acak_nomor(3).$invoice->acak_nomor(4);
+        $apiKey       = config('tripay.tripay_api_key');
+        $privateKey   = config('tripay.tripay_private_key');
+        $merchantCode = config('tripay.tripay_merchant');
+        $merchantRef  = 'INV'.$varrandom;
+        $amount       = $data['jumlah'];
+        $nomor_pengirim       = $data['pengirim'];
+        $data_user = User::where('id',Auth::user()->id)->first();
+        $data = [
+            'method'         => 'OVO',
+            'merchant_ref'   => $merchantRef,
+            'amount'         => $amount,
+            'customer_name'  => $data_user->name,
+            'customer_email' => $data_user->email,
+            'customer_phone' => $nomor_pengirim,
+            'order_items'    => [
+                [
+                    'sku'         => 'OVO-06',
+                    'name'        => 'Deposit OVO',
+                    'price'       => $amount,
+                    'quantity'    => 1,
+                ],
+            ],
+            'callback_url' => route('callback'),
+            'return_url'   => route('qris'),
+            'expired_time' => (time() + (24 * 60 * 60)), // 24 jam
+            'signature'    => hash_hmac('sha256', $merchantCode.$merchantRef.$amount,$privateKey)
+        ];
+        $curl = curl_init();
+        curl_setopt_array($curl, [
+            CURLOPT_FRESH_CONNECT  => true,
+            CURLOPT_URL            => 'https://tripay.co.id/api-sandbox/transaction/create',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_HEADER         => false,
+            CURLOPT_HTTPHEADER     => ['Authorization: Bearer '.$apiKey],
+            CURLOPT_FAILONERROR    => false,
+            CURLOPT_POST           => true,
+            CURLOPT_POSTFIELDS     => http_build_query($data)
+        ]);
+
+        $response = curl_exec($curl);
+        $error = curl_error($curl);
+
+        curl_close($curl);
+        $data = json_decode($response)->data;
         if(empty($error))
         {
             Deposit::create([
