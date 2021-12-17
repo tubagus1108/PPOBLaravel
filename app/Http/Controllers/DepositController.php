@@ -74,7 +74,7 @@ class DepositController extends Controller
     }
     public function payment_qris(Request $request)
     {
-        $url = config('tripay.tripay_url');
+        $url = config('tripay.tripay_url_trx');
         // $message =[
         //     'required' => 'sorry you havent entered the amount',
         //     'min' => 'Minimal Rp. 10,000',
@@ -148,7 +148,7 @@ class DepositController extends Controller
     }
     public function payment_ovo(Request $request)
     {
-        $url = config('tripay.tripay_url');
+        $url = config('tripay.tripay_url_trx');
         $message =[
             'min' => 'Minimal Rp. 10,000',
             'max' => 'Opss, sory yang anda input tidak valid',
