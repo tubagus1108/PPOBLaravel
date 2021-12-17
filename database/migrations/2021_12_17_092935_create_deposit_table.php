@@ -22,6 +22,7 @@ class CreateDepositTable extends Migration
             $table->string('payment_name')->nullable();
             $table->string('customer_phone')->nullable();
             $table->string('amount_received')->nullable();
+            $table->string('amount')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();
             $table->softDeletes();
