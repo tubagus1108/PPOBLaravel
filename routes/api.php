@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Payment\TripayCallbackController;
 use App\Http\Controllers\Provaider\GopayController;
 use App\Http\Controllers\Provaider\OvoController;
 use Illuminate\Http\Request;
