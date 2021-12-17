@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 class TripayCallbackController extends Controller
 {
     protected $privateKey = 'merE4-bVTAK-AlD5t-KpMwX-a7UXj';
+    // protected $privateKey = '1BYtH-rEIIm-SmrLA-nPsFP-vvdrR';
 
     public function handle(Request $request)
     {
@@ -38,7 +39,7 @@ class TripayCallbackController extends Controller
         if (! $user) {
             return 'User not found';
         }
-        if ((int) $data->total_amount !== (int) $invoice->total_amount) {
+        if ((int) $data->total_amount !== (int) $invoice->amount) {
             return 'Invalid amount';
         }
         if($data->status == 'PAID')
