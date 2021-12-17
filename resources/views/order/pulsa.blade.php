@@ -92,6 +92,20 @@
                 </div>
             </form>
         </div>
+        <div class="col-lg-5">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="header-title"><i class="mdi mdi-information-outline text-primary"></i> Peraturan Pemesanan</h4>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Pesan Pulsa/Kuota/Voucher Game. Masukkan Nomor Telepon Dengan Benar, Contoh 082136611003.</li>
+                        <li>Pesan Token PLN Masukkan Nomor Meter.</li>
+                        <li>Harap Masukan Target Dengan Benar, Tidak Ada Pengembalian Dana Untuk Kesalahan Pengguna Yang Pesanannya Sudah Terlajur Di Pesan.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
     
 </div>
