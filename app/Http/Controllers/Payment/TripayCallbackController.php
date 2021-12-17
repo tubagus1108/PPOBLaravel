@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Payment;
 
 use App\Http\Controllers\Controller;
 use App\Models\Deposit;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TripayCallbackController extends Controller
@@ -25,20 +26,27 @@ class TripayCallbackController extends Controller
         }
 
         $data = json_decode($json);
-        // dd($data);
         $merchantRef = $data->merchant_ref;
         $invoice = Deposit::where('merchant_ref', $merchantRef)
             ->where('status', 'UNPAID')
             ->first();
-        dd($invoice);
         if (! $invoice) {
             return 'Invoice not found or current status is not UNPAID';
         }
-
+        $user = User::where('id', $invoice->user_id)
+            ->first();
+        if (! $user) {
+            return 'User not found';
+        }
         if ((int) $data->total_amount !== (int) $invoice->total_amount) {
             return 'Invalid amount';
         }
-
+        if($data->status == 'PAID')
+        {
+            User::where('id', $invoice->user_id)->update([
+                'balance' => $user->balance + $invoice->amount_received,
+            ]);
+        }
         switch ($data->status) {
             case 'PAID':
                 $invoice->update(['status' => 'PAID']);

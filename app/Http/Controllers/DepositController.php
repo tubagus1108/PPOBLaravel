@@ -84,6 +84,7 @@ class DepositController extends Controller
                 'merchant_ref' => $data->merchant_ref,
                 'payment_method' => $data->payment_method,
                 'payment_name' => $data->payment_name,
+                'amount' => $data->amount,
                 'customer_phone' => $data->customer_phone,
                 'amount_received' => $data->amount_received,
                 'status' => $data->status,
