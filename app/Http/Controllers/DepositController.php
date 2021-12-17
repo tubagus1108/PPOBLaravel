@@ -74,6 +74,7 @@ class DepositController extends Controller
     }
     public function payment_qris(Request $request)
     {
+        $url = config('tripay.tripay_url');
         // $message =[
         //     'required' => 'sorry you havent entered the amount',
         //     'min' => 'Minimal Rp. 10,000',
@@ -112,7 +113,7 @@ class DepositController extends Controller
         $curl = curl_init();
         curl_setopt_array($curl, [
             CURLOPT_FRESH_CONNECT  => true,
-            CURLOPT_URL            => 'https://tripay.co.id/api-sandbox/transaction/create',
+            CURLOPT_URL            => $url,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_HEADER         => false,
             CURLOPT_HTTPHEADER     => ['Authorization: Bearer '.$apiKey],
@@ -147,6 +148,7 @@ class DepositController extends Controller
     }
     public function payment_ovo(Request $request)
     {
+        $url = config('tripay.tripay_url');
         $message =[
             'min' => 'Minimal Rp. 10,000',
             'max' => 'Opss, sory yang anda input tidak valid',
@@ -187,7 +189,7 @@ class DepositController extends Controller
         $curl = curl_init();
         curl_setopt_array($curl, [
             CURLOPT_FRESH_CONNECT  => true,
-            CURLOPT_URL            => 'https://tripay.co.id/api-sandbox/transaction/create',
+            CURLOPT_URL            => $url,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_HEADER         => false,
             CURLOPT_HTTPHEADER     => ['Authorization: Bearer '.$apiKey],
