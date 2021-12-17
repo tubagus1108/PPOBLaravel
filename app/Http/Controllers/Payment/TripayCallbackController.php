@@ -25,10 +25,9 @@ class TripayCallbackController extends Controller
         }
 
         $data = json_decode($json);
+        $merchantRef = $data->merchant_ref;
         dd($data);
-        $reference = $data->reference;
-
-        $invoice = Deposit::where('reference', $reference)
+        $invoice = Deposit::where('merchant_ref', $merchantRef)
             ->where('status', 'UNPAID')
             ->first();
 
