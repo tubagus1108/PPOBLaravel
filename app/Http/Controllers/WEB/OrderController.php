@@ -33,13 +33,22 @@ class OrderController extends Controller
     }
     public function orderPulsa(Request $request)
     {
+        $message =[
+            'required' => 'Inputan wajib di isi',
+            'min' => 'No hp tidak valid',
+            'max' => 'Opss, sory anda memasukan no hp terlalu panjang',
+        ];
+        $data = $request->validate([
+            'service' => 'required',
+            'target' => 'required|min:4|max:13',
+        ],$message);
         $order_id = $this->acak_nomor(3) . $this->acak_nomor(4);
         // return $order_id;
         $signature  = md5($this->username.$this->apiKey.$order_id);
         $json = array(
             'username' => $this->username,
-            'buyer_sku_code'=> $request->input('service'),
-            'customer_no' => $request->input('target'),
+            'buyer_sku_code'=> $data['service'],
+            'customer_no' => $data['target'],
             'ref_id' => $order_id,
             "testing"=> true,
             'sign' => $signature,
@@ -75,12 +84,12 @@ class OrderController extends Controller
                 ]);
             }
             try {
-                DB::transaction(function () use ($user,$result,$request,$order_id) {
+                DB::transaction(function () use ($user,$result,$request,$order_id,$data) {
                         OrderPulsa::create([
                             'oid' => $order_id,
                             'provider_oid' => $order_id,
                             'id_user' => $user->id,
-                            'service' => $request->input('service'),
+                            'service' => $data['service'],
                             'price' => $request->input('price'),
                             'target' =>$result['data']['customer_no'],
                             'desc' => $result['data']['message'],

@@ -53,25 +53,29 @@
     </div>
     <div class="row">
         <div class="col-lg-7">
+            <ul>
+                @foreach ($errors->all() as $item)
+                    <li>{{ $item }}</li>
+                @endforeach
+            </ul>
+            @if(session('success'))
+            <div class="alert alert-success outline alert-dismissible fade show" role="alert"><i data-feather="thumbs-up"></i>
+                <p>{{session('success')['message']}}</p>
+                <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            @endif
             <form action="{{route('order-pulsa')}}" method="post">@csrf
                 <div class="card">
-                    @if(session('success'))
-                    <div class="alert alert-success outline alert-dismissible fade show" role="alert"><i data-feather="thumbs-up"></i>
-                        <p>{{session('success')['message']}}</p>
-                        <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                    </div>
-                    @endif
                     <div class="card-body">
                             <div id="panel_list" class="">
                                 <div class="form-group row">
                                     <label class="col-xl-3 col-lg-3 col-form-label">Tujuan </label>
                                     <div class="col-lg-9 col-xl-6">
-                                        <input type="text" id="nomor" name="target" class="form-control" placeholder="Nomor HP" required>
+                                        <input type="number" id="nomor" name="target" class="form-control" placeholder="Nomor HP">
                                     </div>
                                 </div>
                                 <br>
                                 <br>
-                                {{-- <p id="tes">hello</p> --}}
                                 <div id="rep" class="row" style="margin-top: 5px;"></div>
                                 <div id="catatan"></div>
                                 <div id="ajx" class="row"></div>
