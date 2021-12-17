@@ -25,12 +25,12 @@ class TripayCallbackController extends Controller
         }
 
         $data = json_decode($json);
+        // dd($data);
         $merchantRef = $data->merchant_ref;
-        dd($data);
         $invoice = Deposit::where('merchant_ref', $merchantRef)
             ->where('status', 'UNPAID')
             ->first();
-
+        dd($invoice);
         if (! $invoice) {
             return 'Invoice not found or current status is not UNPAID';
         }
