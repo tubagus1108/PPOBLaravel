@@ -68,6 +68,7 @@ Route::middleware(['auth'])->group(function(){
     Route::prefix('payment')->group(function(){
         Route::get('qris',[DepositController::class,'qris'])->name('qris');
         Route::post('qris-pay',[DepositController::class,'payment_qris'])->name('qris-pay');
+        Route::get('qris-datatable',[DepositController::class,'qrisDataTable'])->name('qris-datatable');
     });
     
 });

@@ -41,22 +41,86 @@
                     <h4 class="m-0">
                         <a class="text-dark collapsed" data-toggle="collapse" href="#collapseOne" aria-expanded="true">
                         <i class="mdi mdi-help-circle mr-1 text-primary"></i>
-                        BANK BCA
+                        Pembayaran via QRIS
                         </a>
                     </h4>
                 </div>
                 <div class="card-body">
                     <ul>
-                        <li>Login Ke Akun M-BCA Anda</li>
-                        <li>Pilih Menu M-Transfer</li>
-                        <li>Pilih BCA VIRTUAL ACCOUNT</li>
-                        <li>Masukan Nomor 39358></li>
-                        <li>Masukan Nominal Top-up</li>
-                        <li>Ikuti Intruksi Untuk Menyelesaikan Transaksi</li>
+                        <li>Masuk ke aplikasi dompet digital Anda yang telah mendukung QRIS</li>
+                        <li>Pindai/Scan QR Code yang tersedia</li>
+                        <li>Akan muncul detail transaksi. Pastikan data transaksi sudah sesuai</li>
+                        <li>Selesaikan proses pembayaran Anda</li>
+                        <li>Transaksi selesai. Simpan bukti pembayaran Anda</li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <table id="layanan" class="table table-striped table-bordered" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>TANGGAL/WAKTU</th>
+                                <th>METODE DEPOSIT</th>
+                                <th>JUMLAH</th>
+                                <th>SALDO DIDAPAT</th>
+                                <th>PAYMENT GATEWAY</th>
+                                <th>STATUS</th>
+                                {{-- <th>ACTION</th> --}}
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+@endsection
+@section('script')
+<script type="text/javascript">
+    $(function(){
+        var table = $('#layanan').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax:{
+                url: '{{route('qris-datatable')}}',
+            },
+            columns: [
+                {data: 'id', name: 'id'},
+                { data: 'date', name: 'date'},
+                { data: 'payment_method', name: 'payment_method'},
+                { data: 'amount', name: 'amount'},
+                { data: 'amount_received', name: 'amount_received'},
+                { data: 'payment_gateway', name: 'payment_gateway'},
+                { data: 'status', name: 'status'},
+                // { data: 'status', name: 'status'},
+            ],
+            language: {
+            searchPlaceholder: 'Search..',
+            sSearch: '',
+            lengthMenu: '_MENU_ items/page',
+            destroy: true
+            },  
+            columnDefs:[
+                {
+                    "targets" : [5,6],
+                    "className": "text-center"
+                },
+            ],              
+            
+            dom: 'Bfrtip',  
+            buttons: [
+                {extend:'copy', className: 'bg-info text-white rounded-pill ml-2 border border-white'},
+                {extend:'excel', className: 'bg-success text-white rounded-pill border border-white'},
+                {extend:'pdf', className: 'bg-danger text-white rounded-pill border border-white'},
+                {extend:'print', className: 'bg-warning text-white rounded-pill border border-white'},
+            ],
+        });
+    });
+</script>
 @endsection

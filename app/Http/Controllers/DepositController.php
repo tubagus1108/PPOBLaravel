@@ -6,9 +6,10 @@ use App\Http\Controllers\Payment\TripayController;
 use App\Http\Controllers\WEB\OrderController;
 use App\Models\Deposit;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use DataTables;
 class DepositController extends Controller
 {
     public function deposit()
@@ -27,6 +28,31 @@ class DepositController extends Controller
         $tripay = new TripayController();
         $channelsQris = $tripay->getPaymentChanelsQris();
         return view('deposit.qris',compact('channelsQris'));
+    }
+    public function qrisDataTable()
+    {
+        $data = Deposit::where('user_id',Auth::user()->id)->where('payment_method','QRIS')->get();
+        return DataTables::of($data)
+        ->addIndexColumn()
+        ->addColumn('date', function($data){
+            return Carbon::parse($data['created_at'])->format('F d, y');
+        })
+        ->addColumn('payment_gateway', function($data){
+            $url = 'https://tripay.co.id/checkout/'.$data['reference'];
+            if($data['status'] == 'PAID')
+                return  '<a class="btn btn-primary" style="pointer-events: none" href="'.$url.'">PAYMENT GATEWAY</a>';
+            return  '<a class="btn btn-danger" href="'.$url.'">PAYMENT GATEWAY</a>';
+            // return Carbon::parse($data['created_at'])->format('F d, y');
+        })
+        ->addColumn('status', function($data){
+            $status = $data['status'];
+            if($status == 'PAID')
+                return '<button class="btn btn-success p-1 text-white">'.$status.'</button>';
+            return '<button class="btn btn-danger p-1 text-white">'.$status.'</button>';
+
+        })
+        ->rawColumns(['payment_gateway','status'])
+        ->make(true);
     }
     public function payment_qris(Request $request)
     {
