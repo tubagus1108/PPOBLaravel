@@ -20,7 +20,6 @@ class DepositController extends Controller
         $channelsBni= $tripay->getPaymentChanelsBni();
         $channelsBri = $tripay->getPaymentChanelsBri();
         $channelsMandiri = $tripay->getPaymentChanelsMandiri();
-        // dd($channelsQris);
         return view('deposit.deposit',compact('channelsQris','channelsOvo','channelsBni','channelsBri','channelsMandiri'));
     }
     public function qris()
