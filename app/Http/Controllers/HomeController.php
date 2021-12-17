@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Deposit;
+use App\Models\OrderPulsa;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
 class HomeController extends Controller
@@ -33,6 +36,9 @@ class HomeController extends Controller
     }
     public function dashboard()
     {
-        return view('dashboard.index');
+        $order_buy = OrderPulsa::where('id_user',Auth::user()->id)->count();
+        $count_depo = DB::table('deposit')->where('user_id',Auth::user()->id)->sum('deposit.amount_received');
+        $count_order = DB::table('order_pulsa')->where('id_user',Auth::user()->id)->sum('order_pulsa.price');
+        return view('dashboard.index',compact('order_buy','count_depo','count_order'));
     }
 }

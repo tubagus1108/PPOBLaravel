@@ -37,7 +37,7 @@
                             <h4 class="mb-0 text-primary" style="margin-top: -5px !important; margin-bottom: -10px !important;"><i class="fa fa-wallet text-primary"></i> Rp {{ number_format(Auth::user()->balance)}}</h4>
                         </div>
                         <div class="col-6 text-right" style="margin-top: -10px !important; margin-bottom: -10px !important;">
-                            <a href="deposit-saldo" class="btn btn-primary btn-sm"> <i class="fas fa-plus-circle"></i> Deposit Saldo</a>
+                            <a href="{{route('deposit')}}" class="btn btn-primary btn-sm"> <i class="fas fa-plus-circle"></i> Deposit Saldo</a>
                         </div>
                     </div>
                 </div>
@@ -190,7 +190,7 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="text-right">
-                                        <h3 class="text-dark mt-1"><span data-plugin="">Rp. 10,000</span></h3>
+                                        <h3 class="text-dark mt-1"><span data-plugin="">Rp. {{number_format($count_order)}}</span></h3>
                                         <p class="text-muted mb-1 text-truncate">Total Pemesanan</p>
                                     </div>
                                 </div>
@@ -207,7 +207,7 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="text-right">
-                                        <h3 class="text-dark mt-1"><span data-plugin="">100</span></h3>
+                                        <h3 class="text-dark mt-1"><span data-plugin="">{{$order_buy}}</span></h3>
                                         <p class="text-muted mb-1 text-truncate">Total Pembelian</p>
                                     </div>
                                 </div>
@@ -224,7 +224,7 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="text-right">
-                                        <h3 class="text-dark mt-1"><span data-plugin="">Rp. 10,000</span></h3>
+                                        <h3 class="text-dark mt-1"><span data-plugin="">Rp. {{number_format($count_depo)}}</span></h3>
                                         <p class="text-muted mb-1 text-truncate">Total Deposit Saldo</p>
                                     </div>
                                 </div>
