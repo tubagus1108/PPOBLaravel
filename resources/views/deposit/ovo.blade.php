@@ -14,7 +14,7 @@
             @endforeach
             <div class="card">
                 <div class="card-header">
-                    <h4 class="header-title"><i class="fa fa-credit-card text-primary"></i> Deposit Saldo QRIS</h4>
+                    <h4 class="header-title"><i class="fa fa-credit-card text-primary"></i> Deposit Saldo OVO</h4>
                 </div>
                 <div class="card-body">
                     <form action="{{route('ovo-pay')}}" method="POST">@csrf
@@ -66,10 +66,10 @@
                 </div>
                 <div class="card-body">
                     <ul>
-                        <li>Masuk ke aplikasi dompet digital Anda yang telah mendukung QRIS</li>
-                        <li>Pindai/Scan QR Code yang tersedia</li>
-                        <li>Akan muncul detail transaksi. Pastikan data transaksi sudah sesuai</li>
-                        <li>Selesaikan proses pembayaran Anda</li>
+                        <li>Klik tombol Lanjutkan Pembayaran</li>
+                        <li>Periksa aplikasi OVO di Ponsel Anda</li>
+                        <li>Akan muncul prompt transaksi. Pastikan data transaksi sudah sesuai</li>
+                        <li>Klik tombol Bayar</li>
                         <li>Transaksi selesai. Simpan bukti pembayaran Anda</li>
                     </ul>
                 </div>
