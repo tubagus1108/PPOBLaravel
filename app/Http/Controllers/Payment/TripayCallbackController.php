@@ -25,6 +25,7 @@ class TripayCallbackController extends Controller
         }
 
         $data = json_decode($json);
+        dd($data); 
         $merchantRef = $data->merchant_ref;
 
         $invoice = Deposit::where('merchant_ref', $merchantRef)
