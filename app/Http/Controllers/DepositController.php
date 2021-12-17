@@ -56,14 +56,21 @@ class DepositController extends Controller
     }
     public function payment_qris(Request $request)
     {
-
+        $message =[
+            'required' => 'sorry you havent entered the amount',
+            'min' => 'Minimal Rp. 10,000',
+            'max' => 'Opss, sory anda memasukan no hp terlalu panjang',
+        ];
+        $data = $request->validate([
+            'jumlah' => 'required|min:10000',
+        ],$message);
         $invoice = new OrderController();
         $varrandom = $invoice->acak_nomor(3).$invoice->acak_nomor(4);
         $apiKey       = config('tripay.tripay_api_key');
         $privateKey   = config('tripay.tripay_private_key');
         $merchantCode = config('tripay.tripay_merchant');
         $merchantRef  = 'INV'.$varrandom;
-        $amount       = $request->input('jumlah');
+        $amount       = $data['jumlah'];
         $data_user = User::where('id',Auth::user()->id)->first();
         $data = [
             'method'         => 'QRIS',

@@ -6,6 +6,12 @@
     </div>
     <div class="row">
         <div class="col-md-7">
+            @foreach ($errors->all() as $item)
+            <div class="alert alert-success outline alert-dismissible fade show" role="alert"><i data-feather="thumbs-up"></i>
+                <p>{{ $item }}</p>
+                <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            @endforeach
             <div class="card">
                 <div class="card-header">
                     <h4 class="header-title"><i class="fa fa-credit-card text-primary"></i> Deposit Saldo QRIS</h4>
