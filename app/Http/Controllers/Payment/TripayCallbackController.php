@@ -25,6 +25,7 @@ class TripayCallbackController extends Controller
         }
 
         $data = json_decode($json);
+        dd($data);
         $reference = $data->reference;
 
         $invoice = Deposit::where('reference', $reference)
