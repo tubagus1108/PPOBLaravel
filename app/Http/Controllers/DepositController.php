@@ -218,7 +218,7 @@ class DepositController extends Controller
                 ],
             ],
             'callback_url' => route('callback'),
-            'return_url'   => route('qris'),
+            'return_url'   => route('ovo'),
             'expired_time' => (time() + (24 * 60 * 60)), // 24 jam
             'signature'    => hash_hmac('sha256', $merchantCode.$merchantRef.$amount,$privateKey)
         ];
