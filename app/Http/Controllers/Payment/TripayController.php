@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 class TripayController extends Controller
 {
+    // private $url = 'https://tripay.co.id/api-sandbox/merchant/payment-channel?';
+    private $url = '	https://tripay.co.id/api/merchant/payment-channel?';
     public function getPaymentChanelsQris()
     {
         $apiKey = config('tripay.tripay_api_key');
@@ -16,7 +18,7 @@ class TripayController extends Controller
 
         curl_setopt_array($curl, array(
         CURLOPT_FRESH_CONNECT  => true,
-        CURLOPT_URL            => 'https://tripay.co.id/api/merchant/payment-channel?'.http_build_query($payload),
+        CURLOPT_URL            => $this->url.http_build_query($payload),
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_HEADER         => false,
         CURLOPT_HTTPHEADER     => ['Authorization: Bearer '.$apiKey],
@@ -41,7 +43,7 @@ class TripayController extends Controller
 
         curl_setopt_array($curl, array(
         CURLOPT_FRESH_CONNECT  => true,
-        CURLOPT_URL            => 'https://tripay.co.id/api/merchant/payment-channel?'.http_build_query($payload),
+        CURLOPT_URL            => $this->url.http_build_query($payload),
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_HEADER         => false,
         CURLOPT_HTTPHEADER     => ['Authorization: Bearer '.$apiKey],
@@ -66,7 +68,7 @@ class TripayController extends Controller
 
         curl_setopt_array($curl, array(
         CURLOPT_FRESH_CONNECT  => true,
-        CURLOPT_URL            => 'https://tripay.co.id/api/merchant/payment-channel?'.http_build_query($payload),
+        CURLOPT_URL            => $this->url.http_build_query($payload),
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_HEADER         => false,
         CURLOPT_HTTPHEADER     => ['Authorization: Bearer '.$apiKey],
@@ -91,7 +93,7 @@ class TripayController extends Controller
 
         curl_setopt_array($curl, array(
         CURLOPT_FRESH_CONNECT  => true,
-        CURLOPT_URL            => 'https://tripay.co.id/api/merchant/payment-channel?'.http_build_query($payload),
+        CURLOPT_URL            => $this->url.http_build_query($payload),
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_HEADER         => false,
         CURLOPT_HTTPHEADER     => ['Authorization: Bearer '.$apiKey],
@@ -116,7 +118,7 @@ class TripayController extends Controller
 
         curl_setopt_array($curl, array(
         CURLOPT_FRESH_CONNECT  => true,
-        CURLOPT_URL            => 'https://tripay.co.id/api/merchant/payment-channel?'.http_build_query($payload),
+        CURLOPT_URL            => $this->url.http_build_query($payload),
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_HEADER         => false,
         CURLOPT_HTTPHEADER     => ['Authorization: Bearer '.$apiKey],
