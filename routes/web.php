@@ -3,7 +3,9 @@
 use App\Http\Controllers\API\MobilePulsaController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Covid19Controller;
+use App\Http\Controllers\DepositController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Payment\TripayCallbackController;
 use App\Http\Controllers\Provaider\ServiceController;
 use App\Http\Controllers\WEB\OrderController;
 use App\Http\Controllers\WEB\PageController;
@@ -62,5 +64,12 @@ Route::middleware(['auth'])->group(function(){
         Route::get('pulsa',[OrderController::class,'pulsa'])->name('pulsa');
         Route::post('order-pulsa',[OrderController::class,'orderPulsa'])->name('order-pulsa');
     });
+    Route::get('deposit',[DepositController::class,'deposit'])->name('deposit');
+    Route::prefix('payment')->group(function(){
+        Route::get('qris',[DepositController::class,'qris'])->name('qris');
+        Route::post('qris-pay',[DepositController::class,'payment_qris'])->name('qris-pay');
+    });
+    
 });
+Route::post('callback',[TripayCallbackController::class,'handle']);
 

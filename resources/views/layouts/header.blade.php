@@ -148,7 +148,7 @@
                         <a class="nav-link dropdown-toggle waves-effect" href="#"> <i class="fa fa-credit-card text-primary"></i>Deposit Saldo<i class="mdi mdi-chevron-down"></i></a>
                         <ul class="submenu">
                             <li>
-                                <a href="deposit-saldo">
+                                <a href="{{route('deposit')}}">
                                     <i class="fa fa-balance-scale"></i>
                                     <span> Deposit Baru</span>
                                 </a>
