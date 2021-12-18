@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class TripayController extends Controller
 {
-    private $url = 'https://tripay.co.id/api-sandbox/merchant/payment-channel?';
-    // private $url = 'https://tripay.co.id/api/merchant/payment-channel?';
+    // private $url = 'https://tripay.co.id/api-sandbox/merchant/payment-channel?';
+    private $url = 'https://tripay.co.id/api/merchant/payment-channel?';
     public function getPaymentChanelsQris()
     {
         $apiKey = config('tripay.tripay_api_key');
