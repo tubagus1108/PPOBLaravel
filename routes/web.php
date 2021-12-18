@@ -67,9 +67,11 @@ Route::middleware(['auth'])->group(function(){
     Route::get('deposit',[DepositController::class,'deposit'])->name('deposit');
     Route::prefix('payment')->group(function(){
         Route::get('qris',[DepositController::class,'qris'])->name('qris');
+        Route::get('vabni',[DepositController::class,'vabni'])->name('vabni');
         Route::get('ovo',[DepositController::class,'ovo'])->name('ovo');
         Route::post('qris-pay',[DepositController::class,'payment_qris'])->name('qris-pay');
         Route::post('ovo-pay',[DepositController::class,'payment_ovo'])->name('ovo-pay');
+        Route::post('vabni-pay',[DepositController::class,'payment_vabni'])->name('vabni-pay');
         Route::get('qris-datatable',[DepositController::class,'qrisDataTable'])->name('qris-datatable');
         Route::get('ovo-datatable',[DepositController::class,'ovoDataTable'])->name('ovo-datatable');
     });

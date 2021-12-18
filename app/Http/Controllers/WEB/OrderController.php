@@ -83,6 +83,13 @@ class OrderController extends Controller
                     'message' => 'Data User tidak ada'
                 ]);
             }
+            if($user->balance <= $request->input('price'))
+            {
+                return redirect()->back()->with('success', [
+                    'status' => false,
+                    'message' => 'Saldo anda tidak cukup!!'
+                ]);
+            }
             try {
                 DB::transaction(function () use ($user,$result,$request,$order_id,$data) {
                         OrderPulsa::create([

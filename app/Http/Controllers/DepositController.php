@@ -34,6 +34,12 @@ class DepositController extends Controller
         $channelsOvo = $tripay->getPaymentChanelsOvo();
         return view('deposit.ovo',compact('channelsOvo'));
     }
+    public function vabni()
+    {
+        $tripay = new TripayController();
+        $channelsbni = $tripay->getPaymentChanelsBni();
+        return view('deposit.vabni',compact('channelsbni'));
+    }
     public function qrisDataTable()
     {
         $data = Deposit::where('user_id',Auth::user()->id)->where('payment_method','QRIS')->get();
@@ -107,6 +113,80 @@ class DepositController extends Controller
         })
         ->rawColumns(['payment_gateway','status'])
         ->make(true);
+    }
+    public function payment_vabni(Request $request)
+    {
+        $url = config('tripay.tripay_url_trx');
+        // $message =[
+        //     'required' => 'sorry you havent entered the amount',
+        //     'min' => 'Minimal Rp. 10,000',
+        //     'max' => 'Opss, sory anda memasukan no hp terlalu panjang',
+        // ];
+        $data = $request->validate([
+            'jumlah' => 'required',
+        ]);
+        $invoice = new OrderController();
+        $varrandom = $invoice->acak_nomor(3).$invoice->acak_nomor(4);
+        $apiKey       = config('tripay.tripay_api_key');
+        $privateKey   = config('tripay.tripay_private_key');
+        $merchantCode = config('tripay.tripay_merchant');
+        $merchantRef  = 'INV'.$varrandom;
+        $amount       = $data['jumlah'];
+        $data_user = User::where('id',Auth::user()->id)->first();
+        $data = [
+            'method'         => 'BNIVA',
+            'merchant_ref'   => $merchantRef,
+            'amount'         => $amount,
+            'customer_name'  => $data_user->name,
+            'customer_email' => $data_user->email,
+            'order_items'    => [
+                [
+                    'sku'         => 'QRIS-06',
+                    'name'        => 'Deposit Qris',
+                    'price'       => $amount,
+                    'quantity'    => 1,
+                ],
+            ],
+            'callback_url' => route('callback'),
+            'return_url'   => route('qris'),
+            'expired_time' => (time() + (24 * 60 * 60)), // 24 jam
+            'signature'    => hash_hmac('sha256', $merchantCode.$merchantRef.$amount,$privateKey)
+        ];
+        $curl = curl_init();
+        curl_setopt_array($curl, [
+            CURLOPT_FRESH_CONNECT  => true,
+            CURLOPT_URL            => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_HEADER         => false,
+            CURLOPT_HTTPHEADER     => ['Authorization: Bearer '.$apiKey],
+            CURLOPT_FAILONERROR    => false,
+            CURLOPT_POST           => true,
+            CURLOPT_POSTFIELDS     => http_build_query($data)
+        ]);
+
+        $response = curl_exec($curl);
+        $error = curl_error($curl);
+
+        curl_close($curl);
+        $data = json_decode($response)->data;
+        // return $data;
+        if(empty($error))
+        {
+            Deposit::create([
+                'user_id' => Auth::user()->id,
+                'reference' => $data->reference,
+                'merchant_ref' => $data->merchant_ref,
+                'payment_method' => $data->payment_method,
+                'payment_name' => $data->payment_name,
+                'amount' => $data->amount,
+                'customer_phone' => $data->customer_phone,
+                'amount_received' => $data->amount_received,
+                'status' => $data->status,
+            ]);
+            return redirect($data->checkout_url);
+        }else{
+            $error;
+        }
     }
     public function payment_qris(Request $request)
     {

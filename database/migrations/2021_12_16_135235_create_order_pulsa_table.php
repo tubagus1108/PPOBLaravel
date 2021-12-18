@@ -22,6 +22,7 @@ class CreateOrderPulsaTable extends Migration
             $table->double('price')->nullable();
             $table->string('target')->nullable();
             $table->text('desc')->nullable();
+            $table->text('sn')->nullable();
             $table->enum('status',['Pending','Processing','Error','Success'])->nullable();
             $table->integer('refund')->nullable();
             $table->timestamps();
