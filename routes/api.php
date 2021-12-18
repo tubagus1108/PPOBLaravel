@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Payment\DigiFlazzCallbackController;
 use App\Http\Controllers\Payment\TripayCallbackController;
 use App\Http\Controllers\Provaider\GopayController;
 use App\Http\Controllers\Provaider\OvoController;
@@ -31,3 +32,5 @@ Route::prefix('service')->group(function(){
 Route::post('gopay',[GopayController::class,'konfirmasiCode']);
 Route::post('ovo',[OvoController::class,'sendRequest2FA']);
 Route::post('callback',[TripayCallbackController::class,'handle'])->name('callback');
+// Route::post('callback-digi',[DigiFlazzCallbackController::class,'handle'])->name('callback-digiflazz');
+Route::post('callback-digi',[DigiFlazzCallbackController::class,'handleOne'])->name('callback-digiflazz');
