@@ -113,8 +113,8 @@
                                 </th>
                                 <th>
                                     <a href="" class="text-primary">
-                                        <a href="pemesanan-baru/pln" class="btn-loading"><i class="mdi mdi-flash fa-3x text-primary"></i>
-                                        <a href="pemesanan-baru/pln" class="btn-loading"><h5 class="text-primary">Token PLN</h5>
+                                        <a href="{{route('pln-token')}}" class="btn-loading"><i class="mdi mdi-flash fa-3x text-primary"></i>
+                                        <a href="{{route('pln-token')}}" class="btn-loading"><h5 class="text-primary">Token PLN</h5>
                                     </a>
                                 </th>
                             </tr>

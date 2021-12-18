@@ -45,6 +45,11 @@ class ServiceController extends Controller
         return response()->json(['error' => true,'data' => $view_data]);
 
     }
+    public function getPelangganPln(Request $request)
+    {
+        $nomor = $request->input('nomor');
+        return $nomor;
+    }
     public function getLayananOp(Request $request)
     {
         $nomor = $request->input('nomor');

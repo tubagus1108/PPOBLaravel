@@ -21,6 +21,10 @@ class OrderController extends Controller
     {
         return view('order.pulsa');
     }
+    public function plnToken()
+    {
+        return view('order.plntoken');
+    }
     public function acak_nomor($length){
         $str = "";
         $karakter = array_merge(range('0','9'));
@@ -34,14 +38,14 @@ class OrderController extends Controller
     public function orderPulsa(Request $request)
     {
         $message =[
-            'required' => 'Inputan wajib di isi',
             'min' => 'No hp tidak valid',
             'max' => 'Opss, sory anda memasukan no hp terlalu panjang',
         ];
         $data = $request->validate([
             'service' => 'required',
             'target' => 'required|min:4|max:13',
-        ],$message);
+            'pin' => 'required',
+        ]);
         $order_id = $this->acak_nomor(3) . $this->acak_nomor(4);
         // return $order_id;
         $signature  = md5($this->username.$this->apiKey.$order_id);
@@ -81,6 +85,14 @@ class OrderController extends Controller
                 return redirect()->back()->with('success', [
                     'status' => false,
                     'message' => 'Data User tidak ada'
+                ]);
+            }
+            // return $user->pin .' '. $request->input('pin');
+            if($user->pin != $request->input('pin'))
+            {
+                return redirect()->back()->with('success', [
+                    'status' => false,
+                    'message' => 'Pin Anda Salah'
                 ]);
             }
             if($user->balance <= $request->input('price'))

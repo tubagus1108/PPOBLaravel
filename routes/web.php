@@ -56,12 +56,14 @@ Route::prefix('price')->group(function(){
 // });
 Route::prefix('ajax')->group(function(){
     Route::get('layanan-get',[ServiceController::class,'getLayananOp'])->name('layanan');
+    Route::get('get-pelanggan',[ServiceController::class,'getPelangganPln'])->name('pelanggan');
 });
 
 Route::middleware(['auth'])->group(function(){
     Route::get('/dashboard',[HomeController::class,'dashboard'])->name('dashboard');
     Route::prefix('order')->group(function(){
         Route::get('pulsa',[OrderController::class,'pulsa'])->name('pulsa');
+        Route::get('pln-token',[OrderController::class,'plnToken'])->name('pln-token');
         Route::post('order-pulsa',[OrderController::class,'orderPulsa'])->name('order-pulsa');
     });
     Route::get('deposit',[DepositController::class,'deposit'])->name('deposit');
