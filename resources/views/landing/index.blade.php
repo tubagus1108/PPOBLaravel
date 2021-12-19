@@ -358,7 +358,7 @@
                             </div>
                             <div class="contact-details text-white">
                                 <h5 class="text-white">E-mail</h5>
-                                <p class="text-white-50">hello@shinypedia.com</p>
+                                <p class="text-white-50">hello@evolution.com</p>
                             </div>
                         </div>
                     </div>
@@ -370,7 +370,7 @@
                             </div>
                             <div class="contact-details">
                                 <h5 class="text-white">WhatsApp</h5>
-                                <p class="text-white-50">085157805539</p>
+                                <p class="text-white-50">08887366966</p>
                             </div>
                         </div>
                     </div>
@@ -382,7 +382,7 @@
                             </div>
                             <div class="contact-details">
                                 <h5 class="text-white">Alamat</h5>
-                                <p class="text-white-50">cikarang, bekasi, jawa barat</p>
+                                <p class="text-white-50">Sumatra Utara, Medan</p>
                             </div>
                         </div>
                     </div>

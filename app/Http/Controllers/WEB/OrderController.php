@@ -21,7 +21,7 @@ class OrderController extends Controller
     {
         return view('order.pulsa');
     }
-    public function plnToken()
+    public function plnToken(Request $request)
     {
         return view('order.plntoken');
     }

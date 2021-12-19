@@ -65,7 +65,7 @@
                 <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
             </div>
             @endif
-            <form action="{{route('order-pulsa')}}" method="post">@csrf
+            <form action="" method="post">@csrf
                 <div class="card">
                     <div class="card-body">
                             <div id="panel_list" class="">
@@ -84,9 +84,6 @@
                                 <div id="catatan"></div>
                                 <div id="ajx" class="row"></div>
                             </div>
-                            <input type="hidden" name="code" id="operator">
-                            <input type="hidden" name="service" id="layanan">
-                            <input type="hidden" name="price" id="price">
                             <br>
                             <div class="form-group row">
                                 <label class="col-xl-3 col-lg-3 col-form-label">PIN</label>
@@ -130,13 +127,7 @@
 @section('script')
 <script> 
 $(document).ready(function() {
-    $('.exs').hide();
-    $('.exs').click(function() {
-        $('.exs').hide();
-        $('#panel_list').removeClass('isi_p');
-        $('#ajx').hide();
-        $('#rep').show();
-    });
+    
     $("#nomor").on("keyup change", function(e) {
         var char = $('#nomor').val();
         $.ajax({
@@ -146,65 +137,27 @@ $(document).ready(function() {
             nomor: char,
         },
         success: function(response) {
-            var data = '';
-            console.log(response)
-            // var check_length = response.length;
-            // for (var i = 0; i < response.length; i++) {     
-                // console.log(i)
-                // var la = response[i]['service'];
-                // data += '<div class="col-12 list_pls" style="cursor:pointer"'
-                // data += 'data-service="' + la +
-				// 			'"data-price="' + response[i]['price'] +
-				// 			'"data-code="' + response[i]['code'] +
-				// 			'"data-id="' + response[i]['id'] +
-				// 			'"data-sid="' + response[i]['sid'] +
-				// 			'"data-type="' + response[i]['type'] +
-				// 			'"data-desc="' + response[i]['desc'] + '">'
-                // data += '<div class="card mb-3 clasesItem" style="border:1px solid #ccc;">'
-                // data += '<div class="card-body ">'
-                // data += '<h6 class="card-title m-0">' + la + '<span style="float: right; color: #fb4802;">' + response[i]['price'] + '</span></h6>'
-                // data += '<p class="card-text">' + response[i]['desc'] + '</p>'
-                // data += ' </div>'
-                // data += '</div>'
-                // data += '</div>'
-                
-            // }
-            // $('#ajx').html(data);
-            // $('.list_pls').click(function() {
-            //     $('#rep').show();
-            //     $('#layanan').val($(this).data('sid'));
-            //     $('#price').val($(this).data('price'));
-            //     normal();
-            //     // layanan($(this).data('service_id'));
-            //     $('#operator').val($(this).data('code'));
-            //     //requstOp($(this).data('tipe'),$(this).data('operator'));
-            //     rep = '<div class="col-12 " style="cursor:pointer">'
-            //     rep += '<div class="card mb-3" style="border:1px solid #ccc; color: #fff; background-color: #039dfc;">'
-            //     rep += '<div class="card-body">'
-            //     rep += '<h6 class="card-title m-0">' + $(this).data('service') + ' <span style="float: right; color: #fb4802;">' + $(this).data('price') + '</span></h6>'
-            //     rep += '<p class="card-text">' + $(this).data('desc') + '</p>'
-            //     rep += ' </div>'
-            //     rep += '</div>'
-            //     rep += '</div>'
-            //     $('#rep').html(rep);
-            //     console.log(rep)
-            // })
-        }
-    })
-    $('#nomor').click(function() {
-        $('.exs').show();
-        $('#panel_list').addClass('isi_p');
-        $('#ajx').show();
-        $('#rep').hide();
+                // console.log(response)
+                var data = '';
+                var la = response.data;
+                if(la.customer_no == null)
+                {
+                    console.log('load')
+                }
+                    data += '<label class="col-xl-3 col-lg-3 col-form-label"></label>'
+                    data += '<div class="col-lg-9 col-xl-6">'
+                        data += '<div class="card">'
+                            data += '<div class="card mb-3 clasesItem" style="border:1px solid #ccc;">'
+                                data += '<h6 class="card-title m-0">'+la.customer_no+'<span style="float: right; color: #fb4802;">'+la.name+'</span></h6>'
+                                data += '<div class="card-body">'
+                                data += '<p class="card-text">' + la.segment_power + '</p>'
+                            data += '</div>'
+                        data += '</div>'
+                    data += '</div>'
+                $('#ajx').html(data);      
+            }
+        })
     });
-    normal();
-
-    function normal() {
-        $('.exs').hide();
-        $('#panel_list').removeClass('isi_p');
-        $('#ajx').hide();
-    }
-    
 })
 </script>
 @endsection

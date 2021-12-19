@@ -45,10 +45,40 @@ class ServiceController extends Controller
         return response()->json(['error' => true,'data' => $view_data]);
 
     }
+    public function acak_nomor($length){
+        $str = "";
+        $karakter = array_merge(range('0','9'));
+        $max_karakter = count($karakter) - 1;
+        for ($i = 0; $i < $length; $i++) {
+            $rand = mt_rand(0, $max_karakter);
+            $str .= $karakter[$rand];
+        }
+        return $str;
+    }
     public function getPelangganPln(Request $request)
     {
+        $order_id = $this->acak_nomor(3) . $this->acak_nomor(4);
         $nomor = $request->input('nomor');
-        return $nomor;
+        $signature  = md5($this->username.$this->apiKey.$order_id);
+        $json = array(
+            'commands' => 'pln-subscribe',
+            'customer_no' => $nomor,
+        );
+        $url = $this->urlDigiPlazz.'transaction';
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($json));
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $chresult = curl_exec($ch);
+        curl_close($ch);
+        $result = json_decode($chresult,true);
+        return $result;
     }
     public function getLayananOp(Request $request)
     {
