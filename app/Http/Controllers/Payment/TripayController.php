@@ -13,7 +13,7 @@ class TripayController extends Controller
     {
         $apiKey = config('tripay.tripay_api_key');
         $url = config('tripay.tripay_url');
-        $payload = ['code' => 'QRIS'];
+        $payload = ['code' => 'QRISC'];
         $curl = curl_init();
 
         curl_setopt_array($curl, array(

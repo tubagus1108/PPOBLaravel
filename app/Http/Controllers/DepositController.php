@@ -208,7 +208,7 @@ class DepositController extends Controller
         $amount       = $data['jumlah'];
         $data_user = User::where('id',Auth::user()->id)->first();
         $data = [
-            'method'         => 'QRIS',
+            'method'         => 'QRISC',
             'merchant_ref'   => $merchantRef,
             'amount'         => $amount,
             'customer_name'  => $data_user->name,
