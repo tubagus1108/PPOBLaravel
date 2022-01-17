@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FavoritController;
 use App\Http\Controllers\Payment\DigiFlazzCallbackController;
 use App\Http\Controllers\Payment\TripayCallbackController;
 use App\Http\Controllers\Provaider\GopayController;
