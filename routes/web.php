@@ -32,7 +32,7 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::get('/',[HomeController::class,'LandingPage'])->name('landing');
 Route::prefix('auth')->group(function(){
-    Route::get('login',[AuthController::class,'indexLogin']);
+    Route::get('login',[AuthController::class,'indexLogin'])->name('login-index');
     Route::post('login',[AuthController::class,'Login'])->name('login');
     Route::get('register',[AuthController::class,'register']);
     Route::get('forgot-password',[AuthController::class,'forgotpassword']);
