@@ -58,7 +58,7 @@
                             <a href="#contact" class="nav-link">Kontak Kami</a>
                         </li>
                     </ul>
-                    <a href="{{url('auth/login')}}" class="btn btn-primary waves-effect waves-light"><i class="mdi mdi-login"></i> Masuk</a>
+                    <a href="{{route('login-index')}}" class="btn btn-primary waves-effect waves-light"><i class="mdi mdi-login"></i> Masuk</a>
                 </div>
             </div>
         </nav>
