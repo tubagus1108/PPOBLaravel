@@ -48,7 +48,7 @@
                             <label class="col-xl-3 col-lg-3 col-form-label"></label>
                             <div class="col-lg-9 col-xl-6">
                                 <div class="input-group">
-                                    <input type="hidden" name="res" id="res">
+                                    <p id="res"></p>
                                 </div>
                             </div>
                         </div>
@@ -74,7 +74,9 @@
                         zone: zone,
                     },
                     success: function(response) {
-                        console.log(response['nickname'])
+                        // console.log(response['result']['status'])
+                        var x = response['nickname'];
+                        document.getElementById("res").innerHTML = "Nickname: " + x;
                     }
                 })
 
