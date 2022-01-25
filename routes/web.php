@@ -58,6 +58,7 @@ Route::prefix('ajax')->group(function(){
     Route::get('layanan-get',[ServiceController::class,'getLayananOp'])->name('layanan');
     Route::get('layanan-data',[ServiceController::class,'getLayananData'])->name('layanan-data');
     Route::get('get-pelanggan',[ServiceController::class,'getPelangganPln'])->name('pelanggan');
+    Route::get('account-ml',[ServiceController::class,'getAccountMl'])->name('account-ml');
 });
 
 Route::middleware(['auth'])->group(function(){
@@ -66,6 +67,7 @@ Route::middleware(['auth'])->group(function(){
         Route::get('pulsa',[OrderController::class,'pulsa'])->name('pulsa');
         Route::get('pln-token',[OrderController::class,'plnToken'])->name('pln-token');
         Route::get('paket-data',[OrderController::class,'paketData'])->name('paket-data');
+        Route::get('mobile-legends',[OrderController::class,'mobileLegends'])->name('mobile-legends');
         Route::post('order-pulsa',[OrderController::class,'orderPulsa'])->name('order-pulsa');
         Route::post('order-pln',[OrderController::class,'orderPLN'])->name('order-pln');
         Route::get('price-pln',[OrderController::class,'pricePln'])->name('price-pln');

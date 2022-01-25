@@ -194,4 +194,21 @@ class ServiceController extends Controller
         }
         return "Berhasil";
     }
+    public function getAccountMl(Request $request)
+    {
+        $token = 'NguyenThuWan';
+        $id = $request->input('id_ml');
+        $zone = $request->input('zone');
+        $url = "https://api-xyz.com/trueid/mobilelegends?token=$token&id=$id&zone=$zone";
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+        $data = curl_exec($ch);
+        curl_close($ch);
+        $result = json_decode($data);
+        return $result;
+    }
 }

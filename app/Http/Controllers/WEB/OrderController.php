@@ -30,6 +30,10 @@ class OrderController extends Controller
     {
         return view('order.paketdata');
     }
+    public function mobileLegends(Request $request)
+    {
+        return view('order.mobile-legends');
+    }
     public function orderPLN(Request $request)
     {
         $data = $request->validate([

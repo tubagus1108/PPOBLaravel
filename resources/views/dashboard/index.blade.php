@@ -118,6 +118,26 @@
                                     </a>
                                 </th> 
                             </tr>
+                            <tr>
+                                <th>
+                                    <a href="" class="text-primary">
+                                        <a href="{{route('mobile-legends')}}" class="btn-loading"><i class="mdi mdi-gamepad-variant fa-3x text-primary"></i>
+                                        <a href="{{route('mobile-legends')}}" class="btn-loading"><h5 class="text-primary">Mobile Legends</h5>
+                                    </a>
+                                </th>
+                                <th>
+                                    <a href="" class="text-primary">
+                                        <a href="pemesanan-baru/voucher-game" class="btn-loading"><i class="mdi mdi-gamepad-variant fa-3x text-primary"></i>
+                                        <a href="pemesanan-baru/voucher-game" class="btn-loading"><h5 class="text-primary">Free Fire</h5>
+                                    </a>
+                                </th>
+                                <th>
+                                    <a href="" class="text-primary">
+                                        <a href="pemesanan-baru/voucher-game" class="btn-loading"><i class="mdi mdi-plus-circle fa-3x text-primary"></i>
+                                        <a href="pemesanan-baru/voucher-game" class="btn-loading"><h5 class="text-primary">Bpjs Kesehataan</h5>
+                                    </a>
+                                </th>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

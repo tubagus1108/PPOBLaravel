@@ -29,7 +29,6 @@ Route::prefix('service')->group(function(){
     Route::get('get-category',[ServiceController::class,'getCategoryTopUp']);
     Route::get('add-layanan',[ServiceController::class,'addLayanan']);
 });
-
 Route::post('gopay',[GopayController::class,'konfirmasiCode']);
 Route::post('ovo',[OvoController::class,'sendRequest2FA']);
 Route::post('callback',[TripayCallbackController::class,'handle'])->name('callback');
