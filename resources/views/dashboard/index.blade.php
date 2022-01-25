@@ -81,28 +81,14 @@
                             <tr>
                                 <th>
                                     <a href="" class="text-primary">
-                                        <a href="sosial-media/pemesanan-baru" class="btn-loading"><i class="mdi mdi-instagram fa-3x text-primary"></i>
-                                        <a href="sosial-media/pemesanan-baru" class="btn-loading"><h5 class="text-primary">Sosial Media</h5>
-                                    </a>
-                                </th>
-                                <th>
-                                    <a href="" class="text-primary">
-                                        <a href="pemesanan-baru/pulsa-internasional" class="btn-loading"><i class="mdi mdi-cellphone-android fa-3x text-primary"></i>
-                                        <a href="pemesanan-baru/pulsa-internasional" class="btn-loading"><h5 class="text-primary">Pulsa Internasional</h5>
-                                    </a>
-                                </th>
-                                <th>
-                                    <a href="" class="text-primary">
                                         <a href="{{route('pulsa')}}" class="btn-loading"><i class="mdi mdi-cellphone-android fa-3x text-primary"></i>
                                         <a href="{{route('pulsa')}}" class="btn-loading"><h5 class="text-primary">Pulsa</h5>
                                     </a>
                                 </th>
-                            </tr>
-                            <tr>
                                 <th>
                                     <a href="" class="text-primary">
-                                        <a href="pemesanan-baru/paket-data-internet" class="btn-loading"><i class="mdi mdi-earth fa-3x text-primary"></i>
-                                        <a href="pemesanan-baru/paket-data-internet" class="btn-loading"><h5 class="text-primary">Paket Data Internet</h5>
+                                        <a href="{{route('paket-data')}}" class="btn-loading"><i class="mdi mdi-earth fa-3x text-primary"></i>
+                                        <a href="{{route('paket-data')}}" class="btn-loading"><h5 class="text-primary">Paket Data Internet</h5>
                                     </a>
                                 </th>
                                 <th>
@@ -111,14 +97,14 @@
                                         <a href="pemesanan-baru/paket-sms-telepon" class="btn-loading"><h5 class="text-primary">Paket SMS & Telepon</h5>
                                     </a>
                                 </th>
+                            </tr>
+                            <tr>
                                 <th>
                                     <a href="" class="text-primary">
                                         <a href="{{route('pln-token')}}" class="btn-loading"><i class="mdi mdi-flash fa-3x text-primary"></i>
                                         <a href="{{route('pln-token')}}" class="btn-loading"><h5 class="text-primary">Token PLN</h5>
                                     </a>
                                 </th>
-                            </tr>
-                            <tr>
                                 <th>
                                     <a href="" class="text-primary">
                                         <a href="pemesanan-baru/saldo" class="btn-loading"><i class="mdi mdi-wallet fa-3x text-primary"></i>
@@ -130,13 +116,7 @@
                                         <a href="pemesanan-baru/voucher-game" class="btn-loading"><i class="mdi mdi-gamepad-variant fa-3x text-primary"></i>
                                         <a href="pemesanan-baru/voucher-game" class="btn-loading"><h5 class="text-primary">Voucher Game</h5>
                                     </a>
-                                </th>                           
-                                   <th>
-                                    <a href="" class="text-primary">
-                                        <a href="pemesanan-baru/lainnya" class="btn-loading"><i class="mdi mdi-plus-circle-outline fa-3x text-primary"></i>
-                                        <a href="pemesanan-baru/lainnya" class="btn-loading"><h5 class="text-primary">Lainya</h5>
-                                    </a>
-                                </th>
+                                </th> 
                             </tr>
                         </tbody>
                     </table>

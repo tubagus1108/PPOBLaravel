@@ -155,23 +155,35 @@ class ServiceController extends Controller
             {
                 $status = "Ganguan";
             }
-            if($item->category !== 'Data'){
-                if(!LayananPulsa::where('service',$item->product_name)->first()){
-                    LayananPulsa::create([
-                        'sid' => $item->buyer_sku_code,
-                        'service' => $item->product_name,
-                        'id_category' => $get_id->id,
-                        'code' => $item->brand,
-                        'price' => $price_web,
-                        'status' => $status,
-                        'provider' => "DG-PULSA",
-                        'desc' => $item->desc,
-                        'type' => $item->category,
-                    ]);
-                }
+            // if($item->category !== 'Data'){
+            //     if(!LayananPulsa::where('service',$item->product_name)->first()){
+            //         LayananPulsa::create([
+            //             'sid' => $item->buyer_sku_code,
+            //             'service' => $item->product_name,
+            //             'id_category' => $get_id->id,
+            //             'code' => $item->brand,
+            //             'price' => $price_web,
+            //             'status' => $status,
+            //             'provider' => "DG-PULSA",
+            //             'desc' => $item->desc,
+            //             'type' => $item->category,
+            //         ]);
+            //     }
+            // }
+            if(!LayananPulsa::where('service',$item->product_name)->first()){
+                LayananPulsa::create([
+                    'sid' => $item->buyer_sku_code,
+                    'service' => $item->product_name,
+                    'id_category' => $get_id->id,
+                    'code' => $item->brand,
+                    'price' => $price_web,
+                    'status' => $status,
+                    'provider' => "DG-PULSA",
+                    'desc' => $item->desc,
+                    'type' => $item->category,
+                ]);
             }
         }
         return "Berhasil";
     }
-    
 }

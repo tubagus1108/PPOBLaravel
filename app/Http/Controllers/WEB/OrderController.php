@@ -26,6 +26,10 @@ class OrderController extends Controller
         $layanan = LayananPulsa::where('code','PLN')->get();
         return view('order.plntoken',compact('layanan'));
     }
+    public function paketData()
+    {
+        return view('order.paketdata');
+    }
     public function orderPLN(Request $request)
     {
         $data = $request->validate([
