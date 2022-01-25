@@ -56,6 +56,7 @@ Route::prefix('price')->group(function(){
 // });
 Route::prefix('ajax')->group(function(){
     Route::get('layanan-get',[ServiceController::class,'getLayananOp'])->name('layanan');
+    Route::get('layanan-data',[ServiceController::class,'getLayananData'])->name('layanan-data');
     Route::get('get-pelanggan',[ServiceController::class,'getPelangganPln'])->name('pelanggan');
 });
 

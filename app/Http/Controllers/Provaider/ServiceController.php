@@ -88,6 +88,14 @@ class ServiceController extends Controller
         $getLayanan = LayananPulsa::where('code',$var)->where('type','Pulsa')->get();
         return $getLayanan;
     }
+    public function getLayananData(Request $request)
+    {
+        $nomor = $request->input('nomor');
+        $operator = new JsnGetLayanan();
+        $var = $operator->getSearchNumber($nomor);
+        $getLayanan = LayananPulsa::where('code',$var)->where('type','Data')->get();
+        return $getLayanan;
+    }
     public function getCategoryTopUp()
     {
         $signature  = md5($this->username.$this->apiKey.'pricelist');

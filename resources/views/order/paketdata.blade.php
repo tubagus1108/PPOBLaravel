@@ -141,7 +141,7 @@ $(document).ready(function() {
         var char = $('#nomor').val();
         $.ajax({
         type: 'GET',
-        url: '{{route('layanan')}}',
+        url: '{{route('layanan-data')}}',
         data:{
             nomor: char,
         },
