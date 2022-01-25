@@ -70,7 +70,9 @@ Route::middleware(['auth'])->group(function(){
         Route::get('mobile-legends',[OrderController::class,'mobileLegends'])->name('mobile-legends');
         Route::post('order-pulsa',[OrderController::class,'orderPulsa'])->name('order-pulsa');
         Route::post('order-pln',[OrderController::class,'orderPLN'])->name('order-pln');
+        Route::post('order-ml',[OrderController::class,'orderML'])->name('order-ml');
         Route::get('price-pln',[OrderController::class,'pricePln'])->name('price-pln');
+        Route::get('price-ml',[OrderController::class,'priceML'])->name('price-ml');
     });
     Route::get('deposit',[DepositController::class,'deposit'])->name('deposit');
     Route::prefix('payment')->group(function(){

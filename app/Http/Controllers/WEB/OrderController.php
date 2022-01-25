@@ -32,7 +32,19 @@ class OrderController extends Controller
     }
     public function mobileLegends(Request $request)
     {
-        return view('order.mobile-legends');
+        $layanan = LayananPulsa::where('code','MOBILE LEGEND')->get();
+        return view('order.mobile-legends',compact('layanan'));
+    }
+    public function orderML(Request $request)
+    {
+        $data = $request->validate([
+            'service' => 'required',
+            'id' => 'required',
+            'zone' => 'required',
+            'pin' => 'required',
+            'price' => 'required'
+        ]);
+        return $data;
     }
     public function orderPLN(Request $request)
     {
@@ -127,6 +139,12 @@ class OrderController extends Controller
             ]);
            
         }
+    }
+    public function priceML(Request $request)
+    {
+        $price = $request->input('price');
+        $data = LayananPulsa::where('sid',$price)->first();
+        return $data;
     }
     public function pricePln(Request $request)
     {

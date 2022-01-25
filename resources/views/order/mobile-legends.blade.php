@@ -32,7 +32,7 @@
                 <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
             </div>
             @endif
-            <form action="" method="post">@csrf
+            <form action="{{route('order-ml')}}" method="post">@csrf
                 <div class="card">
                     <div class="card-body">
                         <div class="form-group row">
@@ -47,9 +47,39 @@
                         <div class="form-group row">
                             <label class="col-xl-3 col-lg-3 col-form-label"></label>
                             <div class="col-lg-9 col-xl-6">
+                                <p id="res"></p>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-xl-3 col-lg-3 col-form-label">Layanan</label>
+                            <div class="col-lg-9 col-xl-6">
                                 <div class="input-group">
-                                    <p id="res"></p>
+                                    <select required class="form-control" style="width: 100%" name="service" id="service">
+                                        <option value="" hidden>Pilih Layanan</option>
+                                        @foreach($layanan as $item)
+                                            <option value="{{ $item['sid'] }}">
+                                                {{ $item['service'] }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
+                            </div>
+                        </div>
+                        <input type="hidden" value="" name="price" id="price">
+                        <div class="form-group row">
+                            <label class="col-xl-3 col-lg-3 col-form-label">PIN</label>
+                            <div class="col-lg-9 col-xl-6">
+                                <div class="input-group">
+                                    <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-lock text-primary"></i></span></div>
+                                    <input type="number" name="pin" class="form-control" placeholder="Masukkan PIN Kamu">
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group row">
+                            <label class="col-xl-3 col-lg-3 col-form-label"></label>
+                            <div class="col-lg-9 col-xl-6">
+                                <button id="submit" type="submit" name="pesan" class="btn btn-primary btn-elevate btn-pill btn-elevate-air">Submit</button>
+                                <button type="reset" class="btn btn-danger btn-elevate btn-pill btn-elevate-air">Ulangi</button>
                             </div>
                         </div>
                     </div>
@@ -62,6 +92,19 @@
 @section('script')
 <script> 
     $(document).ready(function() {
+        $('#service').on('change', function() {
+        var value = this.value;
+        $.ajax({
+            type: 'GET',
+            url: '{{route('price-ml')}}',
+            data:{
+                price: value,
+            },
+            success: function(response) {
+                document.getElementById("price").value = response['price'];
+            }
+        })
+    });
         $("#id_ml").on("keyup change",function(e){
             var id = $('#id_ml').val();
             $("#zone").on("keyup change",function(e){
@@ -81,7 +124,6 @@
                 })
 
             })
-            // console.log(zone)
         });
     })
 </script>
