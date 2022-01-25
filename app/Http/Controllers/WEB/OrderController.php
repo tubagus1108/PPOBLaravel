@@ -38,10 +38,9 @@ class OrderController extends Controller
         // return $order_id;
         $signature  = md5($this->username.$this->apiKey.$order_id);
         $json = array(
-            "commands"=> "pay-pasca",
             'username' => $this->username,
             'buyer_sku_code'=> $data['service'],
-            'customer_no' => '530000000001',
+            'customer_no' => '1234554321',
             'ref_id' => $order_id,
             "testing"=> true,
             'sign' => $signature,
