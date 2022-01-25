@@ -85,7 +85,7 @@ class ServiceController extends Controller
         $nomor = $request->input('nomor');
         $operator = new JsnGetLayanan();
         $var = $operator->getSearchNumber($nomor);
-        $getLayanan = LayananPulsa::where('code',$var)->get();
+        $getLayanan = LayananPulsa::where('code',$var)->where('type','Pulsa')->get();
         return $getLayanan;
     }
     public function getCategoryTopUp()
