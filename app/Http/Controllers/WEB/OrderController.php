@@ -23,7 +23,45 @@ class OrderController extends Controller
     }
     public function plnToken(Request $request)
     {
-        return view('order.plntoken');
+        $layanan = LayananPulsa::where('code','PLN')->get();
+        return view('order.plntoken',compact('layanan'));
+    }
+    public function orderPLN(Request $request)
+    {
+        $data = $request->validate([
+            'service' => 'required',
+            'target' => 'required|min:4|max:13',
+            'pin' => 'required',
+        ]);
+        // return $data;
+        $order_id = $this->acak_nomor(3) . $this->acak_nomor(4);
+        // return $order_id;
+        $signature  = md5($this->username.$this->apiKey.$order_id);
+        $json = array(
+            "commands"=> "pay-pasca",
+            'username' => $this->username,
+            'buyer_sku_code'=> $data['service'],
+            'customer_no' => '530000000001',
+            'ref_id' => $order_id,
+            "testing"=> true,
+            'sign' => $signature,
+        );
+        // return $json;
+        $url = $this->urlDigiPlazz.'transaction';
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($json));
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $chresult = curl_exec($ch);
+        curl_close($ch);
+        $result = json_decode($chresult,true);
+        return $result;
     }
     public function acak_nomor($length){
         $str = "";

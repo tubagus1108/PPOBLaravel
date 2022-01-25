@@ -65,7 +65,7 @@
                 <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
             </div>
             @endif
-            <form action="" method="post">@csrf
+            <form action="{{route('order-pln')}}" method="post">@csrf
                 <div class="card">
                     <div class="card-body">
                             <div id="panel_list" class="">
@@ -79,10 +79,26 @@
                                     </div>
                                 </div>
                                 <br>
-                                <br>
+                                {{-- <br>
                                 <div id="rep" class="row" style="margin-top: 5px;"></div>
-                                <div id="catatan"></div>
+                                <div id="catatan"></div> --}}
                                 <div id="ajx" class="row"></div>
+                            </div>
+                            {{-- <br> --}}
+                            <div class="form-group row">
+                                <label class="col-xl-3 col-lg-3 col-form-label">Layanan</label>
+                                <div class="col-lg-9 col-xl-6">
+                                    <div class="input-group">
+                                        {{-- <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-wrench text-primary"></i></span></div> --}}
+                                        <select required class="form-control" style="width: 100%" name="service">
+                                            <option value="" hidden>Pilih Layanan</option>
+                                            @foreach($layanan as $item)
+                                                <option value="{{ $item['sid'] }}">
+                                                    {{ $item['service'] }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                             <br>
                             <div class="form-group row">
@@ -137,24 +153,27 @@ $(document).ready(function() {
             nomor: char,
         },
         success: function(response) {
-                // console.log(response)
                 var data = '';
                 var la = response.data;
-                if(la.customer_no == null)
-                {
-                    console.log('load')
-                }
+                if(la['name'] == ""){
+                    data += '<label class="col-xl-3 col-lg-3 col-form-label"></label>'
+                    data += '<div class="col-lg-9 col-xl-6">'
+                        data += '<div class="card">'
+                            data += '<p class="card-text">Mohon Tunggu...</p>'
+                        data += '</div>'
+                    data += '</div>'
+                }else{
                     data += '<label class="col-xl-3 col-lg-3 col-form-label"></label>'
                     data += '<div class="col-lg-9 col-xl-6">'
                         data += '<div class="card">'
                             data += '<div class="card mb-3 clasesItem" style="border:1px solid #ccc;">'
-                                data += '<h6 class="card-title m-0">'+la.customer_no+'<span style="float: right; color: #fb4802;">'+la.name+'</span></h6>'
-                                data += '<div class="card-body">'
-                                data += '<p class="card-text">' + la.segment_power + '</p>'
+                                data += '<p class="card-text">' + la.name + '/' + la.meter_no + '</p>'
                             data += '</div>'
                         data += '</div>'
                     data += '</div>'
-                $('#ajx').html(data);      
+                }
+                // console.log(data)
+                $('#ajx').html(data);
             }
         })
     });

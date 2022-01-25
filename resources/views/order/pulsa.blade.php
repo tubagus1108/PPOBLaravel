@@ -68,7 +68,7 @@
             <form action="{{route('order-pulsa')}}" method="post">@csrf
                 <div class="card">
                     <div class="card-body">
-                            <div id="panel_list" class="">
+                            <div id="panel_list">
                                 <div class="form-group row">
                                     <label class="col-xl-3 col-lg-3 col-form-label">Tujuan </label>
                                     <div class="col-lg-9 col-xl-6">
@@ -166,6 +166,7 @@ $(document).ready(function() {
                 data += ' </div>'
                 data += '</div>'
                 data += '</div>'
+                console.log(data)
                 
             }
             $('#ajx').html(data);
@@ -193,7 +194,7 @@ $(document).ready(function() {
     })
     $('#nomor').click(function() {
         $('.exs').show();
-        $('#panel_list').addClass('isi_p');
+        // $('#panel_list').addClass('isi_p');
         $('#ajx').show();
         $('#rep').hide();
     });
