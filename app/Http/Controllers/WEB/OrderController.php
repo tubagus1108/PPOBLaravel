@@ -44,7 +44,8 @@ class OrderController extends Controller
             'pin' => 'required',
             'price' => 'required'
         ]);
-        return $data;
+        $target = $data['id'].$data['zone'];
+        return $target;
     }
     public function orderPLN(Request $request)
     {
