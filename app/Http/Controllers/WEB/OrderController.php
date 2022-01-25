@@ -32,15 +32,15 @@ class OrderController extends Controller
             'service' => 'required',
             'target' => 'required|min:4|max:13',
             'pin' => 'required',
+            'price' => 'required'
         ]);
-        // return $data;
         $order_id = $this->acak_nomor(3) . $this->acak_nomor(4);
         // return $order_id;
         $signature  = md5($this->username.$this->apiKey.$order_id);
         $json = array(
             'username' => $this->username,
             'buyer_sku_code'=> $data['service'],
-            'customer_no' => '1234554321',
+            'customer_no' => $data['target'],
             'ref_id' => $order_id,
             "testing"=> true,
             'sign' => $signature,
@@ -60,7 +60,71 @@ class OrderController extends Controller
         $chresult = curl_exec($ch);
         curl_close($ch);
         $result = json_decode($chresult,true);
-        return $result;
+        // return $result;
+        if($result['data']['status'] == "Gagal")
+        {
+            return redirect()->back()->with('success', [
+                'status' => false,
+                'message' => 'Ups, '.$result['data']['message'],
+            ]);
+        }else{      
+            $user = User::where('id',Auth::user()->id)->first();
+            if (!$user) {
+                return redirect()->back()->with('success', [
+                    'status' => false,
+                    'message' => 'Data User tidak ada'
+                ]);
+            }
+            // return $user->pin .' '. $request->input('pin');
+            if($user->pin != $request->input('pin'))
+            {
+                return redirect()->back()->with('success', [
+                    'status' => false,
+                    'message' => 'Pin Anda Salah'
+                ]);
+            }
+            if($user->balance <= $request->input('price'))
+            {
+                return redirect()->back()->with('success', [
+                    'status' => false,
+                    'message' => 'Saldo anda tidak cukup!!'
+                ]);
+            }
+            try {
+                DB::transaction(function () use ($user,$result,$request,$order_id,$data) {
+                        OrderPulsa::create([
+                            'oid' => $order_id,
+                            'provider_oid' => $order_id,
+                            'id_user' => $user->id,
+                            'service' => $data['service'],
+                            'price' => $data['price'],
+                            'target' =>$result['data']['customer_no'],
+                            'desc' => $result['data']['message'],
+                            'status' => $result['data']['status'],
+                            'refund' => 0,
+                        ]);
+                        $buy_price = $data['price'];
+                        $user->balance = $user['balance'] - $buy_price;
+                        $user->save();
+                });
+            } catch (\Exception $e) {
+                return redirect()->back()->with('success', [
+                    'status' => false,
+                    'message' => 'Ups, Gagal! Sistem Kami Sedang Mengalami Gangguan.'
+                ]);
+            }
+            return redirect()->back()->with('success', [
+                'status' => true,
+                'message' => 'Sip, Pesanan Kamu Telah Kami Terima.'
+            ]);
+           
+        }
+    }
+    public function pricePln(Request $request)
+    {
+        $price = $request->input('price');
+        $data = LayananPulsa::where('sid',$price)->first();
+        return $data;
     }
     public function acak_nomor($length){
         $str = "";

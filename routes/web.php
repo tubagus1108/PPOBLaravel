@@ -66,6 +66,7 @@ Route::middleware(['auth'])->group(function(){
         Route::get('pln-token',[OrderController::class,'plnToken'])->name('pln-token');
         Route::post('order-pulsa',[OrderController::class,'orderPulsa'])->name('order-pulsa');
         Route::post('order-pln',[OrderController::class,'orderPLN'])->name('order-pln');
+        Route::get('price-pln',[OrderController::class,'pricePln'])->name('price-pln');
     });
     Route::get('deposit',[DepositController::class,'deposit'])->name('deposit');
     Route::prefix('payment')->group(function(){

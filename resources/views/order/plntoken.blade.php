@@ -90,7 +90,7 @@
                                 <div class="col-lg-9 col-xl-6">
                                     <div class="input-group">
                                         {{-- <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-wrench text-primary"></i></span></div> --}}
-                                        <select required class="form-control" style="width: 100%" name="service">
+                                        <select required class="form-control" style="width: 100%" name="service" id="service">
                                             <option value="" hidden>Pilih Layanan</option>
                                             @foreach($layanan as $item)
                                                 <option value="{{ $item['sid'] }}">
@@ -100,6 +100,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <input type="hidden" value="" name="price" id="price">
                             <br>
                             <div class="form-group row">
                                 <label class="col-xl-3 col-lg-3 col-form-label">PIN</label>
@@ -141,9 +142,22 @@
 </div>
 @endsection
 @section('script')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script> 
 $(document).ready(function() {
-    
+    $('#service').on('change', function() {
+        var value = this.value;
+        $.ajax({
+            type: 'GET',
+            url: '{{route('price-pln')}}',
+            data:{
+                price: value,
+            },
+            success: function(response) {
+                document.getElementById("price").value = response['price'];
+            }
+        })
+    });
     $("#nomor").on("keyup change", function(e) {
         var char = $('#nomor').val();
         $.ajax({

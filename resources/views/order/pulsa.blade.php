@@ -187,7 +187,7 @@ $(document).ready(function() {
                 rep += '</div>'
                 rep += '</div>'
                 $('#rep').html(rep);
-                console.log(rep)
+                // console.log(rep)
             })
         }
         });
