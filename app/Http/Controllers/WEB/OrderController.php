@@ -71,65 +71,65 @@ class OrderController extends Controller
         $chresult = curl_exec($ch);
         curl_close($ch);
         $result = json_decode($chresult,true);
-        return $result;
-        // if($result['data']['status'] == "Gagal")
-        // {
-        //     return redirect()->back()->with('success', [
-        //         'status' => false,
-        //         'message' => 'Ups, '.$result['data']['message'],
-        //     ]);
-        // }else{      
-        //     $user = User::where('id',Auth::user()->id)->first();
-        //     if (!$user) {
-        //         return redirect()->back()->with('success', [
-        //             'status' => false,
-        //             'message' => 'Data User tidak ada'
-        //         ]);
-        //     }
-        //     // return $user->pin .' '. $request->input('pin');
-        //     if($user->pin != $request->input('pin'))
-        //     {
-        //         return redirect()->back()->with('success', [
-        //             'status' => false,
-        //             'message' => 'Pin Anda Salah'
-        //         ]);
-        //     }
-        //     if($user->balance <= $request->input('price'))
-        //     {
-        //         return redirect()->back()->with('success', [
-        //             'status' => false,
-        //             'message' => 'Saldo anda tidak cukup!!'
-        //         ]);
-        //     }
-        //     try {
-        //         DB::transaction(function () use ($user,$result,$request,$order_id,$data) {
-        //                 OrderPulsa::create([
-        //                     'oid' => $order_id,
-        //                     'provider_oid' => $order_id,
-        //                     'id_user' => $user->id,
-        //                     'service' => $data['service'],
-        //                     'price' => $data['price'],
-        //                     'target' =>$result['data']['customer_no'],
-        //                     'desc' => $result['data']['message'],
-        //                     'status' => $result['data']['status'],
-        //                     'refund' => 0,
-        //                 ]);
-        //                 $buy_price = $data['price'];
-        //                 $user->balance = $user['balance'] - $buy_price;
-        //                 $user->save();
-        //         });
-        //     } catch (\Exception $e) {
-        //         return redirect()->back()->with('success', [
-        //             'status' => false,
-        //             'message' => 'Ups, Gagal! Sistem Kami Sedang Mengalami Gangguan.'
-        //         ]);
-        //     }
-        //     return redirect()->back()->with('success', [
-        //         'status' => true,
-        //         'message' => 'Sip, Pesanan Kamu Telah Kami Terima.'
-        //     ]);
+        // return $result;
+        if($result['data']['status'] == "Gagal")
+        {
+            return redirect()->back()->with('success', [
+                'status' => false,
+                'message' => 'Ups, '.$result['data']['message'],
+            ]);
+        }else{      
+            $user = User::where('id',Auth::user()->id)->first();
+            if (!$user) {
+                return redirect()->back()->with('success', [
+                    'status' => false,
+                    'message' => 'Data User tidak ada'
+                ]);
+            }
+            // return $user->pin .' '. $request->input('pin');
+            if($user->pin != $request->input('pin'))
+            {
+                return redirect()->back()->with('success', [
+                    'status' => false,
+                    'message' => 'Pin Anda Salah'
+                ]);
+            }
+            if($user->balance <= $request->input('price'))
+            {
+                return redirect()->back()->with('success', [
+                    'status' => false,
+                    'message' => 'Saldo anda tidak cukup!!'
+                ]);
+            }
+            try {
+                DB::transaction(function () use ($user,$result,$request,$order_id,$data) {
+                        OrderPulsa::create([
+                            'oid' => $order_id,
+                            'provider_oid' => $order_id,
+                            'id_user' => $user->id,
+                            'service' => $data['service'],
+                            'price' => $data['price'],
+                            'target' =>$result['data']['customer_no'],
+                            'desc' => $result['data']['message'],
+                            'status' => $result['data']['status'],
+                            'refund' => 0,
+                        ]);
+                        $buy_price = $data['price'];
+                        $user->balance = $user['balance'] - $buy_price;
+                        $user->save();
+                });
+            } catch (\Exception $e) {
+                return redirect()->back()->with('success', [
+                    'status' => false,
+                    'message' => 'Ups, Gagal! Sistem Kami Sedang Mengalami Gangguan.'
+                ]);
+            }
+            return redirect()->back()->with('success', [
+                'status' => true,
+                'message' => 'Sip, Pesanan Kamu Telah Kami Terima.'
+            ]);
            
-        // }
+        }
     }
     public function orderPLN(Request $request)
     {
