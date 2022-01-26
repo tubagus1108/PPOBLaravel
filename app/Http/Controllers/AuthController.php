@@ -31,7 +31,7 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
     }
-    public function Login(Request $request,$data)
+    public function Login(Request $request,array $data)
     {
         dd($data);
         if(!$request->all())
