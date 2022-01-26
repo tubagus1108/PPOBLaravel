@@ -29,7 +29,7 @@ class AuthController extends Controller
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
-            'g-recaptcha-response' => 'required|recaptchav3:register,0.5'
+            'g-recaptcha-response' => 'required|recaptchav3:login,0.5'
         ]);
         if(!$request->all())
         {
