@@ -9,8 +9,8 @@ use Illuminate\Http\Request;
 
 class TripayCallbackController extends Controller
 {
-    protected $privateKey = 'merE4-bVTAK-AlD5t-KpMwX-a7UXj';
-    // protected $privateKey = '1BYtH-rEIIm-SmrLA-nPsFP-vvdrR';
+    // protected $privateKey = 'merE4-bVTAK-AlD5t-KpMwX-a7UXj';
+    protected $privateKey = '1BYtH-rEIIm-SmrLA-nPsFP-vvdrR';
 
     public function handle(Request $request)
     {
