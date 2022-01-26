@@ -24,12 +24,15 @@ class AuthController extends Controller
         }
         return view('auth.login');
     }
-    public function Login(Request $request)
+    protected function validator(array $data)
     {
-        $data = Validator::make($data,[
+        return Validator::make($data,[
             'email' => ['required'],
             'password' => ['required'],
         ]);
+    }
+    public function Login(Request $request,$data)
+    {
         dd($data);
         if(!$request->all())
         {
