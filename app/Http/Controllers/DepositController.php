@@ -42,7 +42,7 @@ class DepositController extends Controller
     }
     public function qrisDataTable()
     {
-        $data = Deposit::where('user_id',Auth::user()->id)->where('payment_method','QRIS')->get();
+        $data = Deposit::where('user_id',Auth::user()->id)->where('payment_method','QRISC')->get();
         return DataTables::of($data)
         ->addIndexColumn()
         ->addColumn('date', function($data){
