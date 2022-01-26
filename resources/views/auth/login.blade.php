@@ -47,8 +47,8 @@
                                     <input type="password" id="password" name="password" class="form-control" placeholder="Kata Sandi" required>
                                 </div>
                             </div>
-                            <div class="g-recaptcha" data-sitekey="6Lf0UzoeAAAAAPgSBJD-Y78pylo9vbwWGx53DXD3"></div>
                             <br>
+                            <div class="g-recaptcha" data-sitekey="6Lf0UzoeAAAAAPgSBJD-Y78pylo9vbwWGx53DXD3"></div>
                             <button type="reset" class="btn btn-danger waves-effect waves-light"><i class="fa fa-history"></i> Ulangi</button>
                             <button type="submit" name="login" class="btn btn-primary waves-effect waves-light"><i class="mdi mdi-login"></i> Masuk</button>
                             </form>

@@ -30,7 +30,6 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-        dd($data);
         if(!$request->all())
         {
             return view('login');
