@@ -47,18 +47,10 @@
                                     <input type="password" id="password" name="password" class="form-control" placeholder="Kata Sandi" required>
                                 </div>
                             </div>
-                            <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
-                                <div class="col-md-6">
-                                    {!! RecaptchaV3::field('login') !!}
-                                    @if ($errors->has('g-recaptcha-response'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-                                <button type="reset" class="btn btn-danger waves-effect waves-light"><i class="fa fa-history"></i> Ulangi</button>
-                                <button type="submit" name="login" class="btn btn-primary waves-effect waves-light"><i class="mdi mdi-login"></i> Masuk</button>
+                            <div class="g-recaptcha" data-sitekey="6Lf0UzoeAAAAAPgSBJD-Y78pylo9vbwWGx53DXD3"></div>
+                            <br>
+                            <button type="reset" class="btn btn-danger waves-effect waves-light"><i class="fa fa-history"></i> Ulangi</button>
+                            <button type="submit" name="login" class="btn btn-primary waves-effect waves-light"><i class="mdi mdi-login"></i> Masuk</button>
                             </form>
                         </div>
                         <div class="card-footer">
@@ -70,4 +62,7 @@
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 @endsection

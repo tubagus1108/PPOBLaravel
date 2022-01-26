@@ -26,11 +26,11 @@ class AuthController extends Controller
     }
     public function Login(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
-            'g-recaptcha-response' => 'required|recaptchav3:login,0.5'
         ]);
+        dd($data);
         if(!$request->all())
         {
             return view('login');
