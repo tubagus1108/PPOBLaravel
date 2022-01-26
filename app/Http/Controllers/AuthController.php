@@ -26,6 +26,11 @@ class AuthController extends Controller
     }
     public function Login(Request $request)
     {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+            'g-recaptcha-response' => 'required|recaptchav3:register,0.5'
+        ]);
         if(!$request->all())
         {
             return view('login');
@@ -47,5 +52,9 @@ class AuthController extends Controller
     public function Logout (){
         Session::flush();
         return redirect(url('auth/login'));
+    }
+    public function reloadCaptcha()
+    {
+        return response()->json(['captcha'=> captcha_img()]);
     }
 }

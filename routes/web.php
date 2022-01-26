@@ -30,6 +30,8 @@ use Illuminate\Support\Facades\Route;
 //     Route::post('get-category',[ServiceController::class,'GetCategory']);
 //     Route::get('add-layanan',[ServiceController::class,'addLayanan']);
 // });
+Route::get('/reload-captcha', [CaptchaServiceController::class, 'reloadCaptcha']);
+Route::get('cooming-soon',[PageController::class,'coomingSoon'])->name('cooming-soon');
 Route::get('/',[HomeController::class,'LandingPage'])->name('landing');
 Route::prefix('auth')->group(function(){
     Route::get('login',[AuthController::class,'indexLogin'])->name('login-index');

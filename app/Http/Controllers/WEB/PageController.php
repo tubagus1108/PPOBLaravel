@@ -96,4 +96,8 @@ class PageController extends Controller
     {
         return view('halaman.contact');
     }
+    public function coomingSoon()
+    {
+        return view('dashboard.cooming-soon');
+    }
 }

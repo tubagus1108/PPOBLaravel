@@ -93,8 +93,8 @@
                                 </th>
                                 <th>
                                     <a href="" class="text-primary">
-                                        <a href="pemesanan-baru/paket-sms-telepon" class="btn-loading"><i class="mdi mdi-phone fa-3x text-primary"></i>
-                                        <a href="pemesanan-baru/paket-sms-telepon" class="btn-loading"><h5 class="text-primary">Paket SMS & Telepon</h5>
+                                        <a href="{{route('cooming-soon')}}" class="btn-loading"><i class="mdi mdi-phone fa-3x text-primary"></i>
+                                        <a href="{{route('cooming-soon')}}" class="btn-loading"><h5 class="text-primary">Paket SMS & Telepon</h5>
                                     </a>
                                 </th>
                             </tr>
@@ -107,14 +107,14 @@
                                 </th>
                                 <th>
                                     <a href="" class="text-primary">
-                                        <a href="pemesanan-baru/saldo" class="btn-loading"><i class="mdi mdi-wallet fa-3x text-primary"></i>
-                                        <a href="pemesanan-baru/saldo" class="btn-loading"><h5 class="text-primary">Saldo E-Money</h5>
+                                        <a href="{{route('cooming-soon')}}" class="btn-loading"><i class="mdi mdi-wallet fa-3x text-primary"></i>
+                                        <a href="{{route('cooming-soon')}}" class="btn-loading"><h5 class="text-primary">Saldo E-Money</h5>
                                     </a>
                                 </th>
                                 <th>
                                     <a href="" class="text-primary">
-                                        <a href="pemesanan-baru/voucher-game" class="btn-loading"><i class="mdi mdi-gamepad-variant fa-3x text-primary"></i>
-                                        <a href="pemesanan-baru/voucher-game" class="btn-loading"><h5 class="text-primary">Voucher Game</h5>
+                                        <a href="{{route('cooming-soon')}}" class="btn-loading"><i class="mdi mdi-gamepad-variant fa-3x text-primary"></i>
+                                        <a href="{{route('cooming-soon')}}" class="btn-loading"><h5 class="text-primary">Voucher Game</h5>
                                     </a>
                                 </th> 
                             </tr>
@@ -127,14 +127,14 @@
                                 </th>
                                 <th>
                                     <a href="" class="text-primary">
-                                        <a href="pemesanan-baru/voucher-game" class="btn-loading"><i class="mdi mdi-gamepad-variant fa-3x text-primary"></i>
-                                        <a href="pemesanan-baru/voucher-game" class="btn-loading"><h5 class="text-primary">Free Fire</h5>
+                                        <a href="{{route('cooming-soon')}}" class="btn-loading"><i class="mdi mdi-gamepad-variant fa-3x text-primary"></i>
+                                        <a href="{{route('cooming-soon')}}" class="btn-loading"><h5 class="text-primary">Free Fire</h5>
                                     </a>
                                 </th>
                                 <th>
                                     <a href="" class="text-primary">
-                                        <a href="pemesanan-baru/voucher-game" class="btn-loading"><i class="mdi mdi-plus-circle fa-3x text-primary"></i>
-                                        <a href="pemesanan-baru/voucher-game" class="btn-loading"><h5 class="text-primary">Bpjs Kesehataan</h5>
+                                        <a href="{{route('cooming-soon')}} class="btn-loading"><i class="mdi mdi-plus-circle fa-3x text-primary"></i>
+                                        <a href="{{route('cooming-soon')}}" class="btn-loading"><h5 class="text-primary">Bpjs Kesehataan</h5>
                                     </a>
                                 </th>
                             </tr>
