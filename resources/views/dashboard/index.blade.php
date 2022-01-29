@@ -133,7 +133,7 @@
                                 </th>
                                 <th>
                                     <a href="" class="text-primary">
-                                        <a href="{{route('cooming-soon')}} class="btn-loading"><i class="mdi mdi-plus-circle fa-3x text-primary"></i>
+                                        <a href="{{route('cooming-soon')}}" class="btn-loading"><i class="mdi mdi-plus-circle fa-3x text-primary"></i>
                                         <a href="{{route('cooming-soon')}}" class="btn-loading"><h5 class="text-primary">Bpjs Kesehataan</h5>
                                     </a>
                                 </th>
@@ -164,15 +164,7 @@
                                         <th>Status</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td><label class="btn btn-xs btn-danger"></td>
-                                    </tr>
-                                </tbody>
+
                             </table>
                         </div>
                     </div>
@@ -253,5 +245,42 @@
 </div>
 @endsection
 @section('script')
-    
+<script type="text/javascript">
+    $(function(){
+        var table = $('#datatable-responsive').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax:{
+                url: '{{route('riwayat-datatable')}}',
+            },
+            columns: [
+                {data: 'id', name: 'id'},
+                { data: 'order-date', name: 'order-date'},
+                { data: 'service_name', name: 'service_name'},
+                { data: 'price', name: 'price'},
+                { data: 'status', name: 'status'},
+            ],
+            language: {
+            searchPlaceholder: 'Search..',
+            sSearch: '',
+            lengthMenu: '_MENU_ items/page',
+            destroy: true
+            },  
+            columnDefs:[
+                {
+                    "targets" : [0,4],
+                    "className": "text-center"
+                },
+            ],              
+            
+            dom: 'Bfrtip',  
+            buttons: [
+                {extend:'copy', className: 'bg-info text-white rounded-pill ml-2 border border-white'},
+                {extend:'excel', className: 'bg-success text-white rounded-pill border border-white'},
+                {extend:'pdf', className: 'bg-danger text-white rounded-pill border border-white'},
+                {extend:'print', className: 'bg-warning text-white rounded-pill border border-white'},
+            ],
+        });
+    });
+</script>
 @endsection

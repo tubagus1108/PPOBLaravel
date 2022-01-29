@@ -35,7 +35,8 @@
                 <div class="row">
                     @foreach ($channelsBni as $item)
                         <div class="col-md-4 col-sm-12">
-                            <a class="card card-body text-center text-primary" href="{{route('vabni')}}" height:200px;">
+                            {{-- <a class="card card-body text-center text-primary" href="{{route('vabni')}}" height:200px;"> --}}
+                            <a class="card card-body text-center text-primary" href="{{route('cooming-soon')}}" height:200px;">
                                 <center>
                                     <img src="{{$item->icon_url}}" class="img-responsive" width="200"/>
                                 </center>
@@ -46,7 +47,7 @@
                     @endforeach
                     @foreach ($channelsBri as $item)
                     <div class="col-md-4 col-sm-12">
-                        <a class="card card-body text-center text-primary" href=""height:200px;">
+                        <a class="card card-body text-center text-primary" href="{{route('cooming-soon')}}" height:200px;">
                             <center>
                                 <img src="{{$item->icon_url}}" class="img-responsive" width="200"/>
                             </center>
@@ -57,7 +58,7 @@
                     @endforeach
                     @foreach ($channelsMandiri as $item)
                     <div class="col-md-4 col-sm-12">
-                        <a class="card card-body text-center text-primary" href=""height:200px;">
+                        <a class="card card-body text-center text-primary" href="{{route('cooming-soon')}}" height:200px;">
                             <center>
                                 <img src="{{$item->icon_url}}" class="img-responsive" width="200"/>
                             </center>

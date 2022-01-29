@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Provaider\ServiceController;
 use App\Models\CategoryLayanan;
 use App\Models\LayananPulsa;
+use App\Models\OrderPulsa;
+use Carbon\Carbon;
 use GrahamCampbell\ResultType\Result;
 use Illuminate\Support\Facades\DB;
 use DataTables;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
@@ -99,5 +102,28 @@ class PageController extends Controller
     public function coomingSoon()
     {
         return view('dashboard.cooming-soon');
+    }
+    public function riwayat()
+    {
+        return view('order.riwayat');
+    }
+    public function riwayatTable()
+    {
+        $data = OrderPulsa::where('id_user',Auth::user()->id)->get();
+        // return $data;
+        return DataTables::of($data)
+        ->addIndexColumn()
+        ->addColumn('status', function($data){
+            if($data->status == 'Pending'){
+                return '<button  class="btn btn-success">Pending</button>';
+            }else{
+                return '<button  class="btn btn-success">Success</button>';
+            }
+        })
+        ->addColumn('order-date', function($data){
+            return Carbon::parse($data['created_at'])->format('F d, y');
+        })
+        ->rawColumns(['status'])
+        ->make(true);
     }
 }

@@ -76,6 +76,10 @@ Route::middleware(['auth'])->group(function(){
         Route::get('price-pln',[OrderController::class,'pricePln'])->name('price-pln');
         Route::get('price-ml',[OrderController::class,'priceML'])->name('price-ml');
     });
+    Route::prefix('riwayat')->group(function(){
+        Route::get('order',[PageController::class,'riwayat'])->name('riwayat');
+        Route::get('datatable',[PageController::class,'riwayatTable'])->name('riwayat-datatable');
+    });
     Route::get('deposit',[DepositController::class,'deposit'])->name('deposit');
     Route::prefix('payment')->group(function(){
         Route::get('qris',[DepositController::class,'qris'])->name('qris');

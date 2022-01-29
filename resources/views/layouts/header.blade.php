@@ -26,19 +26,19 @@
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                                 
                                 <!-- item-->
-                                <a href="user/pengaturan-akun" class="dropdown-item notify-item">
+                                <a href="{{route('cooming-soon')}}" class="dropdown-item notify-item">
                                     <i class="ti-settings m-r-5 text-primary"></i>
                                     <span>Pengaturan Akun</span>
                                 </a>
 
                                 <!-- item-->
-                                <a href="" class="dropdown-item notify-item">
+                                <a href="{{route('cooming-soon')}}" class="dropdown-item notify-item">
                                     <i class="fa fa-wallet text-primary"></i>
                                     <span>Penggunaan Saldo</span>
                                 </a>
 
                                 <!-- item-->
-                                <a href="" class="dropdown-item notify-item">
+                                <a href="{{route('cooming-soon')}}" class="dropdown-item notify-item">
                                     <i class="fa fa-history text-primary"></i>
                                     <span>Aktifitas Akun</span>
                                 </a>
@@ -122,20 +122,20 @@
                     </li>
                     @if (Auth::user() == true)
                     <li class="has-submenu">
-                        <a class="nav-link dropdown-toggle waves-effect" href="user/hall-of-fame">
+                        <a class="nav-link dropdown-toggle waves-effect" href="{{route('cooming-soon')}}">
                             <i class="fa fa-bullhorn text-primary"></i>Hall Of Fame</a>
                     
                             <li class="has-submenu">
-                        <a class="nav-link dropdown-toggle waves-effect" href="#"> <i class="fa fa-cart-plus text-primary"></i>Riwayat Pemesanan<i class="mdi mdi-chevron-down"></i></a>
+                        <a class="nav-link dropdown-toggle waves-effect" href=""> <i class="fa fa-cart-plus text-primary"></i>Riwayat Pemesanan<i class="mdi mdi-chevron-down"></i></a>
                         <ul class="submenu">
                             <li>
-                                <a href="sosial-media/riwayat">
+                                <a href="{{route('cooming-soon')}}">
                                     <i class="fe-instagram mr-1"></i>
                                     <span>Sosial Media</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="pulsa/riwayat">
+                                <a href="{{route('riwayat')}}">
                                     <i class="mdi mdi-cellphone-android mr-1"></i>
                                     <span>Pulsa & PPOB</span>
                                 </a>
@@ -154,23 +154,17 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="deposit-saldo/redem-voucher">
+                                <a href="{{route('cooming-soon')}}">
                                     <i class="fe-shopping-bag mr-1"></i>
                                     <span>Kode Voucher</span>
                                 </a>
-                            </li>
-                            <li>
-                                <a href="deposit-saldo/riwayat">
-                                    <i class="fa fa-history"></i>
-                                    <span> Riwayat Deposit</span>
-                                </a>
-                            </li>                                    
+                            </li>                                
                         </ul>
                     </li>
                     @endif
                     @if (Auth::user() == true)
                     <li class="has-submenu">
-                        <a class="nav-link dropdown-toggle waves-effect" href="tiket">
+                        <a class="nav-link dropdown-toggle waves-effect" href="{{route('cooming-soon')}}">
                             <i class="fa fa-envelope text-primary"></i>Tiket</a>
                     </li>
                     @endif
@@ -179,7 +173,7 @@
                         <a class="nav-link dropdown-toggle waves-effect" href="#"> <i class="fa fa-file text-primary"></i>Halaman<i class="mdi mdi-chevron-down"></i></a>
                         <ul class="submenu">
                             <li>
-                                <a href="halaman/api-dokumentasi">
+                                <a href="{{route('cooming-soon')}}">
                                     <i class="fa fa-code"></i>
                                     <span>API Dokumentasi</span>
                                 </a>
@@ -191,7 +185,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="halaman/staff">
+                                <a href="{{route('cooming-soon')}}">
                                     <i class="fa fa-users"></i>
                                     <span>Staff Kami</span>
                                 </a>
@@ -209,7 +203,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="halaman/tentang-status">
+                                <a href="{{route('cooming-soon')}}">
                                     <i class="mdi mdi-alert-outline"></i>
                                     <span>Penjelasan Status</span>
                                 </a>
